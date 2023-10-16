@@ -1,0 +1,89 @@
+.signInWith {
+  position: relative;
+  line-height: 20px;
+}
+
+.registerBtn,
+.registerBtnWrapper {
+  height: 47px;
+  display: flex;
+  align-items: center;
+}
+
+.registerBtn {
+  border-radius: 56px;
+  border: 2px solid var(--color-royalblue);
+  box-sizing: border-box;
+  width: 299px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 14px;
+}
+
+.registerBtnWrapper {
+  position: absolute;
+  top: 546px;
+  left: calc(50% - 149.5px);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.child {
+  position: absolute;
+  top: 73px;
+  left: 2px;
+  border-radius: 0 0 var(--br-11xl) var(--br-11xl);
+  backdrop-filter: blur(4px);
+  width: 375px;
+  height: 288px;
+  mix-blend-mode: normal;
+}
+
+.frameChild {
+  position: relative;
+  border-radius: 90px;
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+}
+
+.controlG {
+  position: relative;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.inner,
+.rectangleParent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rectangleParent {
+  gap: 4px;
+}
+
+.inner {
+  position: absolute;
+  top: 152px;
+  left: 127px;
+  text-align: center;
+  font-size: 20px;
+  color: #000;
+  font-family: var(--font-inter);
+}
+.div {
+  position: relative;
+  border-radius: var(--br-11xl);
+  background-color: #fff;
+  width: 375px;
+  height: 812px;
+  overflow-y: auto;
+  text-align: left;
+  font-size: 14px;
+  color: var(--color-royalblue);
+  font-family: var(--font-poppins);
+  background-color: whitesmoke;
+}
