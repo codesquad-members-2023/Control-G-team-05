@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "./SignInPage.module.css"; // CSS 파일에서 스타일을 가져옵니다.
+import { useNavigate } from "react-router-dom";
 
-function MainPage() {
+function SignInPage() {
+  const navigate = useNavigate();
+
+  const navigateToSignUpPage = () => {
+    navigate("/signUpPage"); // 원하는 경로로 수정
+  };
+
   return (
     <div className={styles.div}>
       {/* main 페이지 위쪽 페이지 */}
@@ -18,11 +25,14 @@ function MainPage() {
       </div>
       <div className={styles.registerBtnWrapper}>
         <div className={styles.registerBtn}>
-          <b className={styles.signInWith}>Sign In With Kakao</b>
+          {/* 임시로 signIn 버튼 누르면 회원가입 페이지로 이동하도록 설정 */}
+          <b onClick={navigateToSignUpPage} className={styles.signInWith}>
+            Sign In With Kakao
+          </b>
         </div>
       </div>
     </div>
   );
 }
 
-export default MainPage;
+export default SignInPage;
