@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./MainPage.module.css"; // CSS 파일에서 스타일을 가져옵니다.
+import styles from "./SignInPage.module.css"; // CSS 파일에서 스타일을 가져옵니다.
 
 function MainPage() {
   return (
