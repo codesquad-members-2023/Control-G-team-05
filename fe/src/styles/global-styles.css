@@ -1,22 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {
-  margin: 0;
+  margin-top: 200px;
   line-height: normal;
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 :root {
   /* fonts */
+  --subheading-01: Mulish;
+  --text-body-bold: Lato;
   --font-inter: Inter;
   --font-poppins: Poppins;
 
+  /* font sizes */
+  --subheading-01-size: 18px;
+  --font-size-xs: 12px;
+  --font-size-base: 16px;
+  --text-body-bold-size: 14px;
+  --font-size-xl: 20px;
+  --font-size-4xs: 9px;
+  --font-size-3xl: 22px;
+  --text-x-small-regular-size: 10px;
+
   /* Colors */
+  --color-white: #fff;
+  --grayscale-off-white: #fcfcfc;
+  --color-gray-100: #0f1828;
+  --color-gray-200: rgba(255, 255, 255, 0.4);
+  --color-darkgray: #adb5bd;
+  --color-darkgray-100: #a4a4a4;
+  --color-mediumblue-100: #2c37e1;
+  --color-mediumblue: #002de3;
+  --primary-default: #5f2eea;
+  --color-black: #000;
   --color-royalblue: #007fff;
+  --color-silver-100: #bbb;
+  --color-ghostwhite: #f7f7fc;
+  --color-whitesmoke: #ededed;
+
+  /* Gaps */
+  --gap-base: 16px;
+  --gap-xs: 12px;
+  --gap-9xs: 4px;
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-smi: 13px;
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+  --padding-sm: 14px;
+  --padding-3xs: 10px;
+  --padding-7xs: 6px;
+  --padding-5xs: 8px;
 
   /* Border radiuses */
+  --br-5xl: 24px;
+  --br-3xs: 10px;
+  --br-lg: 18px;
   --br-11xl: 30px;
+  --br-71xl: 90px;
+  --br-37xl: 56px;
+  --br-9xs: 4px;
+  --br-xs: 12px;
+  --br-base: 16px;
 }

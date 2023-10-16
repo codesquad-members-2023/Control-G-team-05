@@ -1,0 +1,75 @@
+.registerBtn,
+.registerBtn1,
+.registerBtn2 {
+  border: 0;
+  background-color: transparent;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+}
+.registerBtn1,
+.registerBtn2 {
+  top: 20px;
+}
+.registerBtn2 {
+  top: 40px;
+}
+.registerBtnParent {
+  position: relative;
+  width: 316px;
+  height: 211px;
+}
+.inner {
+  position: absolute;
+  top: 389px;
+  left: 29px;
+  height: 211px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+}
+
+.child,
+.registerBtn3 {
+  position: absolute;
+  top: 682px;
+  left: 29px;
+}
+.child {
+  top: 0;
+  left: 0;
+  background-color: var(--color-gray-200);
+  backdrop-filter: blur(14px);
+  width: 375px;
+  height: 300px;
+}
+.frameChild {
+  position: relative;
+  border-radius: var(--br-71xl);
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.frameDiv,
+.rectangleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frameDiv {
+  position: absolute;
+  top: 142px;
+  left: 137px;
+  height: 165px;
+}
+.div {
+  position: relative;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  width: 375px;
+  height: 812px;
+  overflow-y: auto;
+}
