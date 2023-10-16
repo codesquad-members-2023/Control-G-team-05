@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    group:
+      local: localDB,jasypt, jpa
+      test: testDB, jasypt, jpa
+    active: local
