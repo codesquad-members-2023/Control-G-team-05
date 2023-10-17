@@ -1,0 +1,40 @@
+.groupListContainer {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 375px;
+  height: 108px;
+  text-align: center;
+  background-color: var(--color-ghostwhite);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 24px;
+}
+
+.chatList {
+  position: absolute;
+  top: 222px;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: var(--font-size-base);
+}
+
+.div {
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.div {
+  position: relative;
+  border-radius: var(--br-5xl);
+  width: 375px;
+  height: 812px;
+  text-align: left;
+  font-size: var(--text-x-small-regular-size);
+  color: var(--color-gray-100);
+  font-family: var(--subheading-01);
+}

@@ -6,7 +6,7 @@ import NavigationBar from "../../component/js/NavigationBar";
 function MainPage() {
   return (
     <div className={styles.div}>
-      <TopBar />
+      <TopBar topBarName="Groups" />
       <div className={styles.groupList}>
         {/* 다른 스타일 textField 라 일단은 컴포넌트로 안만듬 */}
         <TextField
