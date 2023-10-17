@@ -1,0 +1,32 @@
+.inner,
+.rectangleParent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.rectangleParent {
+  gap: var(--gap-9xs);
+}
+.inner {
+  position: absolute;
+  top: 152px;
+  left: 127px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+.frameChild {
+  position: relative;
+  border-radius: var(--br-71xl);
+  width: 124px;
+  height: 124px;
+  object-fit: cover;
+}
+.name {
+  position: relative;
+  line-height: 20px;
+  font-weight: 600;
+  opacity: 0;
+}
