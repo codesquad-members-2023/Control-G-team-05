@@ -1,16 +1,19 @@
 import styles from "../css/NavigationBar.module.css";
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
   return (
     <div className={styles.bottomBar}>
       <div className={styles.wrapper}>
         <div className={styles.menu}>
-          <b className={styles.groups}>Groups</b>
-          <img
-            className={styles.supervisorAccountIcon}
-            alt=""
-            src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/b31bbc27-9f9d-49ca-abfa-400489676f8f_1697439097328198486?Expires=-62135596800&Signature=wBkUIg7aL8EbRKz5BLl83eGdJAVieOdN2idF8fmfvOw-g2OvFLIkY9ujxJ3ZsMOYSSSF0~8jve59yxF1nLRT6S2Lmpgn5l7rHb3Ef9lg~v4LTUIOLLQnPTcx2IuzPM55V7WSsw~l5rNL1loyXD3qfuSb27n1e--LFvpqyte5~v4zbH8L6ee~23KEsKdKPVWthraim2ZNLHCoNv6Hi9l1Rxr~n0GpujSPysowfPpWtPpwlBA889hApj8hNAyrZkORRWLFkW~05bYDdRUiBgv0HnXLC6Ru4yV87J7h-9q9IhEL9RXepLuRuur4-4nggHcLT6xF4LRZC3FNcGOMRKXhPw__&Key-Pair-Id=K1P54FZWCHCL6J"
-          />
+          <Link to="/main-page">
+            <b className={styles.groups}>Groups</b>
+            <img
+              className={styles.supervisorAccountIcon}
+              alt=""
+              src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/b31bbc27-9f9d-49ca-abfa-400489676f8f_1697439097328198486?Expires=-62135596800&Signature=wBkUIg7aL8EbRKz5BLl83eGdJAVieOdN2idF8fmfvOw-g2OvFLIkY9ujxJ3ZsMOYSSSF0~8jve59yxF1nLRT6S2Lmpgn5l7rHb3Ef9lg~v4LTUIOLLQnPTcx2IuzPM55V7WSsw~l5rNL1loyXD3qfuSb27n1e--LFvpqyte5~v4zbH8L6ee~23KEsKdKPVWthraim2ZNLHCoNv6Hi9l1Rxr~n0GpujSPysowfPpWtPpwlBA889hApj8hNAyrZkORRWLFkW~05bYDdRUiBgv0HnXLC6Ru4yV87J7h-9q9IhEL9RXepLuRuur4-4nggHcLT6xF4LRZC3FNcGOMRKXhPw__&Key-Pair-Id=K1P54FZWCHCL6J"
+            />
+          </Link>
         </div>
         <div className={styles.menu1}>
           <b className={styles.search}>Search</b>
@@ -21,12 +24,14 @@ function NavigationBar() {
           />
         </div>
         <div className={styles.menu2}>
-          <b className={styles.chats}>Chats</b>
-          <img
-            className={styles.chatIcon}
-            alt=""
-            src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/6fe3ba32-6c23-4a53-ba56-435dcbf75490_1697439097328350807?Expires=-62135596800&Signature=Zv-fRH7r8Pi0a9ML~ZMozsdu0Y~uY3P1Vr-uKrNLuS0oCXAI3WmS7zKgihKpVV7XP~-Udn17dayLki3NFPo~E4Z2vibhkS0Vc6FZ-V3LrPQ-rQXsVAK--pwUEWgVuktEfp02Wgn9PPP6zxUjDjJJNAh7qrfJFfl9GtbUFcm9mzjpexVmy44hUXxS-ZVLklynG8nbikLS5irjUhGuVHX~FIfFK6oVvovxLqgtbf4Bt~ek2NrIz~Yaypz1upj2y1stQxIYQmbuzOM7IO8H3NmS1kUuxKmR4H6uo4~IRZi5Jtf~MnW7NY4rlvVPX5DFFZvAkVrB45R4IeTBfmlVHchXBg__&Key-Pair-Id=K1P54FZWCHCL6J"
-          />
+          <Link to="/chat-list-page">
+            <b className={styles.chats}>Chats</b>
+            <img
+              className={styles.chatIcon}
+              alt=""
+              src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/6fe3ba32-6c23-4a53-ba56-435dcbf75490_1697439097328350807?Expires=-62135596800&Signature=Zv-fRH7r8Pi0a9ML~ZMozsdu0Y~uY3P1Vr-uKrNLuS0oCXAI3WmS7zKgihKpVV7XP~-Udn17dayLki3NFPo~E4Z2vibhkS0Vc6FZ-V3LrPQ-rQXsVAK--pwUEWgVuktEfp02Wgn9PPP6zxUjDjJJNAh7qrfJFfl9GtbUFcm9mzjpexVmy44hUXxS-ZVLklynG8nbikLS5irjUhGuVHX~FIfFK6oVvovxLqgtbf4Bt~ek2NrIz~Yaypz1upj2y1stQxIYQmbuzOM7IO8H3NmS1kUuxKmR4H6uo4~IRZi5Jtf~MnW7NY4rlvVPX5DFFZvAkVrB45R4IeTBfmlVHchXBg__&Key-Pair-Id=K1P54FZWCHCL6J"
+            />
+          </Link>
         </div>
         <div className={styles.menu3}>
           <img

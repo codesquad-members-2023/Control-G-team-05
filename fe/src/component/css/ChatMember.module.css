@@ -1,0 +1,88 @@
+.chatStack {
+  display: flex;
+  width: 327px;
+  height: 56px;
+  margin-bottom: 20px;
+}
+
+.avatarIcon {
+  width: 17.13%;
+  right: 82.87%;
+}
+
+.name,
+.mAgo {
+  position: absolute;
+  top: 0;
+  font-weight: 600;
+}
+.name {
+  left: 0;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  width: 228px;
+}
+.mAgo {
+  left: 216px;
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+  color: var(--color-black);
+  text-align: right;
+}
+.message,
+.topContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.topContainer {
+  width: 259px;
+  height: 24px;
+}
+.message {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  width: 235px;
+}
+.notificationCount {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 23.27%;
+  line-height: 16px;
+}
+.notification {
+  position: absolute;
+  height: 100%;
+  width: 8.49%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 91.51%;
+  border-radius: 40px;
+  background-color: #e94242;
+  text-align: center;
+  font-size: var(--font-size-4xs);
+  color: var(--color-white);
+}
+
+.chatMessage {
+  position: absolute;
+  width: 259px;
+}
+
+.dataContainer {
+  position: absolute;
+  width: 259px;
+  height: 56px;
+  margin-left: 70px;
+}
+
+.chatMessage {
+  top: 26px;
+  left: 0;
+  height: 20px;
+  font-size: var(--text-body-bold-size);
+  color: var(--color-darkgray);
+}
