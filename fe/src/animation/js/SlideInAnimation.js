@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./SlideInAnimation.module.css";
+import styles from "../css/SlideInAnimation.module.css";
 
 function SlideIn() {
   useEffect(() => {

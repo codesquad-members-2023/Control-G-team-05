@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import styles from "./TextFadeInAnimation.module.css";
+import styles from "../css/TextFadeInAnimation.module.css";
 
 function TextFadeInAnimation() {
   useEffect(() => {

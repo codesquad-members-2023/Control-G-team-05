@@ -1,13 +1,14 @@
 import { TextField } from "@mui/material";
-import styles from "./MainPage.module.css";
-import TopBar from "../component/TopBar";
-import NavigationBar from "../component/NavigationBar";
+import styles from "../css/MainPage.module.css";
+import TopBar from "../../component/js/TopBar";
+import NavigationBar from "../../component/js/NavigationBar";
 
 function MainPage() {
   return (
     <div className={styles.div}>
       <TopBar />
       <div className={styles.groupList}>
+        {/* 다른 스타일 textField 라 일단은 컴포넌트로 안만듬 */}
         <TextField
           className={styles.input}
           color="primary"

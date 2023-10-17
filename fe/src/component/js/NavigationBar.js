@@ -1,4 +1,4 @@
-import styles from "./NavigationBar.module.css";
+import styles from "../css/NavigationBar.module.css";
 
 function NavigationBar() {
   return (
