@@ -16,7 +16,7 @@ function SignUpPage() {
           <CustomTextField className={styles.registerBtn} label="Birth" />
         </div>
       </div>
-      <Link to="/main-page">
+      <Link to="/main">
         <Button
           className={styles.signUpButton}
           sx={{ width: 316 }}
