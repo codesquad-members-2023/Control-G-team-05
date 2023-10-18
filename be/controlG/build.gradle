@@ -35,6 +35,18 @@ dependencies {
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.rest-assured:rest-assured'
+
+    // AWS S3
+//    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.526'
+//    testImplementation 'com.amazonaws:aws-java-sdk-s3:1.12.526'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-aws'
+//    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.3.1'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-
+//    implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+//    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.3.1'
+
 }
 
 tasks.named('test') {
