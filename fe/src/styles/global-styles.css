@@ -5,12 +5,12 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {
-  margin-top: 200px;
-  line-height: normal;
-  background-color: whitesmoke;
+  height: 100vh;
+  background-color: var(--color-silver-100);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 :root {
   /* fonts */

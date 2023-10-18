@@ -6,7 +6,7 @@ function NavigationBar() {
     <div className={styles.bottomBar}>
       <div className={styles.wrapper}>
         <div className={styles.menu}>
-          <Link to="/main-page">
+          <Link to="/main">
             <b className={styles.groups}>Groups</b>
             <img
               className={styles.supervisorAccountIcon}
@@ -24,7 +24,7 @@ function NavigationBar() {
           />
         </div>
         <div className={styles.menu2}>
-          <Link to="/chat-list-page">
+          <Link to="/chats">
             <b className={styles.chats}>Chats</b>
             <img
               className={styles.chatIcon}

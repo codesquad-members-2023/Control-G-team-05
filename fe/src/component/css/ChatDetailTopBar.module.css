@@ -1,0 +1,91 @@
+.div,
+.topBar {
+  width: 100%;
+  overflow: hidden;
+}
+.topBar {
+  position: absolute;
+  height: 10.47%;
+  top: 0;
+  right: 0.8%;
+  bottom: 89.53%;
+  left: -0.8%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-whitesmoke);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-smi) var(--padding-base);
+  gap: 0.31rem;
+  text-align: center;
+  font-size: 0.94rem;
+  color: var(--color-gray-100);
+  font-family: var(--font-poppins);
+}
+
+.chatTopBar {
+  width: 21.44rem;
+  flex-shrink: 0;
+  height: 1.81rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.31rem 0;
+  box-sizing: border-box;
+}
+
+.groupName {
+  width: 21.44rem;
+  flex-shrink: 0;
+  position: relative;
+  font-weight: 600;
+}
+
+.chatBottomBar {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--subheading-01-size);
+  font-family: var(--subheading-01);
+  gap: var(--gap-5xs);
+}
+
+.maleDot,
+.femaleDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.maleDot {
+  background-color: blue;
+}
+.femaleDot {
+  background-color: red;
+}
+
+.opponentName {
+  flex: 1;
+  position: relative;
+  line-height: 1.88rem;
+  font-weight: 600;
+}
+
+.iconGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-5xs);
+}
+
+.exitLink {
+  display: flex;
+  align-items: center;
+}

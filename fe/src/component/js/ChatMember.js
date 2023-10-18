@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/ChatMember.module.css"; // 스타일시트 경로를 적절하게 수정해주세요.
+import styles from "../css/ChatMember.module.css";
 
 function ChatMember({ avatarSrc, name, time, message, notificationCount }) {
   return (
