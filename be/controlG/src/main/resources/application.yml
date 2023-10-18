@@ -1,6 +1,10 @@
 spring:
   profiles:
     group:
-      local: localDB,jasypt, jpa
-      test: testDB, jasypt, jpa
+      local: localDB,jasypt, jpa, aws
+      test: testDB, jasypt, jpa, aws
     active: local
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
