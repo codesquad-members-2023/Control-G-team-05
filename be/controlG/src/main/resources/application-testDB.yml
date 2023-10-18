@@ -2,5 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/controlG?allowPublicKeyRetrieval=true&useSSL=false
-    username: ENC(KPY7g++a5qNOp7AsaI66Lg==)
-    password: ENC(DFflUPFHDjf4uvypbg0rxw==)
+    username: root
+    password: 1234
+  sql:
+    init:
+      mode: always

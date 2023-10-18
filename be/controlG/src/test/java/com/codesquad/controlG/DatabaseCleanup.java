@@ -1,28 +1,38 @@
 package com.codesquad.controlG;
 
-import com.google.common.base.CaseFormat;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class DatabaseCleanup implements InitializingBean {
+    
+    private final List<String> tableNames = new ArrayList<>();
 
-    @PersistenceContext
+    @Autowired
+    private DataSource dataSource;
+    @Autowired
     private EntityManager entityManager;
-    private List<String> tableNames;
 
     @Override
     public void afterPropertiesSet() {
-        tableNames = entityManager.getMetamodel().getEntities().stream()
-                .filter(e -> e.getJavaType().getAnnotation(Entity.class) != null)
-                .map(e -> CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, e.getName()))
-                .collect(Collectors.toList());
+        try {
+            DatabaseMetaData metaData = dataSource.getConnection().getMetaData();
+            ResultSet tables = metaData.getTables("controlG", null, null, new String[]{"TABLE"});
+            while (tables.next()) {
+                String tableName = tables.getString("TABLE_NAME");
+                tableNames.add(tableName);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("테이블 이름을 불러올 수 없습니다.");
+        }
     }
 
     @Transactional

@@ -1,0 +1,72 @@
+CREATE TABLE IF NOT EXISTS MEMBER (
+                        id	BIGINT AUTO_INCREMENT,
+                        email	VARCHAR(50) UNIQUE	NOT NULL,
+                        name	VARCHAR(10)	NOT NULL,
+                        nickname	VARCHAR(10)	NOT NULL,
+                        gender	VARCHAR(10)	NOT NULL,
+                        profile_img	VARCHAR(1000) NOT NULL	DEFAULT "https://png.pngtree.com/png-vector/20191115/ourmid/pngtree-beautiful-profile-line-vector-icon-png-image_1990469.jpg",
+                        birth	DATE	NOT NULL,
+                        introduction	VARCHAR(1000),
+                        PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS TOKEN (
+                       id	BIGINT AUTO_INCREMENT,
+                       member_id	BIGINT	NOT NULL,
+                       token	BIGINT	NOT NULL,
+                       PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS `LIKE` (
+                        id	BIGINT AUTO_INCREMENT,
+                        liker_id	BIGINT	NOT NULL,
+                        liked_id	BIGINT	NOT NULL,
+                        PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS BLOCK (
+                       id	BIGINT AUTO_INCREMENT,
+                       blocker_id	BIGINT	NOT NULL,
+                       blocked_id	BIGINT	NOT NULL,
+                       PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS `GROUP` (
+                         id	BIGINT AUTO_INCREMENT,
+                         name	VARCHAR(30) NOT NULL,
+                         img	VARCHAR(1000) NOT NULL	DEFAULT "https://png.pngtree.com/png-vector/20191115/ourmid/pngtree-beautiful-profile-line-vector-icon-png-image_1990469.jpg",
+                         PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS MEMBER_GROUP (
+                              id	BIGINT AUTO_INCREMENT,
+                              member_id	BIGINT	NOT NULL,
+                              group_id	BIGINT	NOT NULL,
+                              PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS CHAT_ROOM (
+                           id	BIGINT AUTO_INCREMENT,
+                           member_id1	BIGINT NOT NULL,
+                           member_id2	BIGINT NOT NULL,
+                           PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS CHAT_MESSAGE (
+                              id	BIGINT AUTO_INCREMENT,
+                              chat_room_id	BIGINT	NOT NULL,
+                              sender_id	BIGINT	NOT NULL,
+                              message	VARCHAR(1000)	NOT NULL,
+                              sent_at	TIMESTAMP	NOT NULL,
+                              is_read	BOOLEAN	NOT NULL	DEFAULT 0,
+                              PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS CHAT_MEMBER (
+                             id	BIGINT AUTO_INCREMENT,
+                             chat_room_id	BIGINT	NOT NULL,
+                             member_id	BIGINT	NOT NULL,
+                             last_message_id	BIGINT	NOT NULL	DEFAULT 0,
+                             is_exit	BOOLEAN	NOT NULL	DEFAULT 0,
+                             PRIMARY KEY(id)
+);
