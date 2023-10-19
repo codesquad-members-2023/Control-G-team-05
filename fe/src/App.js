@@ -5,6 +5,7 @@ import MainPage from "./routes/js/MainPage";
 import ChatListPage from "./routes/js/ChatListPage";
 import ChatDetailPage from "./routes/js/ChatDetailPage";
 import ProfilePage from "./routes/js/ProfilePage";
+import SearchPage from "./routes/js/SearchPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/chats" element={<ChatListPage />}></Route>
         <Route path="/chats/detail" element={<ChatDetailPage />}></Route>
         <Route path="/members" element={<ProfilePage />}></Route>
+        <Route path="/groups" element={<SearchPage />}></Route>
       </Routes>
     </Router>
   );

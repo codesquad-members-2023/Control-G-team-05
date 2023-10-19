@@ -16,12 +16,14 @@ function NavigationBar() {
           </Link>
         </div>
         <div className={styles.menu1}>
-          <b className={styles.search}>Search</b>
-          <img
-            className={styles.supervisorAccountIcon}
-            alt=""
-            src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/75733f17-06f6-4ece-8cce-bebb0dcd28b1_1697439097328276180?Expires=-62135596800&Signature=fYlbL3MRkyaD871lRUkfpLsxpvm7q8GsGtqsfewrMhelpc0S40TkD2EPNahN2wDYJJeKUPpv-OlH0u-BTDFCaWEYuYxUm8yDR1QF0cWxq~jZfKZdSVAUglBZqslwhMJ5e6LLChWuYwWCRT4SgOd529rImncQW9RMUcVNVM~sJZzVfkudgaVokqqZsWP0OrmvYl8ocOoHGzv7f3k9KmC7gayK~0KmGC5bmPBwvs5fUfvoD5ZY~MgSzXDn6HneFWyNYoocEU9nMhn1ytQC6ZtITLhBlZb3C6z8JXml1inuLgknRdo-2VPYSXTqEPaZNpoMZg6Hk51uMBQZFhMs-ohm1w__&Key-Pair-Id=K1P54FZWCHCL6J"
-          />
+          <Link to="/groups">
+            <b className={styles.search}>Search</b>
+            <img
+              className={styles.supervisorAccountIcon}
+              alt=""
+              src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/75733f17-06f6-4ece-8cce-bebb0dcd28b1_1697439097328276180?Expires=-62135596800&Signature=fYlbL3MRkyaD871lRUkfpLsxpvm7q8GsGtqsfewrMhelpc0S40TkD2EPNahN2wDYJJeKUPpv-OlH0u-BTDFCaWEYuYxUm8yDR1QF0cWxq~jZfKZdSVAUglBZqslwhMJ5e6LLChWuYwWCRT4SgOd529rImncQW9RMUcVNVM~sJZzVfkudgaVokqqZsWP0OrmvYl8ocOoHGzv7f3k9KmC7gayK~0KmGC5bmPBwvs5fUfvoD5ZY~MgSzXDn6HneFWyNYoocEU9nMhn1ytQC6ZtITLhBlZb3C6z8JXml1inuLgknRdo-2VPYSXTqEPaZNpoMZg6Hk51uMBQZFhMs-ohm1w__&Key-Pair-Id=K1P54FZWCHCL6J"
+            />
+          </Link>
         </div>
         <div className={styles.menu2}>
           <Link to="/chats">

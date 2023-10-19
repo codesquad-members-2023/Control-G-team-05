@@ -4,6 +4,7 @@ import NavigationBar from "../../component/js/NavigationBar";
 import ProfileDetail from "../../component/js/ProfileDetail";
 import ToggleButton from "../../component/js/ToggleButton";
 import ChatMember from "../../component/js/ChatMember";
+import DividerLine from "../../component/js/DividerLine";
 
 function ProfilePage() {
   return (

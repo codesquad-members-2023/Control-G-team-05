@@ -2,13 +2,14 @@
 import { TextField } from "@mui/material";
 import SlideInAnimation from "../../animation/js/SlideInAnimation";
 
-function CustomTextField(props) {
+// 회원가입 할때 사용하는 text input field 이다.
+
+function CustomTextField({ placeHolder }) {
   SlideInAnimation();
   return (
     <TextField
-      className={props.className}
       color="primary"
-      label={props.label}
+      label={placeHolder}
       sx={{ width: 318 }}
       variant="outlined"
     />

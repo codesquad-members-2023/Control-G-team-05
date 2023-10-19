@@ -1,59 +1,3 @@
-.input {
-  border: 0;
-  background-color: transparent;
-}
-.groupImg {
-  position: absolute;
-  height: 85.71%;
-  top: 8.93%;
-  bottom: 5.36%;
-  left: calc(50% - 24px);
-  border-radius: var(--br-3xs);
-  max-height: 100%;
-  width: 48px;
-  object-fit: cover;
-}
-.avatar,
-.groupName {
-  position: relative;
-  width: 56px;
-  height: 56px;
-}
-.groupName {
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 24px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  width: 259px;
-}
-.vectorIcon {
-  position: absolute;
-  height: 35.71%;
-  width: 6.56%;
-  top: 32.14%;
-  right: 0;
-  bottom: 32.14%;
-  left: 93.44%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.groupDetailContainer {
-  position: relative;
-  width: 259px;
-  height: 56px;
-}
-.groupContainer {
-  align-self: stretch;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: var(--gap-xs);
-}
 .dividerChild {
   align-self: stretch;
   position: relative;
@@ -72,11 +16,6 @@
   height: 0;
   align-items: center;
   justify-content: center;
-}
-.contactStack {
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: var(--gap-xs);
 }
 
 .groupList {
