@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.member.entity;
 
+import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,5 +46,14 @@ public class Member {
         this.profileImg = profileImg;
         this.birth = birth;
         this.introduction = introduction;
+    }
+
+    public void changeProfileImg(String img) {
+        this.profileImg = img;
+    }
+
+    public void update(MemberUpdateRequest request) {
+        this.nickname = request.getNickname();
+        this.introduction = request.getIntroduction();
     }
 }
