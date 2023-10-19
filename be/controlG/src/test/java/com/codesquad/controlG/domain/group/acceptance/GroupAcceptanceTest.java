@@ -166,7 +166,7 @@ public class GroupAcceptanceTest {
                 .extract();
     }
 
-    @DisplayName("내 그룹 추가에 성공한다.")
+    @DisplayName("내 그룹에 있는 그룹을 추가하면 에러를 발생한다.")
     @Test
     void addMyGroup_fail_ExistMyGroup() throws IOException {
         // given
@@ -181,5 +181,31 @@ public class GroupAcceptanceTest {
         assertThat(response.statusCode()).isEqualTo(GroupException.MY_GROUP_ALREADY_EXISTS.httpStatus().value());
         assertThat(response.jsonPath().getString("message")).isEqualTo(
                 GroupException.MY_GROUP_ALREADY_EXISTS.getErrorMessage());
+    }
+
+    @DisplayName("내 그룹 삭제에 성공한다.")
+    @Test
+    void deleteMyGroup_success() {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group group = groupRepository.save(FixtureFactory.createGroup());
+        memberGroupRepository.save(MemberGroup.of(member, group));
+
+        // when
+        var response = deleteMyGroup(group.getId(), member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+    }
+
+    private ExtractableResponse<Response> deleteMyGroup(Long groupId, Long memberId) {
+        return RestAssured
+                .given().log().all()
+                .pathParam("groupId", groupId)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .when()
+                .delete("/api/groups/{groupId}")
+                .then().log().all()
+                .extract();
     }
 }
