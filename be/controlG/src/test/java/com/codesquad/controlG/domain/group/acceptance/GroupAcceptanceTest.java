@@ -5,6 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.codesquad.controlG.annotation.AcceptanceTest;
 import com.codesquad.controlG.domain.group.entity.Group;
 import com.codesquad.controlG.domain.group.repository.GroupRepository;
+import com.codesquad.controlG.domain.member.entity.Member;
+import com.codesquad.controlG.domain.member.repository.MemberRepository;
+import com.codesquad.controlG.domain.member_group.entity.MemberGroup;
+import com.codesquad.controlG.domain.member_group.repository.MemberGroupRepository;
 import com.codesquad.controlG.exception.errorcode.GroupException;
 import com.codesquad.controlG.fixture.FixtureFactory;
 import io.restassured.RestAssured;
@@ -15,6 +19,7 @@ import java.io.IOException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -23,6 +28,12 @@ public class GroupAcceptanceTest {
 
     @Autowired
     private GroupRepository groupRepository;
+
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private MemberGroupRepository memberGroupRepository;
 
     @DisplayName("그룹을 등록한다.")
     @Test
@@ -96,14 +107,16 @@ public class GroupAcceptanceTest {
     void retrieveGroupDetail_success() {
         // given
         Group group = FixtureFactory.createGroup();
-        groupRepository.save(group);
+        Group save = groupRepository.save(group);
+        Group find = groupRepository.findById(save.getId()).orElseThrow();
 
         // when
-        var response = retrieveGroupDetail(group.getId());
+        var response = retrieveGroupDetail(find.getId());
 
         // then
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
-        assertThat(response.jsonPath().getString("name")).isEqualTo(group.getName());
+        assertThat(response.jsonPath().getString("name")).isEqualTo(find.getName());
+        assertThat(response.jsonPath().getString("img")).isEqualTo(find.getImg());
     }
 
     private ExtractableResponse<Response> retrieveGroupDetail(Long groupId) {
@@ -125,5 +138,48 @@ public class GroupAcceptanceTest {
         // then
         assertThat(response.statusCode()).isEqualTo(GroupException.NOT_FOUND.httpStatus().value());
         assertThat(response.jsonPath().getString("message")).isEqualTo(GroupException.NOT_FOUND.getErrorMessage());
+    }
+
+    @DisplayName("내 그룹 추가에 성공한다.")
+    @Test
+    void addMyGroup_success() throws IOException {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group save = groupRepository.save(FixtureFactory.createGroup());
+
+        // when
+        var response = addMyGroup(save.getId(), member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
+    }
+
+    private ExtractableResponse<Response> addMyGroup(Long groupId, Long memberId) throws IOException {
+        return RestAssured
+                .given().log().all()
+                .multiPart("image", File.createTempFile("add", "jpeg"), MediaType.IMAGE_JPEG_VALUE)
+                .pathParam("groupId", groupId)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .when()
+                .post("/api/groups/{groupId}")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("내 그룹 추가에 성공한다.")
+    @Test
+    void addMyGroup_fail_ExistMyGroup() throws IOException {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group group = groupRepository.save(FixtureFactory.createGroup());
+        memberGroupRepository.save(MemberGroup.of(member, group));
+
+        // when
+        var response = addMyGroup(group.getId(), member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(GroupException.MY_GROUP_ALREADY_EXISTS.httpStatus().value());
+        assertThat(response.jsonPath().getString("message")).isEqualTo(
+                GroupException.MY_GROUP_ALREADY_EXISTS.getErrorMessage());
     }
 }
