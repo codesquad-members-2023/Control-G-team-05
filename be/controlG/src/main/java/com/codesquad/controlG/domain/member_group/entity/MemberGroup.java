@@ -37,4 +37,11 @@ public class MemberGroup {
         this.member = member;
         this.group = group;
     }
+
+    public static MemberGroup of(Member member, Group group) {
+        return MemberGroup.builder()
+                .member(member)
+                .group(group)
+                .build();
+    }
 }

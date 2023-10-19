@@ -5,9 +5,13 @@ import com.codesquad.controlG.domain.group.dto.GroupDetailResponse;
 import com.codesquad.controlG.domain.group.entity.Group;
 import com.codesquad.controlG.domain.group.repository.GroupRepository;
 import com.codesquad.controlG.domain.image.ImageService;
+import com.codesquad.controlG.domain.member.entity.Member;
+import com.codesquad.controlG.domain.member.repository.MemberRepository;
+import com.codesquad.controlG.domain.member_group.entity.MemberGroup;
 import com.codesquad.controlG.domain.member_group.repository.MemberGroupRepository;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.GroupException;
+import com.codesquad.controlG.exception.errorcode.MemberException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +24,7 @@ public class GroupService {
 
     private final GroupRepository groupRepository;
     private final MemberGroupRepository memberGroupRepository;
+    private final MemberRepository memberRepository;
     private final ImageService imageService;
 
     @Transactional
@@ -45,5 +50,29 @@ public class GroupService {
                 .orElseThrow(() -> new CustomRuntimeException(GroupException.NOT_FOUND));
         Long headCount = memberGroupRepository.countByGroupId(groupId);
         return GroupDetailResponse.of(group, headCount);
+    }
+
+    @Transactional
+    public void addMyGroup(Long groupId, Long memberId, MultipartFile image) {
+        authenticateGroupMembership(image);
+        existMemberGroup(memberId, groupId);
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new CustomRuntimeException(MemberException.MEMBER_NOT_FOUND));
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new CustomRuntimeException(GroupException.NOT_FOUND));
+        MemberGroup memberGroup = MemberGroup.of(member, group);
+        memberGroupRepository.save(memberGroup);
+    }
+
+    private void existMemberGroup(Long memberId, Long groupId) {
+        if (memberGroupRepository.existsByMemberIdAndGroupId(memberId, groupId)) {
+            throw new CustomRuntimeException(GroupException.MY_GROUP_ALREADY_EXISTS);
+        }
+    }
+
+    private void authenticateGroupMembership(MultipartFile image) {
+        if (image == null) {
+            throw new CustomRuntimeException(GroupException.AUTHENTICATION_FAIL);
+        }
     }
 }
