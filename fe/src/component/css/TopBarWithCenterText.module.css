@@ -1,0 +1,26 @@
+.topBar {
+  position: absolute;
+  top: calc(50% - 390.5px);
+  padding: var(--padding-smi) var(--padding-5xl);
+  box-sizing: border-box;
+  font-size: var(--subheading-01-size);
+  background-color: var(--color-white);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.topBarwrapper {
+  width: 351px;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topBarName {
+  font-weight: 600;
+  margin-right: 30px;
+}

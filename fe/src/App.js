@@ -6,6 +6,7 @@ import ChatListPage from "./routes/js/ChatListPage";
 import ChatDetailPage from "./routes/js/ChatDetailPage";
 import ProfilePage from "./routes/js/ProfilePage";
 import SearchPage from "./routes/js/SearchPage";
+import AddGroupPage from "./routes/js/AddGroupPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/chats/detail" element={<ChatDetailPage />}></Route>
         <Route path="/members" element={<ProfilePage />}></Route>
         <Route path="/groups" element={<SearchPage />}></Route>
+        <Route path="/groups/create" element={<AddGroupPage />}></Route>
       </Routes>
     </Router>
   );

@@ -1,8 +1,6 @@
 .registerBtnParent {
   display: flex;
   flex-direction: column;
-  width: 316px;
-  height: 211px;
   justify-content: space-evenly;
 }
 .inner {

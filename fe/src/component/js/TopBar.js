@@ -1,6 +1,7 @@
 import styles from "../css/TopBar.module.css";
+import { Link } from "react-router-dom";
 
-function TopBar({ topBarName, icon }) {
+function TopBar({ topBarName, icon, linkPage }) {
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarwrapper}>
@@ -11,7 +12,9 @@ function TopBar({ topBarName, icon }) {
         />
         <div className={styles.topBarName}>{topBarName}</div>
         {icon && (
-          <img alt="" src={icon} className={styles.notificationsNoneIcon} />
+          <Link to={linkPage}>
+            <img alt="" src={icon} className={styles.notificationsNoneIcon} />
+          </Link>
         )}
       </div>
     </div>

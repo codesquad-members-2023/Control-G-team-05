@@ -11,6 +11,7 @@ function SearchPage() {
       <TopBar
         topBarName="Search"
         icon="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/3173bc89-f47f-4157-a4f9-de5d512156af_1697439276210455055?Expires=-62135596800&Signature=DhFgbo~gFIC93sasVDH8FdTwIwVMw3xKz8vjdQ9lz4f1FmIV4gsblUugO6be3yn7-pTOesLIlS36VXoEyTY2G270WlJfq-j7~rKYcabQUx8prWN9PepZbAiZT~~mkgq3TxaoiW8SOq9tg1tc4R64TTRFlYzg3YZFdJ8kK25eIQb5rTrh0Tj9OQBckt-6ehW0JLGqabWqv2WL9fGcoI7KRLFpXTEgUUcJpJuZXGLPRvicToPyoXb66BUfcrE-iYmpmAQH7sDZX42iZvVk3s14ffKMaCPy~bO6vPy1aGe1LZSEfl6a96tbjXYuRBVTVhfqBTMdgJK46nc5FJG9qT6VwQ__&Key-Pair-Id=K1P54FZWCHCL6J"
+        linkPage="/groups/create"
       />
       <div className={styles.searchContainer}>
         <SearchInput />
