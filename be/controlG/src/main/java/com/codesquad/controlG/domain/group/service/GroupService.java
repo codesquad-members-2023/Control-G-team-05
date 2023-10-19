@@ -75,4 +75,9 @@ public class GroupService {
             throw new CustomRuntimeException(GroupException.AUTHENTICATION_FAIL);
         }
     }
+
+    @Transactional
+    public void deleteMyGroup(Long groupId, Long memberId) {
+        memberGroupRepository.deleteByMemberIdAndGroupId(memberId, groupId);
+    }
 }
