@@ -90,4 +90,40 @@ public class GroupAcceptanceTest {
                 .then().log().all()
                 .extract();
     }
+
+    @DisplayName("그룹 상세 조회에 성공한다.")
+    @Test
+    void retrieveGroupDetail_success() {
+        // given
+        Group group = FixtureFactory.createGroup();
+        groupRepository.save(group);
+
+        // when
+        var response = retrieveGroupDetail(group.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getString("name")).isEqualTo(group.getName());
+    }
+
+    private ExtractableResponse<Response> retrieveGroupDetail(Long groupId) {
+        return RestAssured
+                .given().log().all()
+                .pathParam("groupId", groupId)
+                .when()
+                .get("/api/groups/{groupId}")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("그룹 상세 조회에 없는 그룹 아이디를 주면 예외가 발생한다.")
+    @Test
+    void retrieveGroupDetail_fail_NotFound() {
+        // when
+        var response = retrieveGroupDetail(0L);
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(GroupException.NOT_FOUND.httpStatus().value());
+        assertThat(response.jsonPath().getString("message")).isEqualTo(GroupException.NOT_FOUND.getErrorMessage());
+    }
 }
