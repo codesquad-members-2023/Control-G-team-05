@@ -1,0 +1,40 @@
+.like {
+  font-weight: 600;
+}
+
+.matched {
+  font-weight: 600;
+}
+
+.buttonContainer {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  position: absolute;
+  top: 20.38rem;
+  left: 1.5rem;
+  width: 20.44rem;
+  height: 3.13rem;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #e0dbdb;
+  align-items: center;
+}
+
+.likeContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.matchedContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e0dbdb;
+  border-radius: 10px;
+}

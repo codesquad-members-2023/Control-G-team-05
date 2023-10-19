@@ -34,12 +34,14 @@ function NavigationBar() {
           </Link>
         </div>
         <div className={styles.menu3}>
-          <img
-            className={styles.supervisorAccountIcon}
-            alt=""
-            src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/ea6f5990-c61b-463e-a7a6-972cd3cfd34c_1697439097328419467?Expires=-62135596800&Signature=A16x1~EU3PuOXKj7bHbJy3ZoqP~lV6lpbHYDrsmQw5L1MpEz~ekxpDd3k1PCeVBGsT9RWuztUryo2Q6otvV2EigPZ9e3tY1UGlMLP~lYvoD~2~x8CDXo5KeUwkyf5zB7ioChSKljpbHBGa~GEamjUtjXLp8nSU0UzSawWyZ-yA9NeDmgmFerks5POh7cN2G~y01~stbciNDauvh0dAnBHDyw2hQxZVs3qwdtY8Zs8LLIp5xvvTsNPnRIfoM~yxPQ87Eta6F4KjBFxnkdH42EVQEvVC1Lb~y2fVWn~VO95bDdg2wnvblB3yDt1dqi345Gz-SYeKzFml08KLr4QfAvQw__&Key-Pair-Id=K1P54FZWCHCL6J"
-          />
-          <b className={styles.user}>User</b>
+          <Link to="/members">
+            <img
+              className={styles.supervisorAccountIcon}
+              alt=""
+              src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/ea6f5990-c61b-463e-a7a6-972cd3cfd34c_1697439097328419467?Expires=-62135596800&Signature=A16x1~EU3PuOXKj7bHbJy3ZoqP~lV6lpbHYDrsmQw5L1MpEz~ekxpDd3k1PCeVBGsT9RWuztUryo2Q6otvV2EigPZ9e3tY1UGlMLP~lYvoD~2~x8CDXo5KeUwkyf5zB7ioChSKljpbHBGa~GEamjUtjXLp8nSU0UzSawWyZ-yA9NeDmgmFerks5POh7cN2G~y01~stbciNDauvh0dAnBHDyw2hQxZVs3qwdtY8Zs8LLIp5xvvTsNPnRIfoM~yxPQ87Eta6F4KjBFxnkdH42EVQEvVC1Lb~y2fVWn~VO95bDdg2wnvblB3yDt1dqi345Gz-SYeKzFml08KLr4QfAvQw__&Key-Pair-Id=K1P54FZWCHCL6J"
+            />
+            <b className={styles.user}>User</b>
+          </Link>
         </div>
       </div>
     </div>

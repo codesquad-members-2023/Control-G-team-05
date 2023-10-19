@@ -1,0 +1,21 @@
+.contentcontentBlocksmall {
+  position: absolute;
+  top: 24.5rem;
+  left: 1.5rem;
+  width: 20.44rem;
+  height: 4.81rem;
+}
+
+.div {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--br-5xl);
+  height: 50.75rem;
+  width: 375px;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-100);
+  font-family: var(--subheading-01);
+}

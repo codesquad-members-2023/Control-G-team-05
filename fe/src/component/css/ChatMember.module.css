@@ -9,7 +9,10 @@
   width: 17.13%;
   right: 82.87%;
 }
-
+.topContainer {
+  display: flex;
+  justify-content: flex-end;
+}
 .name,
 .mAgo {
   position: absolute;
@@ -30,22 +33,14 @@
   color: var(--color-black);
   text-align: right;
 }
-.message,
-.topContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.topContainer {
-  width: 259px;
-  height: 24px;
-}
+
 .message {
   line-height: 20px;
   display: flex;
   align-items: center;
   width: 235px;
 }
+
 .notificationCount {
   position: absolute;
   top: calc(50% - 7px);

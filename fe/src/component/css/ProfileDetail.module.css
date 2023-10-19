@@ -1,0 +1,57 @@
+.profileTopContainer {
+  position: absolute;
+  top: 6.63rem;
+  left: 5.69rem;
+  width: 12.13rem;
+  height: 12.25rem;
+  text-align: center;
+  color: var(--color-darkgray-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: var(--font-size-3xl);
+  color: var(--color-gray-100);
+}
+
+.likeAndAgeContainer {
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.likeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.liked {
+  top: 52.75%;
+  left: 60.4%;
+  font-weight: 600;
+  color: var(--color-silver-100);
+}
+
+.likeIcon {
+  width: 13px;
+}
+
+.profileDetailContainer {
+  height: 46.43%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  height: 51.02%;
+  width: 51.55%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  border-radius: var(--br-3xs);
+}
