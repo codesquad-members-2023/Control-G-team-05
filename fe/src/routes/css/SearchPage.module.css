@@ -1,0 +1,24 @@
+.searchContainer {
+  position: absolute;
+  top: 5.63rem;
+  width: 23.44rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--padding-base) var(--padding-5xl);
+  box-sizing: border-box;
+  gap: var(--gap-base);
+}
+
+.div {
+  position: relative;
+  border-radius: var(--br-5xl);
+  background-color: var(--color-white);
+  width: 375px;
+  height: 50.75rem;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--body-02-size);
+  color: var(--color-gray-100);
+  font-family: var(--subheading-01);
+}
