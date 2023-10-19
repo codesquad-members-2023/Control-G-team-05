@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/GroupIconWithTextAndButton.module.css";
+import { Link } from "react-router-dom";
 
 function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
   return (
@@ -9,7 +10,9 @@ function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
       </div>
       <div className={styles.groupDetailContainer}>
         <div className={styles.groupName}>{groupName}</div>
-        <img className={styles.vectorIcon} alt="" src={vectorIconSrc} />
+        <Link to="/chats/find">
+          <img className={styles.vectorIcon} alt="" src={vectorIconSrc} />
+        </Link>
       </div>
     </div>
   );

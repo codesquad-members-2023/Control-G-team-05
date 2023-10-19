@@ -8,6 +8,7 @@ import ProfilePage from "./routes/js/ProfilePage";
 import SearchPage from "./routes/js/SearchPage";
 import AddGroupPage from "./routes/js/AddGroupPage";
 import GroupDetailPage from "./routes/js/GroupDetailPage";
+import ChatLoadingPage from "./routes/js/ChatLoadingPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/main" element={<MainPage />}></Route>
         <Route path="/chats" element={<ChatListPage />}></Route>
         <Route path="/chats/detail" element={<ChatDetailPage />}></Route>
+        <Route path="/chats/find" element={<ChatLoadingPage />}></Route>
         <Route path="/members" element={<ProfilePage />}></Route>
         <Route path="/groups" element={<SearchPage />}></Route>
         <Route path="/groups/create" element={<AddGroupPage />}></Route>
