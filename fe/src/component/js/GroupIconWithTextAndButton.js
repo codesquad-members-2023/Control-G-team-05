@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/GroupIconWithTextAndButton.module.css"; // styles를 여기서 import하세요. 경로는 실제 파일 경로에 따라 변경될 수 있습니다.
+import styles from "../css/GroupIconWithTextAndButton.module.css";
 
 function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
   return (

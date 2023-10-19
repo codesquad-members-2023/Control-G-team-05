@@ -12,6 +12,10 @@
   justify-content: flex-start;
 }
 
+.backButton {
+  margin-top: 5px;
+}
+
 .topBarwrapper {
   width: 351px;
   align-self: stretch;
