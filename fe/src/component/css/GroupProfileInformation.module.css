@@ -1,0 +1,56 @@
+.nameAndMemeberCountContainerParent {
+  position: absolute;
+  top: 15.63rem;
+  left: 4.25rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.groupIcon {
+  height: 58.82%;
+  width: 41.67%;
+  border-radius: var(--br-3xs);
+}
+
+.nameAndMemeberCountContainer {
+  height: 31.76%;
+  width: 85.83%;
+  margin-bottom: 10px;
+}
+
+.groupName {
+  font-weight: 600;
+}
+
+.memberCountContainer {
+  font-size: var(--font-size-base);
+  color: var(--color-darkgray-100);
+}
+
+.text {
+  font-weight: 600;
+}
+
+.memberCount {
+  color: var(--color-mediumblue-100);
+}
+
+.joinButtonContainer {
+  width: 50px;
+  height: 30px;
+  background-color: blue;
+  font-size: var(--font-size-4xs);
+  color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.join {
+  color: white;
+  font-weight: 600;
+}
