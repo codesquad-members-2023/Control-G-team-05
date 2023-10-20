@@ -1,6 +1,7 @@
 package com.codesquad.controlG.domain.member.service;
 
 import com.codesquad.controlG.domain.image.ImageService;
+import com.codesquad.controlG.domain.like.entity.Like;
 import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.member.dto.MemberResponse;
 import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
@@ -45,5 +46,15 @@ public class MemberService {
 
     private boolean isValidImage(MultipartFile image) {
         return image != null && !image.isEmpty();
+    }
+
+    @Transactional
+    public void like(Long memberId, Long likedId) {
+        boolean isLikeExist = likeRepository.existsByLikerIdAndLikedId(memberId, likedId);
+        if (isLikeExist) {
+            likeRepository.deleteByLikerIdAndLikedId(memberId, likedId);
+            return;
+        }
+        likeRepository.saveByLikerIdAndLikedId(memberId, likedId);
     }
 }

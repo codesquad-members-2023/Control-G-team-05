@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -32,6 +34,13 @@ public class MemberController {
                                               @Valid @RequestPart MemberUpdateRequest request,
                                               @Auth Long memberId) {
         memberService.update(profileImg, request, memberId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{likeId}/likes")
+    public ResponseEntity<Void> like(@PathVariable Long likeId,
+                                     @Auth Long memberId) {
+        memberService.like(memberId, likeId);
         return ResponseEntity.ok().build();
     }
 }
