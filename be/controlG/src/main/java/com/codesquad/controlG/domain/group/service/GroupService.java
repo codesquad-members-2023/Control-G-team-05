@@ -12,6 +12,7 @@ import com.codesquad.controlG.domain.member_group.repository.MemberGroupReposito
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.GroupException;
 import com.codesquad.controlG.exception.errorcode.MemberException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,5 +80,9 @@ public class GroupService {
     @Transactional
     public void deleteMyGroup(Long groupId, Long memberId) {
         memberGroupRepository.deleteByMemberIdAndGroupId(memberId, groupId);
+    }
+
+    public List<Group> retrieveGroupList(String word, Long memberId) {
+        return groupRepository.findList(word, memberId);
     }
 }
