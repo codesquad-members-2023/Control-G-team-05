@@ -6,9 +6,9 @@ import com.codesquad.controlG.domain.member.entity.Member;
 import java.time.LocalDate;
 
 public class FixtureFactory {
-    public static Group createGroup() {
+    public static Group createGroup(String name) {
         return Group.builder()
-                .name("codeSquad")
+                .name(name)
                 .build();
     }
 

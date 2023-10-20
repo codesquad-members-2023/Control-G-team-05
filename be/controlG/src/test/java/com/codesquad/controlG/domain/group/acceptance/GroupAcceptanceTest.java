@@ -80,7 +80,7 @@ public class GroupAcceptanceTest {
     @Test
     void createGroup_fail_SameName() {
         // given
-        Group group = FixtureFactory.createGroup();
+        Group group = FixtureFactory.createGroup("codeSquad");
         groupRepository.save(group);
 
         // when
@@ -106,7 +106,7 @@ public class GroupAcceptanceTest {
     @Test
     void retrieveGroupDetail_success() {
         // given
-        Group group = FixtureFactory.createGroup();
+        Group group = FixtureFactory.createGroup("codeSquad");
         Group save = groupRepository.save(group);
         Group find = groupRepository.findById(save.getId()).orElseThrow();
 
@@ -145,7 +145,7 @@ public class GroupAcceptanceTest {
     void addMyGroup_success() throws IOException {
         // given
         Member member = memberRepository.save(FixtureFactory.createMemberWiz());
-        Group save = groupRepository.save(FixtureFactory.createGroup());
+        Group save = groupRepository.save(FixtureFactory.createGroup("codeSquad"));
 
         // when
         var response = addMyGroup(save.getId(), member.getId());
@@ -171,7 +171,7 @@ public class GroupAcceptanceTest {
     void addMyGroup_fail_ExistMyGroup() throws IOException {
         // given
         Member member = memberRepository.save(FixtureFactory.createMemberWiz());
-        Group group = groupRepository.save(FixtureFactory.createGroup());
+        Group group = groupRepository.save(FixtureFactory.createGroup("codeSquad"));
         memberGroupRepository.save(MemberGroup.of(member, group));
 
         // when
@@ -188,7 +188,7 @@ public class GroupAcceptanceTest {
     void deleteMyGroup_success() {
         // given
         Member member = memberRepository.save(FixtureFactory.createMemberWiz());
-        Group group = groupRepository.save(FixtureFactory.createGroup());
+        Group group = groupRepository.save(FixtureFactory.createGroup("codeSquad"));
         memberGroupRepository.save(MemberGroup.of(member, group));
 
         // when
@@ -205,6 +205,118 @@ public class GroupAcceptanceTest {
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
                 .when()
                 .delete("/api/groups/{groupId}")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("전체 그룹 목록 조회에 성공한다.")
+    @Test
+    void retrieveGroupList_All() {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group group1 = groupRepository.save(FixtureFactory.createGroup("code"));
+        Group group2 = groupRepository.save(FixtureFactory.createGroup("squad"));
+
+        // when
+        var response = retrieveGroupList_All(member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getList("", Group.class).get(0).getId()).isEqualTo(group1.getId());
+        assertThat(response.jsonPath().getList("", Group.class).get(1).getId()).isEqualTo(group2.getId());
+    }
+
+    private ExtractableResponse<Response> retrieveGroupList_All(Long memberId) {
+        return RestAssured
+                .given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .when()
+                .get("/api/groups")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("전체 그룹 검색 조회에 성공한다.")
+    @Test
+    void retrieveGroupList_Word() {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group group1 = groupRepository.save(FixtureFactory.createGroup("code"));
+        groupRepository.save(FixtureFactory.createGroup("squad"));
+
+        // when
+        var response = retrieveGroupList_Word(member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getList("", Group.class).get(0).getId()).isEqualTo(group1.getId());
+    }
+
+    private ExtractableResponse<Response> retrieveGroupList_Word(Long memberId) {
+        return RestAssured
+                .given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .queryParam("word", "c")
+                .when()
+                .get("/api/groups")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("내 그룹 목록 조회에 성공한다.")
+    @Test
+    void retrieveMyGroupList() {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        groupRepository.save(FixtureFactory.createGroup("code"));
+        Group group2 = groupRepository.save(FixtureFactory.createGroup("squad"));
+        memberGroupRepository.save(MemberGroup.of(member, group2));
+
+        // when
+        var response = retrieveMyGroupList(member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getList("", Group.class).get(0).getId()).isEqualTo(group2.getId());
+    }
+
+    private ExtractableResponse<Response> retrieveMyGroupList(Long memberId) {
+        return RestAssured
+                .given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .queryParam("memberId", memberId)
+                .when()
+                .get("/api/groups")
+                .then().log().all()
+                .extract();
+    }
+
+    @DisplayName("내 그룹 목록 검색 조회에 성공한다.")
+    @Test
+    void retrieveMyGroupList_Word() {
+        // given
+        Member member = memberRepository.save(FixtureFactory.createMemberWiz());
+        Group group1 = groupRepository.save(FixtureFactory.createGroup("code"));
+        Group group2 = groupRepository.save(FixtureFactory.createGroup("squad"));
+        memberGroupRepository.save(MemberGroup.of(member, group1));
+        memberGroupRepository.save(MemberGroup.of(member, group2));
+
+        // when
+        var response = retrieveMyGroupList_Word(member.getId());
+
+        // then
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.jsonPath().getList("", Group.class).get(0).getId()).isEqualTo(group2.getId());
+    }
+
+    private ExtractableResponse<Response> retrieveMyGroupList_Word(Long memberId) {
+        return RestAssured
+                .given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + memberId)
+                .queryParam("memberId", memberId)
+                .queryParam("word", "s")
+                .when()
+                .get("/api/groups")
                 .then().log().all()
                 .extract();
     }
