@@ -6,16 +6,13 @@ import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
 import com.codesquad.controlG.domain.member.service.MemberService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/members")
@@ -29,11 +26,10 @@ public class MemberController {
         return ResponseEntity.ok(memberService.getProfile(memberId));
     }
 
-    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<Void> updateProfile(@RequestPart(required = false) MultipartFile profileImg,
-                                              @Valid @RequestPart MemberUpdateRequest request,
+    @PutMapping
+    public ResponseEntity<Void> updateProfile(@Valid MemberUpdateRequest request,
                                               @Auth Long memberId) {
-        memberService.update(profileImg, request, memberId);
+        memberService.update(request, memberId);
         return ResponseEntity.ok().build();
     }
 
@@ -41,6 +37,13 @@ public class MemberController {
     public ResponseEntity<Void> like(@PathVariable Long likeId,
                                      @Auth Long memberId) {
         memberService.like(memberId, likeId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{blockId}/blocks")
+    public ResponseEntity<Void> block(@PathVariable Long blockId,
+                                      @Auth Long memberId) {
+        memberService.block(memberId, blockId);
         return ResponseEntity.ok().build();
     }
 }

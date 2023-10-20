@@ -1,7 +1,7 @@
 package com.codesquad.controlG.domain.member.service;
 
+import com.codesquad.controlG.domain.block.repository.BlockRepository;
 import com.codesquad.controlG.domain.image.ImageService;
-import com.codesquad.controlG.domain.like.entity.Like;
 import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.member.dto.MemberResponse;
 import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
@@ -22,6 +22,7 @@ public class MemberService {
     private final ImageService imageService;
     private final MemberRepository memberRepository;
     private final LikeRepository likeRepository;
+    private final BlockRepository blockRepository;
 
     public MemberResponse getProfile(Long memberId) {
         Member member = findMember(memberId);
@@ -30,10 +31,10 @@ public class MemberService {
     }
 
     @Transactional
-    public void update(MultipartFile profileImg, MemberUpdateRequest request, Long memberId) {
+    public void update(MemberUpdateRequest request, Long memberId) {
         Member member = findMember(memberId);
-        if (isValidImage(profileImg)) {
-            String profileImgUrl = imageService.uploadImage(profileImg);
+        if (isValidImage(request.getProfileImg())) {
+            String profileImgUrl = imageService.uploadImage(request.getProfileImg());
             member.changeProfileImg(profileImgUrl);
         }
         member.update(request);
@@ -56,5 +57,12 @@ public class MemberService {
             return;
         }
         likeRepository.saveByLikerIdAndLikedId(memberId, likedId);
+    }
+
+    @Transactional
+    public void block(Long memberId, Long blockedId) {
+        blockRepository.saveByBlockerIdAndBlockedId(memberId, blockedId);
+        likeRepository.deleteByLikerIdAndLikedId(memberId, blockedId);
+        likeRepository.deleteByLikerIdAndLikedId(blockedId, memberId);
     }
 }
