@@ -1,102 +1,37 @@
-.bottomBar,
-.menu3,
-.wrapper {
-  position: absolute;
-  top: 0;
-  left: 275px;
-  width: 58px;
-  height: 44px;
-}
-.bottomBar,
-.wrapper {
-  top: 12px;
-  left: 16px;
-  width: 343px;
-}
 .bottomBar {
+  position: absolute;
+  width: 343px;
   height: 10.22%;
   width: 100%;
   top: 89.78%;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: var(--color-white);
   box-shadow: 0-1px 24px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   font-size: var(--font-size-xs);
   color: var(--color-darkgray);
   font-family: var(--text-body-bold);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.menu {
-  position: absolute;
-  top: 0;
-  left: 11px;
-  width: 58px;
-  height: 44px;
-  color: var(--color-mediumblue);
-}
-
-.search {
-  top: 68.18%;
-  left: 18.97%;
-}
-.chats,
-.menu1,
-.search {
-  position: absolute;
-}
-.menu1 {
-  top: 0;
-  left: 187px;
-  width: 58px;
-  height: 44px;
-}
-.chats {
-  top: 30px;
-  left: 13.5px;
-}
-.chatIcon {
-  height: 54.55%;
-  width: 41.38%;
-  top: 0;
-  right: 28.45%;
-  bottom: 45.45%;
-  left: 30.17%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.chatIcon,
-.menu2,
-.user {
-  position: absolute;
-}
-.menu2 {
-  top: 0;
-  left: 99px;
-  width: 58px;
-  height: 44px;
-}
-.user {
-  top: 68.18%;
-  left: 29.31%;
-}
-
-.groups {
-  position: absolute;
-  top: 68.18%;
-  left: 17.24%;
-}
 .supervisorAccountIcon {
-  position: absolute;
   height: 54.55%;
   width: 41.38%;
-  top: 0;
-  right: 29.31%;
-  bottom: 45.45%;
-  left: 29.31%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
+  color: inherit;
+}
+
+.link {
+  width: 60px;
+  height: 50px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  filter: brightness(0.5);
 }
