@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.member.dto;
 
+import com.codesquad.controlG.domain.member.entity.Member;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Builder;
@@ -20,5 +21,22 @@ public class LikedMemberResponse {
         this.nickname = nickname;
         this.profileImg = profileImg;
         this.introduction = introduction;
+    }
+
+    public static LikedMemberResponse fromLike(Member member) {
+        return LikedMemberResponse.builder()
+                .nickname(member.getNickname())
+                .profileImg(member.getProfileImg())
+                .introduction(member.getIntroduction())
+                .build();
+    }
+
+    public static LikedMemberResponse fromMatched(Member member) {
+        return LikedMemberResponse.builder()
+                .name(member.getName())
+                .nickname(member.getNickname())
+                .profileImg(member.getProfileImg())
+                .introduction(member.getIntroduction())
+                .build();
     }
 }
