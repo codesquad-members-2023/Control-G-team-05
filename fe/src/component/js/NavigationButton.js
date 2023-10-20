@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import styles from "../css/NavigationButton.module.css";
 
+// sign-in, sign-up group 생성 할때 사용하는 버튼
+
 function NavigationButton({ to, label }) {
   return (
     <Link to={to}>
