@@ -2,16 +2,16 @@ package com.codesquad.controlG.exception.errorcode;
 
 import org.springframework.http.HttpStatus;
 
-public enum MemberException implements CustomException {
-
-    MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "회원을 찾을 수 없습니다."),
-    MEMBER_DUPLICATED_EMAIL(HttpStatus.BAD_REQUEST, "이미 가입된 이메일 입니다."),
-    MEMBER_DUPLICATED_NICKNAME(HttpStatus.BAD_REQUEST, "중복된 닉네임입니다.");
+public enum GroupException implements CustomException {
+    NAME_ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "이미 존재하는 그룹 이름입니다."),
+    NOT_FOUND(HttpStatus.NOT_FOUND, "존재하지 않는 그룹입니다."),
+    MY_GROUP_ALREADY_EXISTS(HttpStatus.BAD_REQUEST, "이미 내 그룹에 존재하는 그룹입니다."),
+    AUTHENTICATION_FAIL(HttpStatus.FORBIDDEN, "그룹 인증이 실패했습니다.");
 
     private final HttpStatus httpStatus;
     private final String message;
 
-    MemberException(HttpStatus httpStatus, String message) {
+    GroupException(HttpStatus httpStatus, String message) {
         this.httpStatus = httpStatus;
         this.message = message;
     }

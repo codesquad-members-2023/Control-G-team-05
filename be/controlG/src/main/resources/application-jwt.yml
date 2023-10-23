@@ -1,0 +1,5 @@
+jwt:
+  token:
+    secret-key: ENC(i3/rUXatdXQ6a8H0C9hdOzJ9TO8qn7StGPROvoLEeXjazAitwQAIbOBuMkejrEr6ChPhlcc+gO+yiFnRZ49B/1o7Um5LapEcvsDBcJ8kaerGaA/T7Pccywq/jR7YI67TeplpC1HvxfRHqgNOvHlqrQ==)
+    sign-up:
+      secret-key: ENC(84kJ/t6pOee3S6nY+Z/zLidU3cACiOugDntqvFZZpzvd7gGDgQUA+lTvak3iAtC/0g7CVyHTT23V1KnA+QKXVMaFbe9YcYuXHfPHtWj0O4gV/fyG8JIXJAhKt38y5S6Jx+DLC5GfiX0=)
