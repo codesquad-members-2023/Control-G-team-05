@@ -1,0 +1,21 @@
+oauth2:
+  client:
+    google:
+      client-id: ENC(11dHYCq782RaziVXpfNYwcibK+4TqT313dWu9I1AtS6o1EH8uO42sX5l5zAUEtoolnFKazYJ+TOZEYbmPYtRm9kMsqcX3hNb0ZlDXAFUE350zkpQaqJqnQ==)
+      client-secret: ENC(bH24Dh0B2cuwjwGN0fF/1Q/XRqeWmWrF1jkaoLwi8R19zBpU2AHAZPLA4g9a08kg)
+      redirect-url: http://localhost:8080/api/login/google
+    naver:
+      client-id: ENC(Lop4pyjNeuOoPNgR16KUZkkb5Y3bJacCGwo5HYs+7Ck=)
+      client-secret: ENC(AP8cl+Mq+EPQo+mm/CRhqiWOYlck44Et)
+      redirect-url: http://localhost:8080
+  provider:
+    google:
+      token-url: https://www.googleapis.com/oauth2/v4/token
+      user-info-url: https://www.googleapis.com/oauth2/v3/userinfo
+    naver:
+      token-url: https://nid.naver.com/oauth2.0/token
+      user-info-url: https://openapi.naver.com/v1/nid/me
+
+      # https://www.googleapis.com/auth/userinfo.profile
+      #https://people.googleapis.com/v1/people:listDirectoryPeople?readMask=genders&sources=DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE
+#https://www.googleapis.com/oauth2/v3/userinfo
