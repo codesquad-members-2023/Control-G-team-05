@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../css/SignInPage.module.css"; // CSS 파일에서 스타일을 가져옵니다.
-import { Link } from "react-router-dom";
 import ImageWithText from "../../component/js/ImageWithText";
 
 function SignInPage() {
@@ -12,9 +11,12 @@ function SignInPage() {
       />
       <div className={styles.signInButtonWrapper}>
         {/* 임시로 sign-in 누를시 sign-up 으로 이동하도록 설정 */}
-        <Link className={styles.signInButton} to="/sign-up">
-          <b className={styles.signInWith}>Sign In With Kakao</b>
-        </Link>
+        <a
+          href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback"
+          className={styles.signInButton}
+        >
+          <b className={styles.signInWith}>Sign In With Naver</b>
+        </a>
       </div>
     </div>
   );
