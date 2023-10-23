@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +28,8 @@ public class Token {
 
     private String token;
 
-    public Token(Long id, Member member, String token) {
+    @Builder
+    private Token(Long id, Member member, String token) {
         this.id = id;
         this.member = member;
         this.token = token;
