@@ -36,6 +36,11 @@ public class MemberService {
         return MemberResponse.of(member, likeCount);
     }
 
+    private Member findMember(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new CustomRuntimeException(MemberException.MEMBER_NOT_FOUND));
+    }
+
     public List<LikedMemberResponse> getLikedProfiles(Long memberId, String selected) {
         LikeStatus likeStatus = LikeStatus.from(selected);
         List<Member> likedMembers = likeQueryDslRepository.findLikedMembers(memberId);
@@ -69,11 +74,6 @@ public class MemberService {
             member.changeProfileImg(profileImgUrl);
         }
         member.update(request);
-    }
-
-    private Member findMember(Long id) {
-        return memberRepository.findById(id)
-                .orElseThrow(() -> new CustomRuntimeException(MemberException.MEMBER_NOT_FOUND));
     }
 
     private boolean isValidImage(MultipartFile image) {
