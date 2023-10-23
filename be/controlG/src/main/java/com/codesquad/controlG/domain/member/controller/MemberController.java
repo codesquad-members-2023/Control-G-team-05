@@ -29,7 +29,7 @@ public class MemberController {
         return ResponseEntity.ok(memberService.getProfile(memberId));
     }
 
-    @GetMapping
+    @GetMapping("/profiles")
     public ResponseEntity<List<LikedMemberResponse>> getLikedProfiles(@Auth Long memberId,
                                                                       @RequestParam String selected) {
         return ResponseEntity.ok(memberService.getLikedProfiles(memberId, selected));
