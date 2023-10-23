@@ -28,4 +28,15 @@ public class FixtureFactory {
                 .introduction("안녕하세용")
                 .build();
     }
+
+    public static Member createMemberJoy() {
+        return Member.builder()
+                .name("조희주")
+                .nickname("joy")
+                .email("joy@naver.com")
+                .gender("female")
+                .birth(LocalDate.of(1998, 10, 27))
+                .introduction("안녕하세용")
+                .build();
+    }
 }

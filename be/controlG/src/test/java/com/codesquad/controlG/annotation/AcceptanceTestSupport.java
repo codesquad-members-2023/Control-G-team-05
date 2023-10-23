@@ -2,6 +2,7 @@ package com.codesquad.controlG.annotation;
 
 import com.codesquad.controlG.domain.auth.jwt.JwtProvider;
 import com.codesquad.controlG.domain.group.repository.GroupRepository;
+import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.member.repository.MemberRepository;
 import com.codesquad.controlG.domain.member_group.repository.MemberGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,7 @@ public abstract class AcceptanceTestSupport {
 
     @Autowired
     protected MemberGroupRepository memberGroupRepository;
+
+    @Autowired
+    protected LikeRepository likeRepository;
 }
