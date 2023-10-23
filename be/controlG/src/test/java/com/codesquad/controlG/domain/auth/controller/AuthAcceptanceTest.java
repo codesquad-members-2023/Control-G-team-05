@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.BDDMockito.*;
 
 
-class AuthControllerTest extends AcceptanceTestSupport {
+class AuthAcceptanceTest extends AcceptanceTestSupport {
 
     private void mockingOAuth() {
         given(oauthRequester.getToken(anyString(), any(OauthProvider.class)))
