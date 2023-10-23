@@ -9,6 +9,7 @@ import SearchPage from "./routes/js/SearchPage";
 import AddGroupPage from "./routes/js/AddGroupPage";
 import GroupDetailPage from "./routes/js/GroupDetailPage";
 import ChatLoadingPage from "./routes/js/ChatLoadingPage";
+import OauthCallBackPage from "./routes/js/OauthCallBackPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/groups" element={<SearchPage />}></Route>
         <Route path="/groups/create" element={<AddGroupPage />}></Route>
         <Route path="/groups/detail" element={<GroupDetailPage />}></Route>
+        <Route path="/callback" element={<OauthCallBackPage />}></Route>
       </Routes>
     </Router>
   );
