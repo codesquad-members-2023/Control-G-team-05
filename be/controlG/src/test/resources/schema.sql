@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS member (
 );
 
 CREATE TABLE IF NOT EXISTS token (
-                       id	BIGINT AUTO_INCREMENT,
-                       member_id	BIGINT	NOT NULL,
-                       token	BIGINT	NOT NULL,
+                       id	     BIGINT AUTO_INCREMENT,
+                       member_id BIGINT	NOT NULL,
+                       token	 VARCHAR(1000)	NOT NULL,
                        PRIMARY KEY(id)
 );
 
