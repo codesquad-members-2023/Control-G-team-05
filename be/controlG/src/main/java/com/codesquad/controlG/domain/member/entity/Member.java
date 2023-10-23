@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.member.entity;
 
+import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,10 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
+@DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Member {
@@ -45,5 +48,14 @@ public class Member {
         this.profileImg = profileImg;
         this.birth = birth;
         this.introduction = introduction;
+    }
+
+    public void changeProfileImg(String img) {
+        this.profileImg = img;
+    }
+
+    public void update(MemberUpdateRequest request) {
+        this.nickname = request.getNickname();
+        this.introduction = request.getIntroduction();
     }
 }
