@@ -1,8 +1,10 @@
 package com.codesquad.controlG.domain.member.service;
 
+import com.codesquad.controlG.domain.block.entity.Block;
 import com.codesquad.controlG.domain.block.repository.BlockRepository;
 import com.codesquad.controlG.domain.image.ImageService;
 import com.codesquad.controlG.domain.like.LikeStatus;
+import com.codesquad.controlG.domain.like.entity.Like;
 import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.like.repository.querydsl.LikeQueryDslRepository;
 import com.codesquad.controlG.domain.member.dto.LikedMemberResponse;
@@ -87,12 +89,24 @@ public class MemberService {
             likeRepository.deleteByLikerIdAndLikedId(memberId, likedId);
             return;
         }
-        likeRepository.saveByLikerIdAndLikedId(memberId, likedId);
+        Member likerMember = findMember(memberId);
+        Member likedMember = findMember(likedId);
+        Like like = Like.builder()
+                .liker(likerMember)
+                .liked(likedMember)
+                .build();
+        likeRepository.save(like);
     }
 
     @Transactional
     public void block(Long memberId, Long blockedId) {
-        blockRepository.saveByBlockerIdAndBlockedId(memberId, blockedId);
+        Member blockerMember = findMember(memberId);
+        Member blockedMember = findMember(blockedId);
+        Block block = Block.builder()
+                .blocker(blockerMember)
+                .blocked(blockedMember)
+                .build();
+        blockRepository.save(block);
         deleteLikes(memberId, blockedId);
     }
 
