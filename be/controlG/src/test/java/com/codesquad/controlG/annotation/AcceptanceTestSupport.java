@@ -4,6 +4,7 @@ import com.codesquad.controlG.domain.auth.Oauth.OauthRequester;
 import com.codesquad.controlG.domain.auth.jwt.JwtProvider;
 import com.codesquad.controlG.domain.auth.service.AuthService;
 import com.codesquad.controlG.domain.group.repository.GroupRepository;
+import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.member.repository.MemberRepository;
 import com.codesquad.controlG.domain.member_group.repository.MemberGroupRepository;
 import com.codesquad.controlG.domain.token.repository.TokenRepository;
@@ -47,6 +48,9 @@ public abstract class AcceptanceTestSupport {
 
     @Autowired
     protected RedisTemplate<String, Object> redisBlackListTemplate;
+  
+    @Autowired
+    protected LikeRepository likeRepository;
 
     protected static final String TEST_EMAIL = "test@test.com";
     protected static final String TEST_GENDER = "M";
@@ -54,5 +58,6 @@ public abstract class AcceptanceTestSupport {
     protected static final String TEST_NICKNAME = "test";
     protected static final String TEST_BIRTHDAY = "06-18";
     protected static final String TEST_BIRTH_YEAR = "1998";
+
 }
 
