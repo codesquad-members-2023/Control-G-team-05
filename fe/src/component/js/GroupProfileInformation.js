@@ -9,7 +9,7 @@ function GroupProfileInformation({ groupImgSrc, groupName, memberCount }) {
         <div className={styles.groupName}>{groupName}</div>
         <div className={styles.memberCountContainer}>
           <span className={styles.text}>{`Public group `}</span>
-          <b className={styles.memberCount}>{memberCount}K</b>
+          <b className={styles.memberCount}>{memberCount}</b>
           <span className={styles.text}> members.</span>
         </div>
       </div>

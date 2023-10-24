@@ -18,7 +18,6 @@ function SearchPage() {
     fetchGroupList().then((data) => {
       setAllGroups(data);
       setFilteredGroups(data);
-      console.log(filteredGroups);
     });
   }, []);
 
