@@ -82,7 +82,7 @@ public class GroupService {
         memberGroupRepository.deleteByMemberIdAndGroupId(memberId, groupId);
     }
 
-    public List<Group> retrieveGroupList(String word, Long memberId) {
-        return groupRepository.findList(word, memberId);
+    public List<Group> retrieveGroupList(String word, boolean forMember, Long memberId) {
+        return groupRepository.findList(word, forMember, memberId);
     }
 }

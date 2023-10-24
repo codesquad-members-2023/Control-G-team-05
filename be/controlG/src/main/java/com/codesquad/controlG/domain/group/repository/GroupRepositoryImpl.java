@@ -15,8 +15,8 @@ public class GroupRepositoryImpl implements GroupRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<Group> findList(String word, Long memberId) {
-        if (memberId != null) {
+    public List<Group> findList(String word, boolean forMember, Long memberId) {
+        if (forMember) {
             return jpaQueryFactory.selectFrom(group)
                     .join(memberGroup)
                     .on(memberGroup.group.id.eq(group.id))
