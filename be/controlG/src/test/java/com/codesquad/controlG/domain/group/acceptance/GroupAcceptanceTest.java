@@ -295,7 +295,7 @@ public class GroupAcceptanceTest extends AcceptanceTestSupport {
                 .given().log().all()
                 .header(HttpHeaders.AUTHORIZATION,
                         JWT_TOKEN_PREFIX + jwtProvider.createTokens(Map.of("memberId", memberId)).getAccessToken())
-                .queryParam("memberId", memberId)
+                .queryParam("forMember", true)
                 .when()
                 .get("/api/groups")
                 .then().log().all()
@@ -325,7 +325,7 @@ public class GroupAcceptanceTest extends AcceptanceTestSupport {
                 .given().log().all()
                 .header(HttpHeaders.AUTHORIZATION,
                         JWT_TOKEN_PREFIX + jwtProvider.createTokens(Map.of("memberId", memberId)).getAccessToken())
-                .queryParam("memberId", memberId)
+                .queryParam("forMember", true)
                 .queryParam("word", "s")
                 .when()
                 .get("/api/groups")
