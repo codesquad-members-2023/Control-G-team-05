@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchOauthData } from "../../api/auth/oauth";
+import { fetchOauthData } from "../../api/auth/Oauth";
 
 function OauthCallBackPage() {
   const navigate = useNavigate();

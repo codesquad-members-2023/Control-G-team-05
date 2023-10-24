@@ -3,7 +3,7 @@ import styles from "../css/SignUpPage.module.css";
 import ImageWithText from "../../component/js/ImageWithText";
 import CustomTextField from "../../component/js/CustomTextField";
 import NavigationButton from "../../component/js/NavigationButton";
-import { fetchSignUpData } from "../../api/auth/signup";
+import { fetchSignUpData } from "../../api/auth/Signup";
 import { ParseJwt } from "../../utils/ParseJwt";
 import { useState } from "react";
 
