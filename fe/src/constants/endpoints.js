@@ -17,4 +17,6 @@ export const API_ENDPOINTS = {
     }
     return `${BASE_URL}/api/groups${queryString}`;
   },
+
+  GROUP_DETAIL: (groupId) => `${BASE_URL}/api/groups/${groupId}`,
 };
