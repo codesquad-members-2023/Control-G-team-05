@@ -33,7 +33,7 @@ function MainPage() {
       <TopBar topBarName="Groups" />
       <SearchInput setSearchWord={setSearchWord} />
       <div className={styles.groupList}>
-        <div className={styles.contactStack}>
+        <div>
           {filteredGroups.map((group, index) => (
             <react.Fragment key={group.id}>
               <GroupIconWithTextAndButton
