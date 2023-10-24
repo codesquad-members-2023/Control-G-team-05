@@ -1,62 +1,41 @@
 package com.codesquad.controlG.domain.auth.controller;
 
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.mockito.BDDMockito.any;
-import static org.mockito.BDDMockito.anyString;
-import static org.mockito.BDDMockito.given;
-
-import com.codesquad.controlG.annotation.AcceptanceTest;
+import com.codesquad.controlG.annotation.AcceptanceTestSupport;
 import com.codesquad.controlG.domain.auth.Oauth.OauthProvider;
-import com.codesquad.controlG.domain.auth.Oauth.OauthRequester;
 import com.codesquad.controlG.domain.auth.Oauth.dto.OauthTokenResponse;
 import com.codesquad.controlG.domain.auth.Oauth.dto.UserProfile;
 import com.codesquad.controlG.domain.auth.dto.request.AuthSignUpRequest;
+import com.codesquad.controlG.domain.auth.dto.response.AuthLoginResponse;
 import com.codesquad.controlG.domain.auth.jwt.Jwt;
-import com.codesquad.controlG.domain.auth.jwt.JwtProvider;
-import com.codesquad.controlG.domain.auth.service.AuthService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.codesquad.controlG.exception.CustomRuntimeException;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockMultipartFile;
 
-@AcceptanceTest
-class AuthControllerTest {
+import static com.codesquad.controlG.fixture.FixtureFactory.createReissueTokenRequest;
+import static com.codesquad.controlG.fixture.FixtureFactory.createSignUpRequest;
+import static io.netty.handler.codec.http.HttpHeaders.Values.APPLICATION_JSON;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.mockito.BDDMockito.*;
 
-    @MockBean
-    OauthRequester oauthRequester;
 
-    @Autowired
-    public ObjectMapper objectMapper;
-
-    @Autowired
-    AuthService authService;
-
-    @Autowired
-    JwtProvider jwtProvider;
-
-    public static final String JWT_TOKEN_PREFIX = "Bearer ";
-    public static final String TEST_EMAIL = "test@test.com";
-    public static final String TEST_GENDER = "M";
-    public static final String TEST_NAME = "라이트";
-    public static final String TEST_NICKNAME = "test";
-    public static final String TEST_BIRTHDAY = "06-18";
-    public static final String TEST_BIRTH_YEAR = "1998";
-
+class AuthAcceptanceTest extends AcceptanceTestSupport {
 
     private void mockingOAuth() {
         given(oauthRequester.getToken(anyString(), any(OauthProvider.class)))
@@ -89,10 +68,7 @@ class AuthControllerTest {
         // given
         var mockMultipartFile = createMockMultipartFile("test.png", MediaType.IMAGE_PNG_VALUE);
         mockingOAuth();
-        AuthSignUpRequest signUpRequest = AuthSignUpRequest.builder()
-                .profileImage(mockMultipartFile)
-                .nickname(TEST_NICKNAME)
-                .build();
+        AuthSignUpRequest signUpRequest = createSignUpRequest(mockMultipartFile, TEST_NICKNAME);
         authService.signUp(signUpRequest, createSignUpMap());
 
         var request = RestAssured
@@ -100,7 +76,6 @@ class AuthControllerTest {
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .queryParam("code", "code")
                 .queryParam("state", "state");
-
         // when
         var response = login(request);
 
@@ -174,12 +149,7 @@ class AuthControllerTest {
     @DisplayName("회원가입 토큰이 존재하지 않으면 회원가입을 실패한다.")
     void signUpFailed() throws IOException {
 
-        // given
-        var mockMultipartFile = createMockMultipartFile("test.png", MediaType.IMAGE_PNG_VALUE);
-        Map<String, Object> signUpMap = createSignUpMap();
-        Jwt signUpToken = jwtProvider.createSignUpToken(signUpMap);
-
-        // when
+        // given&when
         var response = RestAssured
                 .given().log().all()
                 .multiPart("profileImage", File.createTempFile("test", ".jpeg"), MediaType.IMAGE_JPEG_VALUE)
@@ -191,6 +161,69 @@ class AuthControllerTest {
         assertAll(
                 () -> assertThat(response.statusCode()).isEqualTo(401),
                 () -> assertThat(response.jsonPath().getString("message")).isEqualTo("Header에 토큰이 존재하지 않습니다.")
+        );
+    }
+
+    @Test
+    @DisplayName("엑세스 토큰을 블랙리스트에 등록하고 DB에서 리프레시토큰을 삭제한다.")
+    void signOut() {
+
+        // given
+        var mockMultipartFile = createMockMultipartFile("test.png", MediaType.IMAGE_PNG_VALUE);
+        AuthSignUpRequest signUpRequest = createSignUpRequest(mockMultipartFile, TEST_NICKNAME);
+        Map<String, Object> signUpMap = createSignUpMap();
+        AuthLoginResponse authLoginResponse = authService.signUp(signUpRequest, signUpMap);
+        String accessToken = authLoginResponse.getAccessToken();
+        String refreshToken = authLoginResponse.getRefreshToken();
+
+        // when
+        var response = RestAssured
+                .given().log().all()
+                .header(HttpHeaders.AUTHORIZATION, JWT_TOKEN_PREFIX + accessToken)
+                .when()
+                .post("/api/auth/logout")
+                .then().log().all()
+                .extract();
+        assertAll(
+                () -> assertThat(response.statusCode()).isEqualTo(200),
+                () -> assertThat(response.jsonPath().getString("message")).isNotNull(),
+                () -> assertThat(redisUtil.hasKeyBlackList(accessToken)).isTrue(),
+                () -> Assertions.assertThatThrownBy(() -> tokenService.findByRefreshToken(refreshToken)).isInstanceOf(
+                        CustomRuntimeException.class)
+        );
+    }
+
+    @AfterEach
+    void resetRedis() {
+        redisBlackListTemplate.getConnectionFactory().getConnection().flushAll();
+    }
+
+    @Test
+    void reissueToken() {
+
+        // given
+        var mockMultipartFile = createMockMultipartFile("test.png", MediaType.IMAGE_PNG_VALUE);
+        AuthSignUpRequest signUpRequest = createSignUpRequest(mockMultipartFile, TEST_NICKNAME);
+        Map<String, Object> signUpMap = createSignUpMap();
+        AuthLoginResponse authLoginResponse = authService.signUp(signUpRequest, signUpMap);
+        String accessToken = authLoginResponse.getAccessToken();
+        String refreshToken = authLoginResponse.getRefreshToken();
+
+        // when
+        var response = RestAssured
+                .given().log().all()
+                .when()
+                .body(createReissueTokenRequest(refreshToken))
+                .contentType(APPLICATION_JSON)
+                .post("api/auth/access-token")
+                .then().log().all()
+                .extract();
+
+        assertAll(
+                () -> assertThat(response.statusCode()).isEqualTo(200),
+                () -> assertThat(response.jsonPath().getString("accessToken")).isNotNull(),
+                () -> assertThat(response.jsonPath().getString("refreshToken")).isNotNull(),
+                () -> assertThat(response.jsonPath().getLong("memberId")).isEqualTo(authLoginResponse.getMemberId())
         );
     }
 }
