@@ -1,24 +1,31 @@
-.searchContainer {
-  position: absolute;
-  top: 5.63rem;
-  width: 23.44rem;
+.groupContainer {
+  height: 560px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: var(--padding-base) var(--padding-5xl);
-  box-sizing: border-box;
-  gap: var(--gap-base);
+  justify-content: flex-start;
+  overflow-y: auto;
+  margin-top: 20px;
 }
 
 .div {
+  background-color: var(--color-white);
+  width: 100%;
+  overflow: hidden;
   position: relative;
   border-radius: var(--br-5xl);
-  background-color: var(--color-white);
   width: 375px;
-  height: 50.75rem;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--body-02-size);
+  height: 812px;
+  font-size: var(--font-size-base);
   color: var(--color-gray-100);
   font-family: var(--subheading-01);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.groupContainer::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

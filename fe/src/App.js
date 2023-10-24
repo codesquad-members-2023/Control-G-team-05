@@ -24,7 +24,7 @@ function App() {
         <Route path="/members" element={<ProfilePage />}></Route>
         <Route path="/groups" element={<SearchPage />}></Route>
         <Route path="/groups/create" element={<AddGroupPage />}></Route>
-        <Route path="/groups/detail" element={<GroupDetailPage />}></Route>
+        <Route path="/groups/:groupId" element={<GroupDetailPage />}></Route>
         <Route path="/callback" element={<OauthCallBackPage />}></Route>
       </Routes>
     </Router>
