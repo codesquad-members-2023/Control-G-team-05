@@ -1,47 +1,31 @@
-.dividerChild {
-  align-self: stretch;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  height: 1px;
-  flex-shrink: 0;
-}
-.contactStack,
-.divider {
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-}
-.divider {
-  height: 0;
-  align-items: center;
-  justify-content: center;
-}
-
 .groupList {
-  position: absolute;
-  top: 90px;
-  left: 0;
+  height: 560px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: var(--padding-base) var(--padding-5xl);
-  gap: var(--gap-base);
+  overflow-y: auto;
+  margin-top: 20px;
 }
 
 .div {
   background-color: var(--color-white);
   width: 100%;
   overflow: hidden;
-}
-.div {
   position: relative;
   border-radius: var(--br-5xl);
   width: 375px;
   height: 812px;
-  text-align: left;
   font-size: var(--font-size-base);
   color: var(--color-gray-100);
   font-family: var(--subheading-01);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.groupList::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
