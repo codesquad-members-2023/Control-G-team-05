@@ -1,4 +1,4 @@
-package com.codesquad.controlG.domain.group.repository;
+package com.codesquad.controlG.domain.group.repository.querydsl;
 
 import static com.codesquad.controlG.domain.group.entity.QGroup.group;
 import static com.codesquad.controlG.domain.member_group.entity.QMemberGroup.memberGroup;
@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class GroupRepositoryImpl implements GroupRepositoryCustom {
+public class GroupQueryDslRepositoryImpl implements GroupQueryDslRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 

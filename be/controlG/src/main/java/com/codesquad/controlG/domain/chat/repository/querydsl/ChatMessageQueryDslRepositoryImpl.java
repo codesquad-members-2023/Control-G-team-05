@@ -16,7 +16,8 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
         queryFactory.update(chatMessage)
                 .set(chatMessage.isRead, true)
                 .where(isUnread()
-                        .and(equalChatRoomId(chatRoomId)))
+                        .and(equalChatRoomId(chatRoomId))
+                        .and(chatMessage.id.gt(0)))
                 .execute();
     }
 

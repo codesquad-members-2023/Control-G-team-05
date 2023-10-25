@@ -1,6 +1,5 @@
-package com.codesquad.controlG.domain.chat_member.entity;
+package com.codesquad.controlG.domain.chat.entity;
 
-import com.codesquad.controlG.domain.chat_room.entity.ChatRoom;
 import com.codesquad.controlG.domain.member.entity.Member;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

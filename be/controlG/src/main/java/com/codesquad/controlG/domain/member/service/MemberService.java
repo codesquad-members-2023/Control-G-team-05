@@ -6,7 +6,6 @@ import com.codesquad.controlG.domain.image.ImageService;
 import com.codesquad.controlG.domain.like.LikeStatus;
 import com.codesquad.controlG.domain.like.entity.Like;
 import com.codesquad.controlG.domain.like.repository.LikeRepository;
-import com.codesquad.controlG.domain.like.repository.querydsl.LikeQueryDslRepository;
 import com.codesquad.controlG.domain.member.dto.LikedMemberResponse;
 import com.codesquad.controlG.domain.member.dto.MemberResponse;
 import com.codesquad.controlG.domain.member.dto.MemberUpdateRequest;
@@ -30,7 +29,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final LikeRepository likeRepository;
     private final BlockRepository blockRepository;
-    private final LikeQueryDslRepository likeQueryDslRepository;
 
     public MemberResponse getProfile(Long memberId) {
         Member member = findMember(memberId);
@@ -38,15 +36,15 @@ public class MemberService {
         return MemberResponse.of(member, likeCount);
     }
 
-    private Member findMember(Long id) {
+    public Member findMember(Long id) {
         return memberRepository.findById(id)
                 .orElseThrow(() -> new CustomRuntimeException(MemberException.MEMBER_NOT_FOUND));
     }
 
     public List<LikedMemberResponse> getLikedProfiles(Long memberId, String selected) {
         LikeStatus likeStatus = LikeStatus.from(selected);
-        List<Member> likedMembers = likeQueryDslRepository.findLikedMembers(memberId);
-        List<Long> likerIds = likeQueryDslRepository.findLikerIds(memberId);
+        List<Member> likedMembers = likeRepository.findLikedMembers(memberId);
+        List<Long> likerIds = likeRepository.findLikerIds(memberId);
 
         if (likeStatus == LikeStatus.like) {
             return getLike(likedMembers, likerIds);
@@ -57,14 +55,14 @@ public class MemberService {
     private List<LikedMemberResponse> getLike(List<Member> memberList, List<Long> likerIds) {
         return memberList.stream()
                 .filter(member -> !likerIds.contains(member.getId()))
-                .map(member -> LikedMemberResponse.fromLike(member))
+                .map(LikedMemberResponse::fromLike)
                 .collect(Collectors.toList());
     }
 
     private List<LikedMemberResponse> getMatched(List<Member> memberList, List<Long> likerIds) {
         return memberList.stream()
                 .filter(member -> likerIds.contains(member.getId()))
-                .map(member -> LikedMemberResponse.fromMatched(member))
+                .map(LikedMemberResponse::fromMatched)
                 .collect(Collectors.toList());
     }
 
@@ -84,7 +82,7 @@ public class MemberService {
 
     @Transactional
     public void like(Long memberId, Long likedId) {
-        boolean isLikeExist = likeQueryDslRepository.existsLike(memberId, likedId);
+        boolean isLikeExist = likeRepository.existsLike(memberId, likedId);
         if (isLikeExist) {
             likeRepository.deleteByLikerIdAndLikedId(memberId, likedId);
             return;
@@ -111,6 +109,6 @@ public class MemberService {
     }
 
     private void deleteLikes(Long memberId1, Long memberId2) {
-        likeQueryDslRepository.deleteLikes(memberId1, memberId2);
+        likeRepository.deleteLikes(memberId1, memberId2);
     }
 }

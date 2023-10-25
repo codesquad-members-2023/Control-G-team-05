@@ -27,6 +27,8 @@ public class ChatService {
 
     private final MemberService memberService;
 
+    private final NotificationService notificationService;
+
     @Transactional
     public ChatSendMessageResponse sendMessage(MessageRequest messageRequest) {
         // 1. chatRoomId 가 존재하는지 검증
@@ -44,6 +46,10 @@ public class ChatService {
         if (chatMessage.isRead()) {
             chatMessageRepository.updateIsRead(chatRoom.getId());
         }
+        // 3. SSE 재요청 알림 보내기
+        Long receiverId = chatRoom.findOpponentId(sender);
+
+        notificationService.refreshChatRoomList(receiverId);
 
         return ChatSendMessageResponse.of(chatMessage, chatRoom);
     }
