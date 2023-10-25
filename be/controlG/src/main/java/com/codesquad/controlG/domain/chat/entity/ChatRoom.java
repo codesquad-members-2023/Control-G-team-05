@@ -1,4 +1,4 @@
-package com.codesquad.controlG.domain.chat_room.entity;
+package com.codesquad.controlG.domain.chat.entity;
 
 import com.codesquad.controlG.domain.member.entity.Member;
 import javax.persistence.Entity;
@@ -22,11 +22,11 @@ public class ChatRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "member1_id")
+    @JoinColumn(name = "member_id1")
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member1;
 
-    @JoinColumn(name = "member2_id")
+    @JoinColumn(name = "member_id2")
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member2;
 
@@ -35,5 +35,11 @@ public class ChatRoom {
         this.id = id;
         this.member1 = member1;
         this.member2 = member2;
+    }
+
+    public Long findOpponentId(Member sender) {
+        Long member1Id = this.member1.getId();
+        Long member2Id = this.member2.getId();
+        return sender.getId().equals(member1Id) ? member2Id : member1Id;
     }
 }
