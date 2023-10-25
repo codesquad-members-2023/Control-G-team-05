@@ -19,4 +19,6 @@ export const API_ENDPOINTS = {
   },
 
   GROUP_DETAIL: (groupId) => `${BASE_URL}/api/groups/${groupId}`,
+  GROUP_CREATE: () => `${BASE_URL}/api/groups`,
+  ADD_MEMBER_GROUP: (groupId) => `${BASE_URL}/api/groups/${groupId}`,
 };
