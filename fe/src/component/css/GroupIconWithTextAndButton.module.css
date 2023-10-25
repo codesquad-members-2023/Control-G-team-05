@@ -16,6 +16,7 @@
 }
 
 .groupImg {
+  width: 80%;
   height: 85.71%;
   border-radius: var(--br-3xs);
 }

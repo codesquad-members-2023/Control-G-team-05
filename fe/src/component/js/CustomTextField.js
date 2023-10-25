@@ -5,10 +5,15 @@ import SlideInAnimation from "../../animation/js/SlideInAnimation";
 
 function CustomTextField({ placeHolder, text, onChange }) {
   SlideInAnimation();
+
   return (
     <TextField
       color="primary"
-      label={placeHolder === "Nickname" ? "Nickname" : ""}
+      label={
+        placeHolder === "Nickname" || placeHolder === "Group Name"
+          ? placeHolder
+          : ""
+      }
       value={text}
       disabled={placeHolder === "Name" || placeHolder === "Birth"}
       onChange={onChange}
