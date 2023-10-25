@@ -7,6 +7,7 @@ import TopBarWithCenterText from "../../component/js/TopBarWithCenterText";
 import { useState } from "react";
 import { fetchGroupCreate } from "../../api/group/CreateGroup";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function AddGroupPage() {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function AddGroupPage() {
   const handleCreateGroupButtonClick = async (groupName) => {
     await fetchGroupCreate(groupName, selectedImage);
     navigate("/groups");
+    toast("그룹 추가 성공");
   };
 
   return (

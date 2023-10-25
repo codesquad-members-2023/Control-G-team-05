@@ -1,6 +1,6 @@
 .nameAndMemeberCountContainerParent {
   position: absolute;
-  top: 15.63rem;
+  top: 18rem;
   left: 4.25rem;
   width: 15rem;
   display: flex;
@@ -10,8 +10,8 @@
 }
 
 .groupIcon {
-  height: 58.82%;
-  width: 41.67%;
+  height: 100px;
+  width: 100px;
   border-radius: var(--br-3xs);
 }
 
