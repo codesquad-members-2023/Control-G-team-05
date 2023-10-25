@@ -10,7 +10,6 @@ function SignInPage() {
         text="Control G"
       />
       <div className={styles.signInButtonWrapper}>
-        {/* 임시로 sign-in 누를시 sign-up 으로 이동하도록 설정 */}
         <a
           href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback"
           className={styles.signInButton}

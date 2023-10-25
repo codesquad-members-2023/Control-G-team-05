@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "../css/GroupProfileInformation.module.css";
 
-function GroupProfileInformation({ groupImgSrc, groupName, memberCount }) {
+function GroupProfileInformation({
+  groupImgSrc,
+  groupName,
+  memberCount,
+  clickEvent,
+}) {
   return (
     <div className={styles.nameAndMemeberCountContainerParent}>
       <img className={styles.groupIcon} alt="" src={groupImgSrc} />
@@ -13,7 +18,7 @@ function GroupProfileInformation({ groupImgSrc, groupName, memberCount }) {
           <span className={styles.text}> members.</span>
         </div>
       </div>
-      <div className={styles.joinButtonContainer}>
+      <div className={styles.joinButtonContainer} onClick={clickEvent}>
         <b className={styles.join}>+ Join</b>
       </div>
     </div>
