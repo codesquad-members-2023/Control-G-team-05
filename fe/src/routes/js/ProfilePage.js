@@ -38,7 +38,7 @@ function ProfilePage() {
 
       <ProfileDetail
         name={memberProfile.name}
-        nickName={memberProfile.nickName}
+        nickname={memberProfile.nickname}
         age={memberProfile.age}
         gender={memberProfile.gender}
         statusMessage={memberProfile.introduction}
