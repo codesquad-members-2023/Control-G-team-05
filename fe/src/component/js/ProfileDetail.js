@@ -3,7 +3,7 @@ import styles from "../css/ProfileDetail.module.css";
 
 function ProfileDetail({
   name,
-  nickName,
+  nickname,
   age,
   gender,
   statusMessage,
@@ -15,7 +15,7 @@ function ProfileDetail({
       <img className={styles.profileImg} alt="" src={profileImage} />
       <div className={styles.profileDetailContainer}>
         <div className={styles.name}>{name}</div>
-        <div className={styles.nickName}>{nickName}</div>
+        <div className={styles.nickName}>{nickname}</div>
         <div className={styles.likeAndAgeContainer}>
           <div className={styles.age}>
             {gender === "M" ? "♂" : "♀"}

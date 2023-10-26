@@ -16,10 +16,12 @@ function SearchPage() {
   const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
-    fetchGroupList().then((data) => {
+    const fetchAndSetGroups = async () => {
+      const data = await fetchGroupList();
       setAllGroups(data);
       setFilteredGroups(data);
-    });
+    };
+    fetchAndSetGroups();
   }, []);
 
   //필터링 된 그룹 설정
