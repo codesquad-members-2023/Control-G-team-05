@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
 export const fetchGroupDetail = async (groupId) => {
   try {

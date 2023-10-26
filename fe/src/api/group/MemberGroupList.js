@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 import { ParseJwt } from "../../utils/ParseJwt";
 
 export const fetchMemberGroupList = async (searchWord) => {

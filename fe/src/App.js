@@ -16,7 +16,7 @@ import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className={styles.div}>
+    <div id="modalRoot" className={styles.div}>
       <Router>
         <Routes>
           <Route path="/" element={<SignInPage />}></Route>

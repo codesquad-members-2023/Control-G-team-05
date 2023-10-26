@@ -7,6 +7,7 @@ import GroupIconWithTextAndButton from "../../component/js/GroupIconWithTextAndB
 import DividerLine from "../../component/js/DividerLine";
 import { fetchMemberGroupList } from "../../api/group/MemberGroupList";
 import { useEffect, useState } from "react";
+import { CONSTANT } from "../../constants/Constant";
 
 function MainPage() {
   const [allGroups, setAllGroups] = useState([]);
@@ -39,7 +40,7 @@ function MainPage() {
               <GroupIconWithTextAndButton
                 groupImgSrc={group.img}
                 groupName={group.name}
-                vectorIconSrc="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/4fbb8d44-8109-413f-b5c6-ac332ef15dd3_1697593141402360165?Expires=-62135596800&Signature=K8jngQR0vyPUOVpFBr6ca3jr9VPzcU2Fog2EbqUf2abHNNI-eihJjhYoA8r9VInImjlBBadGPOYFWxJYeF3pUA3lWIik~gpvGHJkk0IAbr~AbfG-3eXYk9FttV3UHCoPU-uZk1weXA4~YWgYVjfSAhyEvub~rsqo9~OQnAhnwOcpIsejATqOkk~SRiHsUNl54EYwutJ2Btax5MdgJMXG6509cs0oo0AziNAWNXrWW4WlFL0RGpKlEwRKu3MqE7USoZbvcFK~rhRVdyp6xzwNGvO0eFqOsbsb5DVSz7~xUXCJQ4eC4epXOI1O0WERLn0Ic-SvwyWLy6oYWb-wq9BhGg__&Key-Pair-Id=K1P54FZWCHCL6J"
+                vectorIconSrc={CONSTANT.RANDOM_CHAT_START_BUTTON}
               />
               {index !== filteredGroups.length - 1 && <DividerLine />}
             </react.Fragment>

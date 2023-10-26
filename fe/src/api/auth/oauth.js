@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
 export const fetchOauthData = async (accessCode) => {
   try {

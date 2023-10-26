@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
 // 그룹 추가가 완료되면 data에 아무런 데이터가 없을거고, 추가 실패시 data의 message에 오류 메세지가 있다.
 
