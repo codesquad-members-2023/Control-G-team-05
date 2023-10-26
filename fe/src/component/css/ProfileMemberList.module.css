@@ -1,0 +1,55 @@
+.chatStack {
+  display: flex;
+  width: 327px;
+  height: 56px;
+  margin-bottom: 20px;
+}
+
+.nameContainer {
+  width: 250px;
+  display: flex;
+}
+
+.avatarIcon {
+  width: 17.13%;
+  right: 82.87%;
+}
+.topContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.name {
+  margin-left: 3px;
+  font-weight: 300;
+}
+
+.nickname {
+  font-weight: 600;
+}
+
+.message {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  width: 235px;
+}
+
+.chatMessage {
+  position: absolute;
+  width: 259px;
+}
+
+.dataContainer {
+  position: absolute;
+  width: 259px;
+  height: 56px;
+  margin-left: 70px;
+}
+
+.chatMessage {
+  top: 26px;
+  left: 0;
+  height: 20px;
+  font-size: var(--text-body-bold-size);
+  color: var(--color-darkgray);
+}

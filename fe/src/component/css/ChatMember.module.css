@@ -13,13 +13,13 @@
   display: flex;
   justify-content: flex-end;
 }
-.name,
+.nickname,
 .mAgo {
   position: absolute;
   top: 0;
   font-weight: 600;
 }
-.name {
+.nickname {
   left: 0;
   line-height: 24px;
   display: flex;
