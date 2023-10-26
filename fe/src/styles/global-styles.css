@@ -74,9 +74,17 @@ body {
 
 .Toastify__toast-container {
   position: absolute;
-  top: 78%;
+  top: 81%;
   left: 65px;
   width: 250px;
   height: 30px;
   text-align: center;
+}
+
+.Toastify__close-button {
+  width: 0px;
+}
+
+.Toastify__toast {
+  min-height: 10px;
 }

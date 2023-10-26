@@ -1,40 +1,49 @@
-.like {
-  font-weight: 600;
+.switchField {
+  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+  margin-top: 10px;
+  margin-left: 100px;
+  overflow: hidden;
+  width: 375px;
+  height: 50px;
 }
 
-.matched {
-  font-weight: 600;
+.switchField input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
 }
 
-.buttonContainer {
-  background-color: whitesmoke;
-  border-radius: 10px;
-  position: absolute;
-  top: 20.38rem;
-  left: 1.5rem;
-  width: 20.44rem;
-  height: 3.13rem;
-  display: flex;
-  justify-content: space-evenly;
-  border: 1px solid #e0dbdb;
-  align-items: center;
+.switchField label {
+  display: inline-block;
+  width: 100px;
+  background-color: #ededed;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 12px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
 }
 
-.likeContainer {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+.switchField label:hover {
+  cursor: pointer;
 }
 
-.matchedContainer {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #e0dbdb;
-  border-radius: 10px;
+.switchField input:checked + label {
+  background-color: #ffffff;
+  color: #2c37e1;
+  box-shadow: none;
+}
+
+.switchField label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switchField label:last-of-type {
+  border-radius: 0 4px 4px 0;
 }

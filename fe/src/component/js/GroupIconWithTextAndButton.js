@@ -10,9 +10,11 @@ function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
       </div>
       <div className={styles.groupDetailContainer}>
         <div className={styles.groupName}>{groupName}</div>
-        <Link to="/chats/find">
-          <img className={styles.vectorIcon} alt="" src={vectorIconSrc} />
-        </Link>
+        {vectorIconSrc && (
+          <Link to="/chats/find">
+            <img className={styles.vectorIcon} alt="" src={vectorIconSrc} />
+          </Link>
+        )}
       </div>
     </div>
   );

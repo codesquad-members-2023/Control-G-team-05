@@ -26,7 +26,7 @@ function ChatListPage() {
         <Link to="detail">
           <ChatMember
             avatarSrc="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/e6cb9e73-a3d4-4eb2-a68e-d01372a032f5_1697439258067884952?Expires=-62135596800&Signature=GdBVX5QCwWsIiDwccsMIxJFfAYhfKDztXKeT4dZN~~4NerTml7Mdy6bGuHYrcgW~oYcgHV2yWsRz6j7xDPdlpYsdUWtre-k5xbX8qET~CknWxz3IjF6xCagtm3lqTGGT2CNh80od4lDRBh6C2PFUWeZ-dFD96QRwyInGMuiYNnM0Od5VWPhOxKszPU03n-9XC-I4ZcS0lqSQfOmqVd2PnsVnDT1PXBWyCOPrC34wzzwrrQEAzxLvA49JZXZrUMkHy~bXpDyB6PzbL5udzglagCsEsGvCTibuO3ww0ZQFYLG4qku7kZfAwK8suVo3y3IDs2CNAE5mY1BUNGdt4~z1IA__&Key-Pair-Id=K1P54FZWCHCL6J"
-            name="charlie"
+            nickname="charlie"
             time="3m ago"
             message="Good morning, did you sleep well?"
             notificationCount="12"
@@ -34,7 +34,7 @@ function ChatListPage() {
         </Link>
         <ChatMember
           avatarSrc="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/e6cb9e73-a3d4-4eb2-a68e-d01372a032f5_1697439258067884952?Expires=-62135596800&Signature=GdBVX5QCwWsIiDwccsMIxJFfAYhfKDztXKeT4dZN~~4NerTml7Mdy6bGuHYrcgW~oYcgHV2yWsRz6j7xDPdlpYsdUWtre-k5xbX8qET~CknWxz3IjF6xCagtm3lqTGGT2CNh80od4lDRBh6C2PFUWeZ-dFD96QRwyInGMuiYNnM0Od5VWPhOxKszPU03n-9XC-I4ZcS0lqSQfOmqVd2PnsVnDT1PXBWyCOPrC34wzzwrrQEAzxLvA49JZXZrUMkHy~bXpDyB6PzbL5udzglagCsEsGvCTibuO3ww0ZQFYLG4qku7kZfAwK8suVo3y3IDs2CNAE5mY1BUNGdt4~z1IA__&Key-Pair-Id=K1P54FZWCHCL6J"
-          name="joy"
+          nickname="joy"
           time="3m ago"
           message="Good morning, did you sleep well?"
           notificationCount="12"

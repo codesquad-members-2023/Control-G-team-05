@@ -1,10 +1,8 @@
 .profileTopContainer {
-  position: absolute;
-  top: 6.63rem;
-  left: 5.69rem;
-  width: 12.13rem;
-  height: 12.25rem;
+  width: 13.13rem;
+  height: 13.25rem;
   text-align: center;
+  margin-top: 100px;
   color: var(--color-darkgray-100);
   display: flex;
   flex-direction: column;
@@ -30,6 +28,7 @@
 }
 
 .liked {
+  margin-left: 3px;
   top: 52.75%;
   left: 60.4%;
   font-weight: 600;
@@ -47,9 +46,9 @@
   align-items: center;
 }
 
-.icon {
-  height: 51.02%;
-  width: 51.55%;
+.profileImg {
+  height: 57.02%;
+  width: 57.55%;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;

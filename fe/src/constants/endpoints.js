@@ -21,4 +21,7 @@ export const API_ENDPOINTS = {
   GROUP_DETAIL: (groupId) => `${BASE_URL}/api/groups/${groupId}`,
   GROUP_CREATE: () => `${BASE_URL}/api/groups`,
   ADD_MEMBER_GROUP: (groupId) => `${BASE_URL}/api/groups/${groupId}`,
+  GET_MEMBER_PROFILE: `${BASE_URL}/api/members`,
+  GET_MEMBER_LIKE: (selected) =>
+    `${BASE_URL}/api/members/profiles?selected=${selected}`,
 };

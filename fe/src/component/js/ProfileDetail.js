@@ -11,13 +11,13 @@ function ProfileDetail({
 }) {
   return (
     <div className={styles.profileTopContainer}>
-      <img className={styles.icon} alt="" src={profileImage} />
+      <img className={styles.profileImg} alt="" src={profileImage} />
       <div className={styles.profileDetailContainer}>
         <div className={styles.name}>{name}</div>
         <div className={styles.nickName}>{nickName}</div>
         <div className={styles.likeAndAgeContainer}>
           <div className={styles.age}>
-            {gender === "male" ? "♂" : "♀"}
+            {gender === "M" ? "♂" : "♀"}
             {age}
           </div>
           <div className={styles.likeContainer}>
