@@ -1,6 +1,6 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
-export const fetchMemberLike = async (selected) => {
+export const fetchMemberList = async (selected) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 

@@ -1,0 +1,72 @@
+/* Overlay styles */
+.modalOverlay {
+  position: absolute;
+  top: 0px;
+  background-color: rgba(187, 187, 187, 0.7);
+  width: 100%;
+  height: 100%;
+  border-radius: var(--br-5xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content styles */
+.modalContent {
+  width: 207px;
+  height: 125px;
+  border-radius: 10px;
+  background-color: rgba(255, 252, 252, 1);
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+.div {
+  border-radius: var(--br-5xl);
+  width: 100%;
+  height: 7.81rem;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-steelblue);
+  font-family: var(--font-inter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 11.13rem;
+  height: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.iconList {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  font-size: var(--font-size-xs);
+}
+
+.iconContainer {
+  width: 3.13rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: var(--gap-5xs);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

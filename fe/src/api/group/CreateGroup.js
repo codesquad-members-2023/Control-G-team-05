@@ -1,4 +1,4 @@
-import { API_ENDPOINTS } from "../../constants/endpoints";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
 export const fetchGroupCreate = async (name, selectedImage) => {
   try {

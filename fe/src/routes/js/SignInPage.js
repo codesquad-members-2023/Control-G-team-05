@@ -1,19 +1,15 @@
 import React from "react";
-import styles from "../css/SignInPage.module.css"; // CSS 파일에서 스타일을 가져옵니다.
+import styles from "../css/SignInPage.module.css";
 import ImageWithText from "../../component/js/ImageWithText";
+import { CONSTANT } from "../../constants/Constant";
+import { API_ENDPOINTS } from "../../constants/Endpoints";
 
 function SignInPage() {
   return (
     <div className={styles.div}>
-      <ImageWithText
-        imgSrc="https://www.notion.so/image/https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F10074%2F10074958.png?table=block&id=77c107d2-ff9c-49d3-bc7d-da98a81bc80c&spaceId=9987bb01-df95-42d3-8249-04050ff2ede3&width=250&userId=59ce483d-1566-4ee4-a097-ca0972c7e50a&cache=v2"
-        text="Control G"
-      />
+      <ImageWithText imgSrc={CONSTANT.CONTROL_G_ICON} text="Control G" />
       <div className={styles.signInButtonWrapper}>
-        <a
-          href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback"
-          className={styles.signInButton}
-        >
+        <a href={API_ENDPOINTS.OAUTH_API} className={styles.signInButton}>
           <b className={styles.signInWith}>Sign In With Naver</b>
         </a>
       </div>

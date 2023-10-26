@@ -24,4 +24,8 @@ export const API_ENDPOINTS = {
   GET_MEMBER_PROFILE: `${BASE_URL}/api/members`,
   GET_MEMBER_LIKE: (selected) =>
     `${BASE_URL}/api/members/profiles?selected=${selected}`,
+  MEMBER_LIKE: (likedId) => `${BASE_URL}/api/members/${likedId}/likes`,
+  MEMBER_BLOCK: (blockId) => `${BASE_URL}/api/members/${blockId}/blocks`,
+  OAUTH_API:
+    "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback",
 };
