@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LikedMemberResponse {
 
+    private Long id;
     @JsonInclude(Include.NON_NULL)
     private String name;
     private String nickname;
@@ -18,7 +19,8 @@ public class LikedMemberResponse {
     private String introduction;
 
     @Builder
-    private LikedMemberResponse(String name, String nickname, String profileImg, String introduction) {
+    private LikedMemberResponse(Long id, String name, String nickname, String profileImg, String introduction) {
+        this.id = id;
         this.name = name;
         this.nickname = nickname;
         this.profileImg = profileImg;
@@ -27,6 +29,7 @@ public class LikedMemberResponse {
 
     public static LikedMemberResponse fromLike(Member member) {
         return LikedMemberResponse.builder()
+                .id(member.getId())
                 .nickname(member.getNickname())
                 .profileImg(member.getProfileImg())
                 .introduction(member.getIntroduction())
@@ -35,6 +38,7 @@ public class LikedMemberResponse {
 
     public static LikedMemberResponse fromMatched(Member member) {
         return LikedMemberResponse.builder()
+                .id(member.getId())
                 .name(member.getName())
                 .nickname(member.getNickname())
                 .profileImg(member.getProfileImg())

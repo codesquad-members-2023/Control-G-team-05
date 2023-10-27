@@ -1,7 +1,6 @@
 package com.codesquad.controlG.domain.group.controller;
 
 import com.codesquad.controlG.domain.auth.Auth;
-import com.codesquad.controlG.domain.group.dto.GroupAddMineRequest;
 import com.codesquad.controlG.domain.group.dto.GroupCreateRequest;
 import com.codesquad.controlG.domain.group.dto.GroupDetailResponse;
 import com.codesquad.controlG.domain.group.entity.Group;
@@ -33,9 +32,8 @@ public class GroupController {
     }
 
     @PostMapping("/{groupId}")
-    public ResponseEntity<Void> addMyGroup(@PathVariable Long groupId, @Auth Long memberId,
-                                           GroupAddMineRequest groupAddMineRequest) {
-        groupService.addMyGroup(groupId, memberId, groupAddMineRequest.getImage());
+    public ResponseEntity<Void> addMyGroup(@PathVariable Long groupId, @Auth Long memberId) {
+        groupService.addMyGroup(groupId, memberId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

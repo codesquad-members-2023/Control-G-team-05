@@ -29,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 @Service
 public class AuthService {
 
@@ -67,7 +68,7 @@ public class AuthService {
         throw new LoginMemberNotFoundException(jwt.getSignUpToken());
     }
 
-
+    @Transactional
     public AuthLoginResponse signUp(AuthSignUpRequest request, Map<String, Object> map) {
         MultipartFile image = request.getProfileImage();
         String imageUrl = imageService.uploadImage(image);

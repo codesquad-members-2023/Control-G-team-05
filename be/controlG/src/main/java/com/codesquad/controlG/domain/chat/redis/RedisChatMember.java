@@ -30,7 +30,6 @@ public class RedisChatMember {
     }
 
     @Builder
-
     public static RedisChatMember of(Long chatRoomId, Long memberId, String sessionId) {
         return RedisChatMember.builder()
                 .chatRoomId(chatRoomId)

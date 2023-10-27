@@ -47,10 +47,11 @@ public class ChatService {
             chatMessageRepository.updateIsRead(chatRoom.getId());
         }
         // 3. SSE 재요청 알림 보내기
-        Long receiverId = chatRoom.findOpponentId(sender);
+        Long receiverId = chatRoom.partnerId(sender.getId());
 
         notificationService.refreshChatRoomList(receiverId);
 
         return ChatSendMessageResponse.of(chatMessage, chatRoom);
     }
+
 }

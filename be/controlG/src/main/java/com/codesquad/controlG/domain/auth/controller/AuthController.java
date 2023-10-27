@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,10 +53,5 @@ public class AuthController {
     public ResponseEntity<AuthReissueTokenResponse> reissueToken(
             @RequestBody AuthReissueTokenRequest authReissueTokenRequest) {
         return ResponseEntity.ok().body(authService.reissueToken(authReissueTokenRequest));
-    }
-
-    @GetMapping("/test")
-    public String test(@Auth Long memberId, HttpServletRequest request) {
-        return "멤버아이디: " + memberId + request.getAttribute("memberId");
     }
 }
