@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GroupQueryDslRepository {
 
-    List<Group> findList(String word, Long memberId);
+    List<Group> findList(String word, boolean forMember, Long memberId);
 }

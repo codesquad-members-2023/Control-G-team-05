@@ -45,8 +45,9 @@ public class GroupController {
 
     @GetMapping
     public ResponseEntity<List<Group>> retrieveGroupList(@RequestParam(required = false) String word,
-                                                         @RequestParam(required = false) Long memberId) {
-        List<Group> groupList = groupService.retrieveGroupList(word, memberId);
+                                                         @RequestParam(defaultValue = "false") boolean forMember,
+                                                         @Auth Long memberId) {
+        List<Group> groupList = groupService.retrieveGroupList(word, forMember, memberId);
         return ResponseEntity.ok().body(groupList);
     }
 
