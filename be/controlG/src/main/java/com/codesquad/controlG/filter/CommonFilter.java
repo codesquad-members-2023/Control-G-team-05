@@ -23,7 +23,8 @@ public abstract class CommonFilter extends OncePerRequestFilter {
     // 메인화면, 회원가입
     private static final List<WhiteListUri> whiteListUris = List.of(
             new WhiteListUri("^/api/login/oauth/naver.*$", Set.of("POST")),
-            new WhiteListUri("^/api/auth/access-token$", Set.of("POST"))
+            new WhiteListUri("^/api/auth/access-token$", Set.of("POST")),
+            new WhiteListUri("^/ws$", Set.of("GET"))
     );
 
     protected JwtProvider jwtProvider;

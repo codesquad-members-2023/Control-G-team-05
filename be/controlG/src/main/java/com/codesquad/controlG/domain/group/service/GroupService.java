@@ -54,8 +54,7 @@ public class GroupService {
     }
 
     @Transactional
-    public void addMyGroup(Long groupId, Long memberId, MultipartFile image) {
-        authenticateGroupMembership(image);
+    public void addMyGroup(Long groupId, Long memberId) {
         existMemberGroup(memberId, groupId);
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new CustomRuntimeException(MemberException.MEMBER_NOT_FOUND));
@@ -68,12 +67,6 @@ public class GroupService {
     private void existMemberGroup(Long memberId, Long groupId) {
         if (memberGroupRepository.existsByMemberIdAndGroupId(memberId, groupId)) {
             throw new CustomRuntimeException(GroupException.MY_GROUP_ALREADY_EXISTS);
-        }
-    }
-
-    private void authenticateGroupMembership(MultipartFile image) {
-        if (image == null) {
-            throw new CustomRuntimeException(GroupException.AUTHENTICATION_FAIL);
         }
     }
 

@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS member_group (
 
 CREATE TABLE IF NOT EXISTS chat_room (
                         id         BIGINT AUTO_INCREMENT,
+                        group_id   BIGINT NOT NULL,
                         member_id1 BIGINT NOT NULL,
                         member_id2 BIGINT NOT NULL,
                         PRIMARY KEY(id)

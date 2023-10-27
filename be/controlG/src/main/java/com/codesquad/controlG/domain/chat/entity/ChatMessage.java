@@ -1,6 +1,5 @@
-package com.codesquad.controlG.domain.chat_message.entity;
+package com.codesquad.controlG.domain.chat.entity;
 
-import com.codesquad.controlG.domain.chat_room.entity.ChatRoom;
 import com.codesquad.controlG.domain.member.entity.Member;
 import java.sql.Timestamp;
 import javax.persistence.Entity;
@@ -46,5 +45,14 @@ public class ChatMessage {
         this.message = message;
         this.sentAt = sentAt;
         this.isRead = isRead;
+    }
+
+    public static ChatMessage of(String message, ChatRoom chatRoom, Member sender, int size) {
+        return ChatMessage.builder()
+                .message(message)
+                .chatRoom(chatRoom)
+                .sender(sender)
+                .isRead(size == 2)
+                .build();
     }
 }

@@ -1,4 +1,4 @@
-package com.codesquad.controlG.domain.chat_room.entity;
+package com.codesquad.controlG.domain.chat.entity;
 
 import com.codesquad.controlG.domain.member.entity.Member;
 import javax.persistence.Entity;
@@ -16,24 +16,30 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class ChatRoom {
+public class ChatMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "member1_id")
+    @JoinColumn(name = "chat_room_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member member1;
+    private ChatRoom chatRoom;
 
-    @JoinColumn(name = "member2_id")
+    @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member member2;
+    private Member member;
+
+    private Long lastMessageId;
+
+    private boolean isExit;
 
     @Builder
-    private ChatRoom(Long id, Member member1, Member member2) {
+    private ChatMember(Long id, ChatRoom chatRoom, Member member, Long lastMessageId, boolean isExit) {
         this.id = id;
-        this.member1 = member1;
-        this.member2 = member2;
+        this.chatRoom = chatRoom;
+        this.member = member;
+        this.lastMessageId = lastMessageId;
+        this.isExit = isExit;
     }
 }
