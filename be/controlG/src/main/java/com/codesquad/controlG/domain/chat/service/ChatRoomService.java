@@ -33,7 +33,7 @@ public class ChatRoomService {
         return chatRoomRepository.save(chatRoom).getId();
     }
 
-    public List<ChatRoom> findMemberChatRoom(Long groupId, Long memberId1, Long memberId2) {
-        return chatRoomRepository.findByGroupIdAndMember1IdOrMember2Id(groupId, memberId1, memberId2);
+    public List<Long> findMemberChatRoom(Long groupId, Long memberId) {
+        return chatRoomRepository.findMemberChatroom(groupId, memberId);
     }
 }

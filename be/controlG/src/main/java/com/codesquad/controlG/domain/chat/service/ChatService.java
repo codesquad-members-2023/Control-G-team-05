@@ -1,6 +1,7 @@
 package com.codesquad.controlG.domain.chat.service;
 
 import com.codesquad.controlG.domain.chat.dto.MessageRequest;
+import com.codesquad.controlG.domain.chat.dto.response.ChatListResponse;
 import com.codesquad.controlG.domain.chat.dto.response.ChatSendMessageResponse;
 import com.codesquad.controlG.domain.chat.entity.ChatMessage;
 import com.codesquad.controlG.domain.chat.entity.ChatRoom;
@@ -10,6 +11,8 @@ import com.codesquad.controlG.domain.member.entity.Member;
 import com.codesquad.controlG.domain.member.service.MemberService;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.ChatException;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,4 +57,13 @@ public class ChatService {
         return ChatSendMessageResponse.of(chatMessage, chatRoom);
     }
 
+    public List<ChatListResponse> getChatList(Long groupId, Long memberId) {
+        List<ChatListResponse> chatList = chatRoomRepository.getChatList(groupId, memberId);
+        Map<Long, Long> countNewMessage = chatRoomRepository.countNewMessage(groupId, memberId);
+        chatList.forEach(chatRoom -> {
+            Long count = countNewMessage.getOrDefault(chatRoom.getChatRoomId(), 0L);
+            chatRoom.assignNewMessageCount(count);
+        });
+        return chatList;
+    }
 }

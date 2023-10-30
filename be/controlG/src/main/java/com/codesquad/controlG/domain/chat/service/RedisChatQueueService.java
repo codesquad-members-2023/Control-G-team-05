@@ -36,15 +36,14 @@ public class RedisChatQueueService {
             List<RedisChatQueue> redisChatQueues = redisChatQueueRepository.findByGroupId(groupId);
 
             // block 멤버를 리스트에서 삭제
-            List<Long> blocks = blockRepository.findBlockedIdsByBlockerId(memberId);
+            List<Long> blocks = blockRepository.findBlockedIds(memberId);
             redisChatQueues = redisChatQueues.stream().filter(member -> !blocks.contains(member.getMemberId()))
                     .toList();
 
             // 이미 자신과 채팅하고 있는 파트너 리스트에서 삭제
-            List<Long> memberIds = chatRoomService.findMemberChatRoom(groupId, memberId, memberId).stream()
-                    .map(chatRoom -> chatRoom.partnerId(memberId))
-                    .toList();
-            redisChatQueues = redisChatQueues.stream().filter(member -> !memberIds.contains(member.getMemberId()))
+            List<Long> memberIds = chatRoomService.findMemberChatRoom(groupId, memberId);
+            redisChatQueues = redisChatQueues.stream()
+                    .filter(member -> !memberIds.contains(member.getMemberId()))
                     .toList();
 
             // 리스트에 혼자면 return
