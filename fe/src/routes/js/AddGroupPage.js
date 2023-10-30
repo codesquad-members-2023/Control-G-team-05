@@ -40,7 +40,7 @@ function AddGroupPage() {
       <TopBarWithCenterText topBarName="Add Group" returnLink="/groups" />
       <ImageWithText
         imgSrc={CONSTANT.IMG_UPLOAD_ICON}
-        WonImageChange={handleImageChange}
+        onImageChange={handleImageChange}
       />
       <div className={styles.inner} data-animate-on-scroll>
         <div className={styles.registerBtnParent}>
