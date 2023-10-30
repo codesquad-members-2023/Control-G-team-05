@@ -7,8 +7,10 @@ import { fetchSignUpData } from "../../api/auth/Signup";
 import { ParseJwt } from "../../utils/ParseJwt";
 import { useState } from "react";
 import { CONSTANT } from "../../constants/Constant";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
+  const navigate = useNavigate();
   // 이미지 상태관리를 하는 useState
   const [selectedImage, setSelectedImage] = useState({
     file: null,
@@ -26,8 +28,9 @@ function SignUpPage() {
     setNickname(e.target.value);
   };
 
-  const handleSignUpButtonClick = (nickname) => {
-    fetchSignUpData(nickname, selectedImage);
+  const handleSignUpButtonClick = async (nickname) => {
+    await fetchSignUpData(nickname, selectedImage);
+    navigate("/main");
   };
 
   const signUpToken = localStorage.getItem("signupToken");
@@ -53,7 +56,6 @@ function SignUpPage() {
       </div>
       <NavigationButton
         clickEvent={() => handleSignUpButtonClick(nickname)}
-        to="/main"
         label="Sign Up"
         disabled={!(nickname.trim() !== "" && selectedImage.file)}
       />
