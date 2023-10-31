@@ -1,15 +1,22 @@
 package com.codesquad.controlG.domain.chat.service;
 
 import com.codesquad.controlG.domain.chat.dto.MessageRequest;
+import com.codesquad.controlG.domain.chat.dto.response.ChatInfoMessages;
+import com.codesquad.controlG.domain.chat.dto.response.ChatInfoPartner;
+import com.codesquad.controlG.domain.chat.dto.response.ChatInfoResponse;
+import com.codesquad.controlG.domain.chat.dto.response.ChatListResponse;
 import com.codesquad.controlG.domain.chat.dto.response.ChatSendMessageResponse;
 import com.codesquad.controlG.domain.chat.entity.ChatMessage;
 import com.codesquad.controlG.domain.chat.entity.ChatRoom;
 import com.codesquad.controlG.domain.chat.repository.ChatMessageRepository;
 import com.codesquad.controlG.domain.chat.repository.ChatRoomRepository;
+import com.codesquad.controlG.domain.like.repository.LikeRepository;
 import com.codesquad.controlG.domain.member.entity.Member;
 import com.codesquad.controlG.domain.member.service.MemberService;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.ChatException;
+import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +35,9 @@ public class ChatService {
     private final MemberService memberService;
 
     private final NotificationService notificationService;
+
+    private final LikeRepository likeRepository;
+
 
     @Transactional
     public ChatSendMessageResponse sendMessage(MessageRequest messageRequest) {
@@ -54,4 +64,49 @@ public class ChatService {
         return ChatSendMessageResponse.of(chatMessage, chatRoom);
     }
 
+    public List<ChatListResponse> getChatList(Long groupId, Long memberId) {
+        List<ChatListResponse> chatList = chatRoomRepository.getChatList(groupId, memberId);
+        Map<Long, Long> countNewMessage = chatRoomRepository.countNewMessage(groupId, memberId);
+
+        List<Long> likerIds = likeRepository.findLikerIds(memberId);
+        List<Member> likedMembers = likeRepository.findLikedMembers(memberId);
+        List<Long> matchedMembers = getMatched(likedMembers, likerIds);
+
+        chatList.forEach(chatRoom -> {
+            Long count = countNewMessage.getOrDefault(chatRoom.getChatRoomId(), 0L);
+            chatRoom.assignNewMessageCount(count);
+            if (!matchedMembers.contains(chatRoom.getPartner().getId())) {
+                chatRoom.getPartner().hideName();
+            }
+        });
+        return chatList;
+    }
+
+    public ChatInfoResponse getChatInfo(Long chatRoomId, Long memberId) {
+        ChatInfoPartner chatInfoPartner = chatMessageRepository.getChatInfoPartner(chatRoomId, memberId);
+        List<ChatInfoMessages> chatMessages = chatMessageRepository.getChatMessages(chatRoomId);
+
+        boolean isLiked = likeRepository.existsLike(memberId, chatInfoPartner.getId());
+        chatInfoPartner.setIsLiked(isLiked);
+
+        validateMatch(memberId, chatInfoPartner);
+        return ChatInfoResponse.of(chatInfoPartner, chatMessages);
+    }
+
+    private void validateMatch(Long memberId, ChatInfoPartner chatInfoPartner) {
+        if (!isMatched(memberId, chatInfoPartner.getId())) {
+            chatInfoPartner.hideName();
+        }
+    }
+
+    private boolean isMatched(Long memberId, Long partnerId) {
+        return likeRepository.existsLike(memberId, partnerId) && likeRepository.existsLike(partnerId, memberId);
+    }
+
+    private List<Long> getMatched(List<Member> memberList, List<Long> likerIds) {
+        return memberList.stream()
+                .map(Member::getId)
+                .filter(likerIds::contains)
+                .toList();
+    }
 }
