@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.chat.dto.response;
 
+import com.codesquad.controlG.domain.chat.entity.ChatMessage;
 import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,5 +23,15 @@ public class ChatInfoMessages {
         this.message = message;
         this.sentAt = sentAt;
         this.isRead = isRead;
+    }
+
+    public static ChatInfoMessages from(ChatMessage chatMessage) {
+        return ChatInfoMessages.builder()
+                .id(chatMessage.getId())
+                .senderId(chatMessage.getSender().getId())
+                .message(chatMessage.getMessage())
+                .sentAt(chatMessage.getSentAt())
+                .isRead(chatMessage.isRead())
+                .build();
     }
 }

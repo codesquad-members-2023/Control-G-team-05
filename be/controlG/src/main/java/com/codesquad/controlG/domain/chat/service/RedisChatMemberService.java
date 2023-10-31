@@ -27,6 +27,6 @@ public class RedisChatMemberService {
     }
 
     public int getRedisMemberSize(Long chatRoomId) {
-        return redisChatMemberRepository.countByChatRoomId(chatRoomId);
+        return redisChatMemberRepository.findByChatRoomId(chatRoomId).size();
     }
 }
