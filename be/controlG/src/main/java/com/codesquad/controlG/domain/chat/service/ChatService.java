@@ -76,7 +76,7 @@ public class ChatService {
             Long count = countNewMessage.getOrDefault(chatRoom.getChatRoomId(), 0L);
             chatRoom.assignNewMessageCount(count);
             if (!matchedMembers.contains(chatRoom.getPartner().getId())) {
-                chatRoom.getPartner().hideName();
+                chatRoom.getPartner().hideInfo();
             }
         });
         return chatList;
@@ -84,7 +84,7 @@ public class ChatService {
 
     public ChatInfoResponse getChatInfo(Long chatRoomId, Long memberId) {
         ChatInfoPartner chatInfoPartner = chatMessageRepository.getChatInfoPartner(chatRoomId, memberId);
-        List<ChatInfoMessages> chatMessages = chatMessageRepository.getChatMessages(chatRoomId);
+        List<ChatInfoMessages> chatMessages = chatMessageRepository.getChatMessages(chatRoomId, memberId);
 
         boolean isLiked = likeRepository.existsLike(memberId, chatInfoPartner.getId());
         chatInfoPartner.setIsLiked(isLiked);
@@ -99,7 +99,7 @@ public class ChatService {
         }
     }
 
-    private boolean isMatched(Long memberId, Long partnerId) {
+    public boolean isMatched(Long memberId, Long partnerId) {
         return likeRepository.existsLike(memberId, partnerId) && likeRepository.existsLike(partnerId, memberId);
     }
 

@@ -10,5 +10,5 @@ public interface ChatMessageQueryDslRepository {
 
     public ChatInfoPartner getChatInfoPartner(Long chatRoomId, Long memberId);
 
-    public List<ChatInfoMessages> getChatMessages(Long chatRoomId);
+    public List<ChatInfoMessages> getChatMessages(Long chatRoomId, Long memberId);
 }

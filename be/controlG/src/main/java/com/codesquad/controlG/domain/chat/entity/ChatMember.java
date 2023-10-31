@@ -42,4 +42,18 @@ public class ChatMember {
         this.lastMessageId = lastMessageId;
         this.isExit = isExit;
     }
+
+    public static ChatMember of(ChatRoom chatRoom, Member member) {
+        return ChatMember.builder()
+                .chatRoom(chatRoom)
+                .member(member)
+                .lastMessageId(0L)
+                .isExit(false)
+                .build();
+    }
+
+    public void exit(Long lastMessageId) {
+        this.lastMessageId = lastMessageId;
+        this.isExit = true;
+    }
 }

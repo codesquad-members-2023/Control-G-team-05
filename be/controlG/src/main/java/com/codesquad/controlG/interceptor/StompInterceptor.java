@@ -3,6 +3,7 @@ package com.codesquad.controlG.interceptor;
 import static com.codesquad.controlG.filter.util.RequestParser.extractAccessTokenFromAccessor;
 
 import com.codesquad.controlG.domain.auth.jwt.JwtProvider;
+import com.codesquad.controlG.domain.chat.repository.ChatMemberRepository;
 import com.codesquad.controlG.domain.chat.service.RedisChatMemberService;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.JwtException;
@@ -22,6 +23,7 @@ public class StompInterceptor implements ChannelInterceptor {
 
     private final JwtProvider jwtProvider;
     private final RedisChatMemberService redisChatMemberService;
+    private final ChatMemberRepository chatMemberRepository;
 
     @Override
     public Message<?> preSend(Message<?> message, MessageChannel channel) {

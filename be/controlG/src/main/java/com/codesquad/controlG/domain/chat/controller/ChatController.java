@@ -6,6 +6,8 @@ import com.codesquad.controlG.domain.chat.dto.response.ChatInfoResponse;
 import com.codesquad.controlG.domain.chat.dto.response.ChatListResponse;
 import com.codesquad.controlG.domain.chat.dto.response.ChatRandomResult;
 import com.codesquad.controlG.domain.chat.dto.response.ChatSendMessageResponse;
+import com.codesquad.controlG.domain.chat.service.ChatMemberService;
+import com.codesquad.controlG.domain.chat.service.ChatRoomService;
 import com.codesquad.controlG.domain.chat.service.ChatService;
 import com.codesquad.controlG.domain.chat.service.RedisChatQueueService;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +35,9 @@ public class ChatController {
     private final Map<String, DeferredResult<ResponseEntity<Map<String, Object>>>> que = new ConcurrentHashMap<>();
 
     private final SimpMessageSendingOperations simpMessageSendingOperations;
+    private final ChatMemberService chatMemberService;
     private final ChatService chatService;
+    private final ChatRoomService chatRoomService;
     private final RedisChatQueueService redisChatQueueService;
 
     @MessageMapping("/message")
@@ -98,5 +103,21 @@ public class ChatController {
                                                         @Auth Long memberId) {
         ChatInfoResponse chatInfoResponses = chatService.getChatInfo(chatRoomId, memberId);
         return ResponseEntity.ok().body(chatInfoResponses);
+    }
+
+    @DeleteMapping("/api/chats/{chatRoomId}")
+    public ResponseEntity<Void> deleteChatRoom(@PathVariable Long chatRoomId,
+                                               @Auth Long memberId) {
+        chatMemberService.deleteChatRoom(chatRoomId, memberId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/api/chats/{groupId}/{partnerId}")
+    public ResponseEntity<Map<String, Long>> createChatRoom(@PathVariable Long groupId,
+                                                            @PathVariable Long partnerId,
+                                                            @Auth Long memberId) {
+        Long chatRoomId = chatRoomService.createMatchingChatRoom(groupId, memberId, partnerId);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(Map.of("chatRoomId", chatRoomId));
     }
 }
