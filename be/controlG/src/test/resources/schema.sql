@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS chat_message (
                         chat_room_id BIGINT        NOT NULL,
                         sender_id	 BIGINT        NOT NULL,
                         message      VARCHAR(1000) NOT NULL,
-                        sent_at      TIMESTAMP     NOT NULL,
+                        sent_at      TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
                         is_read      BOOLEAN       NOT NULL DEFAULT 0,
                         PRIMARY KEY(id)
 );
