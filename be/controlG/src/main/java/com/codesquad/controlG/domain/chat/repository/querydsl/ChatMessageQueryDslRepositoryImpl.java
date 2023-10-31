@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.chat.repository.querydsl;
 
+import static com.codesquad.controlG.domain.chat.entity.QChatMember.chatMember;
 import static com.codesquad.controlG.domain.chat.entity.QChatMessage.chatMessage;
 import static com.codesquad.controlG.domain.chat.entity.QChatRoom.chatRoom;
 import static com.codesquad.controlG.domain.member.entity.QMember.member;
@@ -30,7 +31,7 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
     }
 
     @Override
-    public List<ChatInfoMessages> getChatMessages(Long chatRoomId) {
+    public List<ChatInfoMessages> getChatMessages(Long chatRoomId, Long memberId) {
         return queryFactory.select(Projections.fields(ChatInfoMessages.class,
                         chatMessage.id,
                         chatMessage.sender.id.as("senderId"),
@@ -38,14 +39,20 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
                         chatMessage.message,
                         chatMessage.isRead))
                 .from(chatMessage)
+                .join(chatMember)
+                .on(chatMember.chatRoom.eq(chatMessage.chatRoom))
                 .where(
-                        chatMessage.chatRoom.id.eq(chatRoomId)
-                ).fetch();
+                        chatMessage.chatRoom.id.eq(chatRoomId),
+                        chatMessage.id.gt(chatMember.lastMessageId),
+                        chatMember.member.id.eq(memberId)
+                )
+                .fetch();
     }
 
     @Override
     public ChatInfoPartner getChatInfoPartner(Long chatRoomId, Long memberId) {
         return queryFactory.select(Projections.fields(ChatInfoPartner.class,
+                        chatRoom.group.name.as("groupName"),
                         member.id,
                         member.name,
                         member.nickname,
@@ -57,7 +64,6 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
                         member.id.eq(getPartner(memberId))
                 )
                 .fetchOne();
-
     }
 
     private NumberExpression<Long> getPartner(Long memberId) {

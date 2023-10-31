@@ -13,7 +13,7 @@ public class ChatInfoMessages {
     private Long senderId;
     private String message;
     private Timestamp sentAt;
-    private boolean isRead;
+    private Boolean isRead;
 
     @Builder
     private ChatInfoMessages(Long id, Long senderId, String message, Timestamp sentAt, boolean isRead) {

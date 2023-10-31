@@ -8,14 +8,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChatInfoPartner {
 
+    private String groupName;
     private Long id;
     private String nickname;
     private String name;
     private String gender;
-    private boolean isLiked;
+    private Boolean isLiked;
 
     @Builder
-    private ChatInfoPartner(Long id, String nickname, String name, String gender, boolean isLiked) {
+    private ChatInfoPartner(String groupName, Long id, String nickname, String name, String gender, boolean isLiked) {
+        this.groupName = groupName;
         this.id = id;
         this.nickname = nickname;
         this.name = name;

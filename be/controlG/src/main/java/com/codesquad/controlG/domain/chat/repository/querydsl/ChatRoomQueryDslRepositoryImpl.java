@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.chat.repository.querydsl;
 
+import static com.codesquad.controlG.domain.chat.entity.QChatMember.chatMember;
 import static com.codesquad.controlG.domain.chat.entity.QChatMessage.chatMessage;
 import static com.codesquad.controlG.domain.chat.entity.QChatRoom.chatRoom;
 import static com.codesquad.controlG.domain.member.entity.QMember.member;
@@ -43,7 +44,8 @@ public class ChatRoomQueryDslRepositoryImpl implements ChatRoomQueryDslRepositor
                         Projections.fields(ChatListPartner.class,
                                 member.id,
                                 member.nickname,
-                                member.name).as("partner"),
+                                member.name,
+                                member.profileImg).as("partner"),
                         Projections.fields(ChatListMessages.class,
                                 chatMessage.message.as("lastMessage"),
                                 chatMessage.sentAt.as("lastSendTime")).as("messages")))
@@ -54,11 +56,18 @@ public class ChatRoomQueryDslRepositoryImpl implements ChatRoomQueryDslRepositor
                 .on(chatMessage.id.eq(JPAExpressions.select(chatMessage.id.max())
                         .from(chatMessage)
                         .where(chatMessage.chatRoom.id.eq(chatRoom.id))))
+                .join(chatMember)
+                .on(chatMember.chatRoom.eq(chatRoom))
                 .where(
                         equalMember(memberId),
-                        equalGroupId(groupId)
+                        equalGroupId(groupId),
+                        isExit(memberId)
                 )
                 .fetch();
+    }
+
+    private BooleanExpression isExit(Long memberId) {
+        return chatMember.member.id.eq(memberId).and(chatMember.isExit.eq(false));
     }
 
     @Override
