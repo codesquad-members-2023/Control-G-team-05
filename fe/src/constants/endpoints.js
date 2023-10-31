@@ -29,4 +29,5 @@ export const API_ENDPOINTS = {
   OAUTH_API:
     "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback",
   MATCHING: (groupId) => `${BASE_URL}/api/chats/random/${groupId}`,
+  CHAT_DETAIL: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
 };

@@ -13,7 +13,7 @@
 }
 
 .ownMessage {
-  width: 120px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -24,7 +24,7 @@
 }
 
 .opponentMessage {
-  width: 120px;
+  width: 140px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,16 +35,17 @@
 }
 
 .chatMessage {
-  width: 120px;
+  width: 140px;
 }
 
-.chatInformation {
+.chatInformationForMine {
   display: flex;
   justify-content: flex-end;
 }
 
-.time {
-  margin-right: 5px;
+.chatInformationForPartner {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .isRead,
