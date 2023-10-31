@@ -12,6 +12,7 @@ import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.CaseBuilder;
+import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
@@ -48,10 +49,7 @@ public class ChatRoomQueryDslRepositoryImpl implements ChatRoomQueryDslRepositor
                                 chatMessage.sentAt.as("lastSendTime")).as("messages")))
                 .from(chatRoom)
                 .leftJoin(member)
-                .on(member.id.eq(new CaseBuilder()
-                        .when(chatRoom.member1.id.eq(memberId))
-                        .then(chatRoom.member2.id)
-                        .otherwise(chatRoom.member1.id)))
+                .on(member.id.eq(getPartner(memberId)))
                 .leftJoin(chatMessage)
                 .on(chatMessage.id.eq(JPAExpressions.select(chatMessage.id.max())
                         .from(chatMessage)
@@ -80,6 +78,13 @@ public class ChatRoomQueryDslRepositoryImpl implements ChatRoomQueryDslRepositor
                         tuple -> tuple.get(0, Long.class),  // ChatRoomId
                         tuple -> tuple.get(1, Long.class)   // newMessageCount
                 ));
+    }
+
+    private NumberExpression<Long> getPartner(Long memberId) {
+        return new CaseBuilder()
+                .when(chatRoom.member1.id.eq(memberId))
+                .then(chatRoom.member2.id)
+                .otherwise(chatRoom.member1.id);
     }
 
     private BooleanExpression isSender(Long memberId) {

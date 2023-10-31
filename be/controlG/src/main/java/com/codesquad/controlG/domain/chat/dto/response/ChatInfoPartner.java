@@ -6,17 +6,25 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class ChatListPartner {
+public class ChatInfoPartner {
 
     private Long id;
     private String nickname;
     private String name;
+    private String gender;
+    private boolean isLiked;
 
     @Builder
-    private ChatListPartner(Long id, String nickname, String name) {
+    private ChatInfoPartner(Long id, String nickname, String name, String gender, boolean isLiked) {
         this.id = id;
         this.nickname = nickname;
         this.name = name;
+        this.gender = gender;
+        this.isLiked = isLiked;
+    }
+
+    public void setIsLiked(boolean isLiked) {
+        this.isLiked = isLiked;
     }
 
     public void hideName() {
