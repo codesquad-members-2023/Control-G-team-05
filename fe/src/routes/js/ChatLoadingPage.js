@@ -7,9 +7,8 @@ import { fetchChatMatching } from "../../api/chat/Matching";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
-function ChatLoadingPage({ groupId }) {
+function ChatLoadingPage() {
   const navigate = useNavigate();
-  const [chatRoomId, setChatRoomId] = useState(null);
   const [showRetryButton, setShowRetryButton] = useState(false);
   const [retry, setRetry] = useState(false); // 버튼 클릭 횟수를 추적하는 상태
 
@@ -18,18 +17,18 @@ function ChatLoadingPage({ groupId }) {
       console.log("매칭 요청 시작");
       const response = await fetchChatMatching(1);
       if (typeof response === "number") {
-        setChatRoomId(response);
-        navigate("/chats/detail");
+        // chatRoom 으로 바로 이동하도록 한다.
+        navigate(`/chats/${response}`);
       } else if (typeof response === "string") {
         setShowRetryButton(true);
       }
     }
     fetchAndSetChatRoomId();
-  }, [retry]); // 여기서는 groupId를 제거하고 retry만 남겨둡니다.
+  }, [retry, navigate]);
 
   const handleRetry = () => {
     setShowRetryButton(false);
-    setRetry((prev) => !prev); // 클릭할 때마다 retryCount를 증가시켜 useEffect 재실행
+    setRetry((prev) => !prev);
   };
 
   return (

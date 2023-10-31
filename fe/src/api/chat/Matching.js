@@ -20,15 +20,6 @@ export const fetchChatMatching = async (groupId) => {
     } else if (response.status === 422) {
       return "상대를 찾을수 없습니다.";
     }
-    // const data = await response.json();
-    // if (
-    //   data.message !== undefined &&
-    //   data.message === "상대를 찾을 수 없습니다."
-    // ) {
-    //   return "상대를 찾을수 없습니다.";
-    // } else if (data.chatRoomId !== undefined) {
-    //   return data.chatRoomId;
-    // }
   } catch (err) {
     console.error("Error:", err);
     throw err;

@@ -1,8 +1,21 @@
 import React from "react";
 import styles from "../css/ChatDetailTopBar.module.css";
 import { Link } from "react-router-dom";
+import { fetchMemberLike } from "../../api/member/MemberLike";
 
-function ChatDetailTopBar({ groupName, gender, opponentName }) {
+function ChatDetailTopBar({
+  groupName,
+  gender,
+  opponentName,
+  isLiked,
+  setIsLiked,
+  partnerId,
+}) {
+  const handleClick = () => {
+    setIsLiked((isLiked) => !isLiked); // 현재 상태를 기반으로 토글
+    fetchMemberLike(partnerId); // 좋아요 상태를 서버에 업데이트
+  };
+
   return (
     <div className={styles.topBar}>
       <div className={styles.groupName}>{groupName}</div>
@@ -15,9 +28,7 @@ function ChatDetailTopBar({ groupName, gender, opponentName }) {
               className={styles.exitButton}
             />
           </Link>
-          <div
-            className={gender === "male" ? styles.maleDot : styles.femaleDot}
-          />
+          <div className={gender === "M" ? styles.maleDot : styles.femaleDot} />
         </div>
 
         <div className={styles.center}>
@@ -28,7 +39,10 @@ function ChatDetailTopBar({ groupName, gender, opponentName }) {
             <img
               alt=""
               src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/0d2de4a3-3ab8-4be8-a409-918745cc0538_1697439260688299579?Expires=-62135596800&Signature=TyZPkUN2hefmsrIgWY~-hxX8aySBTcxK8uBwGUnl4~V5bch9ktxqzZyOGtrpY9bzlaBfY8eRTn126AHfyxCs9z5TnSqK3G1a17G2IbDHBjod7y-D3Urp~jQxGHVXZyjg1CQlZGbuafso0xorMuo8XdFvmh-AEoOBXqBCdOJ6RxE62OLhbFFeimhmGz-gRoycVpb62O57FHsTQQQpuVSwBI-XpigMAy-puV52yOoB~iZPKpwOr14xkG~ZieVhOsh07d-5F0UTRc-P33xqmmA1PN4XiktpqOnsdMn8CP5wnPcB4LGEkp1vQCYup7r2onTVU2ssYZt4XSW3gJjbP37xYg__&Key-Pair-Id=K1P54FZWCHCL6J"
-              className={styles.heartIcon}
+              className={
+                styles.heartIcon + (isLiked ? " " + styles.heartIconActive : "")
+              }
+              onClick={handleClick}
             />
             <img
               alt=""

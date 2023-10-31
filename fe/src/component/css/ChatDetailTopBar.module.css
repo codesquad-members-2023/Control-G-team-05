@@ -39,7 +39,7 @@
   background-color: blue;
 }
 .femaleDot {
-  background-color: red;
+  background-color: #ff0000;
 }
 
 .opponentName {
@@ -59,6 +59,11 @@
   height: 18px;
   width: 18px;
   margin-top: 3px;
+}
+
+.heartIconActive {
+  filter: invert(35%) sepia(95%) saturate(7498%) hue-rotate(356deg)
+    brightness(103%) contrast(120%);
 }
 
 .left {

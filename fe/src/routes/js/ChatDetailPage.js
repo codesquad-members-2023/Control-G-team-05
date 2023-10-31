@@ -1,53 +1,54 @@
+import { useParams } from "react-router-dom";
 import ChatDetailTopBar from "../../component/js/ChatDetailTopBar";
 import ChatMessageBox from "../../component/js/ChatMessageBox";
 import styles from "../css/ChatDetailPage.module.css";
 import { TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import { fetchChatDetail } from "../../api/chat/ChatDetail";
+import react from "react";
+import { ParseJwt } from "../../utils/ParseJwt";
 
 function ChatDetailPage() {
+  const { chatRoomId } = useParams();
+  const [partnerInfo, setPartnerInfo] = useState([]);
+  const [messages, setMessages] = useState([]);
+  //채팅 상대방에게 좋아요를 눌렀는지 확인하는 state
+  const [isLiked, setIsLike] = useState();
+
+  useEffect(() => {
+    fetchChatDetail(chatRoomId).then((data) => {
+      setPartnerInfo(data.partner);
+      console.log(data);
+      setIsLike(data.partner.isLiked);
+      setMessages(data.messages);
+    });
+  }, [chatRoomId]);
+
+  const accessToken = localStorage.getItem("accessToken");
+  const decodedPayload = ParseJwt(accessToken);
+  const { memberId } = decodedPayload;
+
   return (
     <div className={styles.div}>
       <ChatDetailTopBar
-        groupName="code squad"
-        gender="male"
-        opponentName="charlie"
+        groupName={partnerInfo.groupName}
+        gender={partnerInfo.gender}
+        opponentName={partnerInfo.nickname}
+        partnerId={partnerInfo.id}
+        isLiked={isLiked}
+        setIsLiked={setIsLike}
       />
       <div className={styles.chatArea}>
-        <ChatMessageBox
-          isOwnMessage={false}
-          message="hello light"
-          time="2:46"
-          isRead="Read"
-        />
-        <ChatMessageBox
-          isOwnMessage={true}
-          message="hello charlie"
-          time="2:47"
-          isRead="Read"
-        />
-        <ChatMessageBox
-          isOwnMessage={true}
-          message="bye charlie"
-          time="2:48"
-          isRead="Read"
-        />
-        <ChatMessageBox
-          isOwnMessage={false}
-          message="bye light"
-          time="2:49"
-          isRead="Read"
-        />
-        <ChatMessageBox
-          isOwnMessage={true}
-          message="bye charlie"
-          time="2:48"
-          isRead="Read"
-        />
-        <ChatMessageBox
-          isOwnMessage={false}
-          message="bye light"
-          time="2:49"
-          isRead="Read"
-        />
+        {messages.map((message) => (
+          <react.Fragment key={message.id}>
+            <ChatMessageBox
+              isOwnMessage={message.senderId === memberId}
+              message={message.message}
+              time={message.sentAt}
+              isRead={message.isRead}
+            />
+          </react.Fragment>
+        ))}
       </div>
       <div className={styles.chatDetailBottomBar}>
         <TextField

@@ -1,5 +1,5 @@
 import { fetchMemberBlock } from "../api/member/MemberBlock";
-import { fetchMemberUnlike } from "../api/member/MemberUnlike";
+import { fetchMemberLike } from "../api/member/MemberLike";
 
 export const CONSTANT = {
   PROFILE_MODAL_LIKE_ICON_LIST: (memberId) => [
@@ -11,7 +11,7 @@ export const CONSTANT = {
     {
       src: "https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/f94bedc1-f531-4e16-a4b4-2307d4c73689_1697725729807050738?Expires=-62135596800&Signature=HcIvFWAsoQcdBr2sHCSY0BwVA~3bo~JsUppvKhEic~6YWC4aL9zN111uSnxpEcWwn4n-rgeoiUUGD0asgiS8mUYvcrfNY9SOAcfKmlhsNVvU0fxCbD8zNx75LIVfjzPYm2BvSJP8CZ2Fo77zE2NsaDGZ8C8GbyoEZqY80QG-X52RyPkNDwqfeWtJcI2S6Hso3~yJ18doLyCgx~xXSW7BFoPDJPepdUFexsLZCYQxpFGP9NVyyGUVvSVR-WI9jc9t~sz9tUUahIATCo9uFBKnmRh-I4OKk14qz03VSEl3Lypx-Q8rPxqDqI0HM--VV901kleWm13BmhaZ~82qtxb1PA__&Key-Pair-Id=K1P54FZWCHCL6J",
       label: "Unlike",
-      apiRequest: () => fetchMemberUnlike(memberId),
+      apiRequest: () => fetchMemberLike(memberId),
     },
   ],
   PROFILE_MODAL_MATCHED_ICON_LIST: (memberId) => [
@@ -28,7 +28,7 @@ export const CONSTANT = {
     {
       src: "https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/f94bedc1-f531-4e16-a4b4-2307d4c73689_1697725729807050738?Expires=-62135596800&Signature=HcIvFWAsoQcdBr2sHCSY0BwVA~3bo~JsUppvKhEic~6YWC4aL9zN111uSnxpEcWwn4n-rgeoiUUGD0asgiS8mUYvcrfNY9SOAcfKmlhsNVvU0fxCbD8zNx75LIVfjzPYm2BvSJP8CZ2Fo77zE2NsaDGZ8C8GbyoEZqY80QG-X52RyPkNDwqfeWtJcI2S6Hso3~yJ18doLyCgx~xXSW7BFoPDJPepdUFexsLZCYQxpFGP9NVyyGUVvSVR-WI9jc9t~sz9tUUahIATCo9uFBKnmRh-I4OKk14qz03VSEl3Lypx-Q8rPxqDqI0HM--VV901kleWm13BmhaZ~82qtxb1PA__&Key-Pair-Id=K1P54FZWCHCL6J",
       label: "Unlike",
-      apiRequest: () => fetchMemberUnlike(memberId),
+      apiRequest: () => fetchMemberLike(memberId),
     },
   ],
   PROFILE_MODAL_BUTTON:
