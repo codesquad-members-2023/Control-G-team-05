@@ -13,9 +13,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicInsert
 @Entity
 public class ChatMessage {
 
@@ -33,6 +36,7 @@ public class ChatMessage {
 
     private String message;
 
+    @CreationTimestamp
     private Timestamp sentAt;
 
     private boolean isRead;
