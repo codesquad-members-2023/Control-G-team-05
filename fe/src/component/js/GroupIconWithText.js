@@ -3,11 +3,20 @@ import styles from "../css/GroupIconWithText.module.css";
 
 //chats 에서 상단에 그룹 아이콘들을 보여주는데 거기서 사용하는 component
 
-function GroupIconWithText({ imgSrc, groupName }) {
+function GroupIconWithText({ imgSrc, groupName, clickedGroupId, groupId }) {
+  const groupClicked = () => {
+    clickedGroupId(groupId);
+  };
+
   return (
     <div className={styles.group}>
       <div className={styles.avatar}>
-        <img className={styles.groupIcon} alt="" src={imgSrc} />
+        <img
+          className={styles.groupIcon}
+          alt=""
+          src={imgSrc}
+          onClick={groupClicked}
+        />
       </div>
       <div className={styles.groupName}>{groupName}</div>
     </div>

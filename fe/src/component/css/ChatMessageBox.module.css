@@ -13,30 +13,31 @@
 }
 
 .ownMessage {
-  width: 140px;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 9px 9px 7px 9px;
+  padding: 9px 9px 9px 9px;
   gap: var(--gap-9xs);
   border-radius: var(--br-base) var(--br-base) 0 var(--br-base);
   background-color: var(--color-mediumblue);
 }
 
 .opponentMessage {
-  width: 140px;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: var(--padding-3xs);
+  padding: 9px 9px 9px 9px;
   gap: var(--gap-9xs);
   border-radius: var(--br-base) var(--br-base) var(--br-base) 0;
   background-color: var(--color-darkgray-100);
 }
 
 .chatMessage {
-  width: 140px;
-  margin-bottom: -5px;
+  width: auto;
+  max-width: 200px;
+  margin-bottom: 2px;
 }
 
 .chatInformationForMine {

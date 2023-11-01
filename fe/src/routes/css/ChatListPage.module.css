@@ -1,19 +1,31 @@
 .groupListContainer {
-  position: absolute;
-  top: 90px;
-  left: 0;
   width: 375px;
-  height: 108px;
-  text-align: center;
+  height: 100px;
   background-color: var(--color-ghostwhite);
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-left: 24px;
+  overflow-x: auto;
+  white-space: nowrap; /* 내부 인라인 또는 인라인-블록 요소들을 줄 바꿈 없이 나열 */
+  margin-top: 100px;
+  padding: 0px 0px 0px 5px;
+}
+
+.groupList {
+  display: flex;
+  width: auto;
+}
+
+.groupListContainer::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
 }
 
 .chatList {
   position: absolute;
+  width: 330px;
+  height: 510px;
   top: 222px;
   left: 24px;
   display: flex;
@@ -21,11 +33,18 @@
   align-items: flex-start;
   justify-content: flex-start;
   font-size: var(--font-size-base);
+  overflow-y: auto;
 }
 
-.div {
-  background-color: var(--color-white);
-  overflow: hidden;
+.chatList::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  background: transparent;
+}
+
+.link {
+  color: inherit; /* 링크 색상을 부모 요소의 색상과 동일하게 설정 */
+  text-decoration: none; /* 밑줄 제거 */
 }
 
 .div {
@@ -37,4 +56,6 @@
   font-size: var(--text-x-small-regular-size);
   color: var(--color-gray-100);
   font-family: var(--subheading-01);
+  background-color: var(--color-white);
+  overflow-x: hidden;
 }
