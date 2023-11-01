@@ -34,4 +34,6 @@ export const API_ENDPOINTS = {
   WEB_SOCKET: `${BASE_WEB_SOCKET_URL}/ws`,
   STOMP_SUBSCRIBE: (chatRoomId) => `/sub/chatRoom/${chatRoomId}`,
   STOMP_SEND: `/pub/message`,
+  CHAT_LIST: (groupId) =>
+    `${BASE_URL}/api/chats${groupId ? `?groupId=${groupId}` : ""}`,
 };
