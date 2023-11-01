@@ -24,9 +24,9 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
     public void updateIsRead(Long chatRoomId) {
         queryFactory.update(chatMessage)
                 .set(chatMessage.isRead, true)
-                .where(isUnread()
-                        .and(equalChatRoomId(chatRoomId))
-                        .and(chatMessage.id.gt(0)))
+                .where(isUnread(),
+                        equalChatRoomId(chatRoomId),
+                        chatMessage.id.gt(0))
                 .execute();
     }
 

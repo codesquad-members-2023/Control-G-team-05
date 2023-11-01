@@ -83,6 +83,7 @@ public class ChatService {
     }
 
     public ChatInfoResponse getChatInfo(Long chatRoomId, Long memberId) {
+        chatMessageRepository.updateIsRead(chatRoomId);
         ChatInfoPartner chatInfoPartner = chatMessageRepository.getChatInfoPartner(chatRoomId, memberId);
         List<ChatInfoMessages> chatMessages = chatMessageRepository.getChatMessages(chatRoomId, memberId);
 
