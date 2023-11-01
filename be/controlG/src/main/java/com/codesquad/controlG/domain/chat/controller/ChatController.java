@@ -44,7 +44,7 @@ public class ChatController {
     public void sendMessage(MessageRequest messageRequest) {
         ChatSendMessageResponse chatSendMessageResponse = chatService.sendMessage(messageRequest);
         // 채널아이디 만들기
-        simpMessageSendingOperations.convertAndSend("/sub/room/" + messageRequest.getChatRoomId(),
+        simpMessageSendingOperations.convertAndSend("/sub/chatRoom/" + messageRequest.getChatRoomId(),
                 chatSendMessageResponse);
     }
 

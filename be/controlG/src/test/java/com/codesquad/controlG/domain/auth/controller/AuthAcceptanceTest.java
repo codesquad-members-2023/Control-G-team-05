@@ -8,6 +8,7 @@ import com.codesquad.controlG.domain.auth.Oauth.dto.UserProfile;
 import com.codesquad.controlG.domain.auth.dto.request.AuthSignUpRequest;
 import com.codesquad.controlG.domain.auth.dto.response.AuthLoginResponse;
 import com.codesquad.controlG.domain.auth.jwt.Jwt;
+import com.codesquad.controlG.domain.image.ImageFile;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
@@ -206,7 +207,6 @@ class AuthAcceptanceTest extends AcceptanceTestSupport {
         AuthSignUpRequest signUpRequest = createSignUpRequest(mockMultipartFile, TEST_NICKNAME);
         Map<String, Object> signUpMap = createSignUpMap();
         AuthLoginResponse authLoginResponse = authService.signUp(signUpRequest, signUpMap);
-        String accessToken = authLoginResponse.getAccessToken();
         String refreshToken = authLoginResponse.getRefreshToken();
 
         // when
