@@ -82,6 +82,7 @@ public class ChatService {
         return chatList;
     }
 
+    @Transactional
     public ChatInfoResponse getChatInfo(Long chatRoomId, Long memberId) {
         chatMessageRepository.updateIsRead(chatRoomId);
         ChatInfoPartner chatInfoPartner = chatMessageRepository.getChatInfoPartner(chatRoomId, memberId);
