@@ -24,7 +24,10 @@ function App() {
           <Route path="/main" element={<MainPage />}></Route>
           <Route path="/chats" element={<ChatListPage />}></Route>
           <Route path="/chats/:chatRoomId" element={<ChatDetailPage />}></Route>
-          <Route path="/chats/find" element={<ChatLoadingPage />}></Route>
+          <Route
+            path="/chats/find/:groupId"
+            element={<ChatLoadingPage />}
+          ></Route>
           <Route path="/members" element={<ProfilePage />}></Route>
           <Route path="/groups" element={<SearchPage />}></Route>
           <Route path="/groups/create" element={<AddGroupPage />}></Route>

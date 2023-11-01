@@ -8,12 +8,15 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchMemberGroupList } from "../../api/group/MemberGroupList";
 import { fetchChatList } from "../../api/chat/ChatList";
+import { fetchSSEConnection } from "../../api/chat/SSE";
 
 function ChatListPage() {
   const [memberGroupList, setMemberGroupList] = useState([]);
   const [memberChatList, setMemberChatList] = useState([]);
   const [clickedGroupId, setClickedGroupId] = useState(null);
+  const [refreshChatList, setRefreshChatList] = useState(false);
 
+  // 최초 그룹과 채팅목록을 가져오는 useEffect
   useEffect(() => {
     const fetchData = async () => {
       const groupList = await fetchMemberGroupList();
@@ -25,16 +28,26 @@ function ChatListPage() {
     fetchData();
   }, []);
 
+  // 채팅목록을 가져오는 useEffect (그룹선택시, SSE refresh 요청이 올시 사용한다.)
   useEffect(() => {
     const fetchData = async () => {
-      if (clickedGroupId) {
-        const chatList = await fetchChatList(clickedGroupId);
-        setMemberChatList(chatList);
-        console.log(chatList);
-      }
+      const chatList = await fetchChatList(clickedGroupId);
+      setMemberChatList(chatList);
+      console.log(chatList);
     };
     fetchData();
-  }, [clickedGroupId]);
+  }, [clickedGroupId, refreshChatList]);
+
+  //SSE 연결
+  useEffect(() => {
+    // SSE 연결 시작
+    const closeSSEConnection = fetchSSEConnection(setRefreshChatList);
+
+    // 컴포넌트가 언마운트될 때 SSE 연결을 닫음
+    return () => {
+      closeSSEConnection();
+    };
+  }, []);
 
   return (
     <div className={styles.div}>
