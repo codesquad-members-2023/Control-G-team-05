@@ -41,7 +41,6 @@ public class AuthService {
     private final TokenService tokenService;
     private final RedisUtil redisUtil;
 
-
     @Transactional
     public AuthLoginResponse login(String providerName, String code) {
         OauthProvider provider = inMemoryProviderRepository.findByProviderName(providerName);
