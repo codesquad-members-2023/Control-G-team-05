@@ -58,6 +58,7 @@ public class ChatService {
         }
         // 3. SSE 재요청 알림 보내기
         Long receiverId = chatRoom.partnerId(sender.getId());
+        chatRoomRepository.updateExit(chatRoom.getId(), sender.getId(), receiverId);
 
         notificationService.refreshChatRoomList(receiverId);
 

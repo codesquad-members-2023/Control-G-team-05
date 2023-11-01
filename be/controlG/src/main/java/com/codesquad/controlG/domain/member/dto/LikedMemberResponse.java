@@ -31,7 +31,6 @@ public class LikedMemberResponse {
         return LikedMemberResponse.builder()
                 .id(member.getId())
                 .nickname(member.getNickname())
-                .profileImg(member.getProfileImg())
                 .introduction(member.getIntroduction())
                 .build();
     }
