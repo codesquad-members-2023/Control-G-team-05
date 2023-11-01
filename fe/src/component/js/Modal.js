@@ -14,7 +14,9 @@ function PopupMessage({
   const modalIconList =
     selected === "like"
       ? CONSTANT.PROFILE_MODAL_LIKE_ICON_LIST(memberId)
-      : CONSTANT.PROFILE_MODAL_MATCHED_ICON_LIST(memberId);
+      : selected === "chat"
+      ? CONSTANT.CHAT_MODAL_ICON_LIST(memberId) // "chat"을 선택했을 때의 리스트
+      : CONSTANT.PROFILE_MODAL_MATCHED_ICON_LIST(memberId); // 다른 경우의 리스트
 
   const handleModalIconButtonClick = async (icon) => {
     await icon.apiRequest();

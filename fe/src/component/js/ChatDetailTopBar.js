@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/ChatDetailTopBar.module.css";
 import { Link } from "react-router-dom";
 import { fetchMemberLike } from "../../api/member/MemberLike";
+import PopupMessage from "./Modal";
 
 function ChatDetailTopBar({
   groupName,
@@ -11,6 +12,7 @@ function ChatDetailTopBar({
   setIsLiked,
   partnerId,
 }) {
+  const [modalState, setModalState] = useState(false);
   const handleClick = () => {
     setIsLiked((isLiked) => !isLiked); // 현재 상태를 기반으로 토글
     fetchMemberLike(partnerId); // 좋아요 상태를 서버에 업데이트
@@ -47,10 +49,17 @@ function ChatDetailTopBar({
             <img
               alt=""
               src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/369432c8-ec57-4e5e-9979-2b2d520f13ea_1697439260688393490?Expires=-62135596800&Signature=kd0Oc4C5rQjmEzs9749WqaWPpTwbXyFIreDL4N95HnWvn57nM40qSOXJZP3SfUSSAd2nm1Iu6QDqjb3lcAqONFr4Xi~1v7FORqh6jgg3Og22q5KJPiKwORxysP-~17kRTvga8ARwYjZLk~YLBlyuBvxMcIbe~n9CJyS0jV3VHjrMItu7yHxiavpzkP~HdWctZiaEY0DX4Fc4Dd89QH11QXTFfM78~bs7tFLZ9jqY9UeBVbEUqLrRewfWp6qio2otK2Av6Jx27GXgqPXAMWlQvqrokqQGUOEeWG4DVgvh2pvM-l~8AOM5i9SDIjmtQOQH9Lus-jO9o9ESPULM-KANEQ__&Key-Pair-Id=K1P54FZWCHCL6J"
+              onClick={() => setModalState((modalState) => !modalState)}
             />
           </div>
         </div>
       </div>
+      <PopupMessage
+        memberId={partnerId}
+        selected="chat"
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </div>
   );
 }

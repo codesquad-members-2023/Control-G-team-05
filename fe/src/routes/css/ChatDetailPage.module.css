@@ -1,8 +1,9 @@
 .chatArea {
   width: 375px;
-  height: 670px;
+  height: 655px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .chatDetailBottomBar {
@@ -31,4 +32,9 @@
 
 .sendIcon {
   margin-bottom: 4px;
+}
+
+.chatArea::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

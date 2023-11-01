@@ -1,4 +1,5 @@
 export const BASE_URL = "http://localhost:8080";
+export const BASE_WEB_SOCKET_URL = "ws://localhost:8080";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
     `${BASE_URL}/api/login/oauth/naver?code=${queryString}`,
@@ -30,4 +31,7 @@ export const API_ENDPOINTS = {
     "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://localhost:3000/callback",
   MATCHING: (groupId) => `${BASE_URL}/api/chats/random/${groupId}`,
   CHAT_DETAIL: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
+  WEB_SOCKET: `${BASE_WEB_SOCKET_URL}/ws`,
+  STOMP_SUBSCRIBE: (chatRoomId) => `/sub/chatRoom/${chatRoomId}`,
+  STOMP_SEND: `/pub/message`,
 };

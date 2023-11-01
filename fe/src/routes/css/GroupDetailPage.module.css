@@ -11,3 +11,8 @@
   color: var(--color-gray-100);
   font-family: var(--subheading-01);
 }
+
+.chatArea::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
