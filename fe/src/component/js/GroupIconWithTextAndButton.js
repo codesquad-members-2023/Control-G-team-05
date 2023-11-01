@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../css/GroupIconWithTextAndButton.module.css";
 import { Link } from "react-router-dom";
 
-function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
+function GroupItem({ groupImgSrc, groupName, vectorIconSrc, groupId }) {
   return (
     <div className={styles.groupContainer}>
       <div className={styles.avatar}>
@@ -11,7 +11,7 @@ function GroupItem({ groupImgSrc, groupName, vectorIconSrc }) {
       <div className={styles.groupDetailContainer}>
         <div className={styles.groupName}>{groupName}</div>
         {vectorIconSrc && (
-          <Link to="/chats/find">
+          <Link to={`/chats/find/${groupId}`}>
             <img className={styles.vectorIcon} alt="" src={vectorIconSrc} />
           </Link>
         )}

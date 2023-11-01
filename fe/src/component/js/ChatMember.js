@@ -20,7 +20,10 @@ function ChatMember({
     const minutes = timeDifferenceInMinutes % 60;
 
     // 시간과 분으로 변환된 문자열을 반환
-    return hours ? `${hours}h ${minutes}m` : `${minutes}m`;
+    if (hours > 0 && minutes > 0) {
+      return hours ? `${hours}h ${minutes}m` : `${minutes}m`;
+    }
+    return "0m";
   };
 
   const timeDifferenceInMinutes = calculateTimeDifferenceInMinutes(time);

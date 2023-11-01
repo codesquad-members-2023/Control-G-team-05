@@ -5,9 +5,10 @@ import PuffLoader from "react-spinners/PuffLoader";
 import { useEffect, useState } from "react";
 import { fetchChatMatching } from "../../api/chat/Matching";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ChatLoadingPage() {
+  const { groupId } = useParams();
   const navigate = useNavigate();
   const [showRetryButton, setShowRetryButton] = useState(false);
   const [retry, setRetry] = useState(false); // 버튼 클릭 횟수를 추적하는 상태
@@ -15,7 +16,7 @@ function ChatLoadingPage() {
   useEffect(() => {
     async function fetchAndSetChatRoomId() {
       console.log("매칭 요청 시작");
-      const response = await fetchChatMatching(1);
+      const response = await fetchChatMatching(groupId);
       if (typeof response === "number") {
         // chatRoom 으로 바로 이동하도록 한다.
         navigate(`/chats/${response}`);
@@ -24,7 +25,7 @@ function ChatLoadingPage() {
       }
     }
     fetchAndSetChatRoomId();
-  }, [retry, navigate]);
+  }, [retry, navigate, groupId]);
 
   const handleRetry = () => {
     setShowRetryButton(false);

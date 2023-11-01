@@ -36,4 +36,5 @@ export const API_ENDPOINTS = {
   STOMP_SEND: `/pub/message`,
   CHAT_LIST: (groupId) =>
     `${BASE_URL}/api/chats${groupId ? `?groupId=${groupId}` : ""}`,
+  SSH_CONNECTION: (memberId) => `${BASE_URL}/connect/${memberId}`,
 };

@@ -38,6 +38,7 @@ function MainPage() {
           {filteredGroups.map((group, index) => (
             <react.Fragment key={group.id}>
               <GroupIconWithTextAndButton
+                groupId={group.id}
                 groupImgSrc={group.img}
                 groupName={group.name}
                 vectorIconSrc={CONSTANT.RANDOM_CHAT_START_BUTTON}
