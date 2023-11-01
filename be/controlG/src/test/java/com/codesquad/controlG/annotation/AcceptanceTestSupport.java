@@ -27,6 +27,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 public abstract class AcceptanceTestSupport {
 
     protected static final String JWT_TOKEN_PREFIX = "Bearer ";
+    protected static final String TEST_EMAIL = "test@test.com";
+    protected static final String TEST_GENDER = "M";
+    protected static final String TEST_NAME = "라이트";
+    protected static final String TEST_NICKNAME = "test";
+    protected static final String TEST_BIRTHDAY = "06-18";
+    protected static final String TEST_BIRTH_YEAR = "1998";
 
     @Autowired
     protected JwtProvider jwtProvider;
