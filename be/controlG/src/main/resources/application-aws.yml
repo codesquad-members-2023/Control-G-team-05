@@ -1,11 +1,10 @@
 cloud:
   aws:
-    credentials:
-      accessKey:
-      secretKey:
     s3:
-      bucket:
+      bucket: controlg
     region:
       static: ap-northeast-2
     stack:
       auto: false
+    credentials:
+      instanceProfile: true
