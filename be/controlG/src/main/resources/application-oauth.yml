@@ -7,7 +7,7 @@ oauth2:
     naver:
       client-id: ENC(Lop4pyjNeuOoPNgR16KUZkkb5Y3bJacCGwo5HYs+7Ck=)
       client-secret: ENC(AP8cl+Mq+EPQo+mm/CRhqiWOYlck44Et)
-      redirect-url: http://localhost:8080
+      redirect-url: https://controlg.store/callback
   provider:
     google:
       token-url: https://www.googleapis.com/oauth2/v4/token
