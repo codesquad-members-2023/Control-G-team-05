@@ -1,0 +1,25 @@
+.registerBtnParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.inner {
+  position: absolute;
+  top: 389px;
+  left: 29px;
+  height: 211px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+}
+
+.div {
+  position: relative;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  width: 375px;
+  height: 812px;
+  overflow-y: auto;
+}

@@ -1,0 +1,42 @@
+.chatArea {
+  width: 375px;
+  height: 655px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.chatDetailBottomBar {
+  background-color: var(--color-white);
+  position: absolute;
+  bottom: 0px;
+  height: auto;
+  min-height: 45px;
+  max-height: 100px;
+  display: flex;
+  gap: 7px;
+  padding: 10px;
+}
+
+.div {
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--br-5xl);
+  background-color: var(--color-ghostwhite);
+  height: 812px;
+  width: 375px;
+  font-size: var(--body-02-size);
+  color: var(--color-white);
+  font-family: var(--subheading-01);
+}
+
+.sendButton {
+  border: none;
+  background-color: transparent;
+  margin-bottom: 4px;
+}
+
+.chatArea::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

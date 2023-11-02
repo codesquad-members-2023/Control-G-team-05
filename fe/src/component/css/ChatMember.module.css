@@ -1,0 +1,95 @@
+.chatStack {
+  display: flex;
+  width: 327px;
+  height: 56px;
+  margin-bottom: 20px;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatarIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 5px;
+}
+
+.nickname {
+  font-weight: 600;
+  line-height: 24px;
+  width: auto;
+}
+
+.nameContainer {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+.name {
+  color: rgb(0, 0, 0, 0.5);
+  margin-left: 5px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-black);
+}
+.mAgo {
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+  line-height: 16px;
+  color: var(--color-black);
+  text-align: right;
+}
+
+.message {
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  width: 235px;
+}
+
+.notificationCount {
+  width: 10px;
+  height: 10px;
+  line-height: 16px;
+  font-size: 10px;
+}
+.notification {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #e94242;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.chatMessage {
+  position: absolute;
+  width: 259px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 2px;
+}
+
+.dataContainer {
+  position: absolute;
+  width: 259px;
+  height: 56px;
+  margin-left: 70px;
+}
+
+.chatMessage {
+  top: 26px;
+  left: 0;
+  height: 20px;
+  font-size: var(--text-body-bold-size);
+  color: var(--color-darkgray);
+}

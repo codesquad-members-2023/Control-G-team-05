@@ -1,0 +1,37 @@
+.groupContainer {
+  align-self: stretch;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-xs);
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+}
+
+.groupImg {
+  width: 80%;
+  height: 85.71%;
+  border-radius: var(--br-3xs);
+}
+
+.groupName {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 259px;
+}
+
+.groupDetailContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 259px;
+  height: 56px;
+}

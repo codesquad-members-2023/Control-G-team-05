@@ -1,0 +1,37 @@
+.bottomBar {
+  position: absolute;
+  width: 343px;
+  height: 10.22%;
+  width: 100%;
+  top: 89.78%;
+  background-color: var(--color-white);
+  box-shadow: 0-1px 24px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  font-size: var(--font-size-xs);
+  color: var(--color-darkgray);
+  font-family: var(--text-body-bold);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.supervisorAccountIcon {
+  height: 54.55%;
+  width: 41.38%;
+  color: inherit;
+}
+
+.link {
+  width: 60px;
+  height: 50px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.active {
+  filter: brightness(0.5);
+}

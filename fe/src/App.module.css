@@ -1,0 +1,10 @@
+.div {
+  background-color: var(--color-white);
+  position: relative;
+  border-radius: var(--br-5xl);
+  width: 375px;
+  height: 50.75rem;
+  font-size: 13px;
+  color: var(--color-gray-100);
+  font-family: var(--subheading-01);
+}

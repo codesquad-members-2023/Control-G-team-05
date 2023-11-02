@@ -1,0 +1,60 @@
+.opponentMessageContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.ownMessageContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.ownMessage {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 9px 9px 9px 9px;
+  gap: var(--gap-9xs);
+  border-radius: var(--br-base) var(--br-base) 0 var(--br-base);
+  background-color: var(--color-mediumblue);
+}
+
+.opponentMessage {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 9px 9px 9px 9px;
+  gap: var(--gap-9xs);
+  border-radius: var(--br-base) var(--br-base) var(--br-base) 0;
+  background-color: var(--color-darkgray-100);
+}
+
+.chatMessage {
+  width: auto;
+  max-width: 200px;
+  margin-bottom: 2px;
+}
+
+.chatInformationForMine {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chatInformationForPartner {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.isRead,
+.time {
+  position: relative;
+  line-height: 1.5rem;
+  font-size: var(--text-x-small-regular-size);
+  line-height: 1rem;
+  font-family: var(--text-x-small-regular);
+}
