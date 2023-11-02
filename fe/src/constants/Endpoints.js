@@ -1,5 +1,4 @@
 export const BASE_URL = "https://controlg.store";
-export const BASE_URL_WITH_PORT = "https://controlg.store:8080";
 export const WEB_SOCKET_URL = "wss://controlg.store";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
@@ -37,6 +36,6 @@ export const API_ENDPOINTS = {
   STOMP_SEND: `/pub/message`,
   CHAT_LIST: (groupId) =>
     `${BASE_URL}/api/chats${groupId ? `?groupId=${groupId}` : ""}`,
-  SSH_CONNECTION: (memberId) => `${BASE_URL_WITH_PORT}/connect/${memberId}`,
+  SSH_CONNECTION: (memberId) => `${BASE_URL}/connect/${memberId}`,
   CHAT_ROOM_DELETE: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
 };
