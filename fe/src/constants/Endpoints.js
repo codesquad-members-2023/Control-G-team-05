@@ -1,9 +1,6 @@
-export const BASE_URL =
-  "http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com";
-export const BASE_URL_WITH_PORT =
-  "http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com:8080";
-export const WEB_SOCKET_URL =
-  "ws://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com:8080";
+export const BASE_URL = "https://controlg.store";
+export const BASE_URL_WITH_PORT = "http://controlg.store:8080";
+export const WEB_SOCKET_URL = "ws://controlg.store:8080";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
     `${BASE_URL}/api/login/oauth/naver?code=${queryString}`,
@@ -32,7 +29,7 @@ export const API_ENDPOINTS = {
   MEMBER_LIKE: (likedId) => `${BASE_URL}/api/members/${likedId}/likes`,
   MEMBER_BLOCK: (blockId) => `${BASE_URL}/api/members/${blockId}/blocks`,
   OAUTH_API:
-    "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com/callback",
+    "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://controlg.store/callback",
   MATCHING: (groupId) => `${BASE_URL}/api/chats/random/${groupId}`,
   CHAT_DETAIL: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
   WEB_SOCKET: `${WEB_SOCKET_URL}/ws`,
