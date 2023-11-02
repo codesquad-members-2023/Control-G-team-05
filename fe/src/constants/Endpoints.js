@@ -1,6 +1,6 @@
 export const BASE_URL = "https://controlg.store";
-export const BASE_URL_WITH_PORT = "http://controlg.store:8080";
-export const WEB_SOCKET_URL = "ws://controlg.store:8080";
+export const BASE_URL_WITH_PORT = "https://controlg.store:8080";
+export const WEB_SOCKET_URL = "wss://controlg.store";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
     `${BASE_URL}/api/login/oauth/naver?code=${queryString}`,
