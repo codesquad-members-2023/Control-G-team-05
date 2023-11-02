@@ -1,6 +1,8 @@
 export const BASE_URL =
   "http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com";
-export const BASE_WEB_SOCKET_URL =
+export const BASE_URL_WITH_PORT =
+  "http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com:8080";
+export const WEB_SOCKET_URL =
   "ws://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com:8080";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
@@ -33,11 +35,11 @@ export const API_ENDPOINTS = {
     "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=f_R370DxKoDfmyYZB2X0&redirect_uri=http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com/callback",
   MATCHING: (groupId) => `${BASE_URL}/api/chats/random/${groupId}`,
   CHAT_DETAIL: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
-  WEB_SOCKET: `${BASE_WEB_SOCKET_URL}/ws`,
+  WEB_SOCKET: `${WEB_SOCKET_URL}/ws`,
   STOMP_SUBSCRIBE: (chatRoomId) => `/sub/chatRoom/${chatRoomId}`,
   STOMP_SEND: `/pub/message`,
   CHAT_LIST: (groupId) =>
     `${BASE_URL}/api/chats${groupId ? `?groupId=${groupId}` : ""}`,
-  SSH_CONNECTION: (memberId) => `${BASE_URL}/connect/${memberId}`,
+  SSH_CONNECTION: (memberId) => `${BASE_URL_WITH_PORT}/connect/${memberId}`,
   CHAT_ROOM_DELETE: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
 };
