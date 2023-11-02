@@ -21,12 +21,13 @@ public class ChatMessageQueryDslRepositoryImpl implements ChatMessageQueryDslRep
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public void updateIsRead(Long chatRoomId) {
+    public void updateIsRead(Long chatRoomId, Long partnerId) {
         queryFactory.update(chatMessage)
                 .set(chatMessage.isRead, true)
                 .where(isUnread(),
                         equalChatRoomId(chatRoomId),
-                        chatMessage.id.gt(0))
+                        chatMessage.id.gt(0),
+                        chatMessage.sender.id.eq(partnerId))
                 .execute();
     }
 

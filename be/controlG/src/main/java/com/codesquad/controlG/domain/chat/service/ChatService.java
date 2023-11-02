@@ -53,9 +53,6 @@ public class ChatService {
         int size = redisChatMemberService.getRedisMemberSize(messageRequest.getChatRoomId());
         ChatMessage message = ChatMessage.of(messageRequest.getMessage(), chatRoom, sender, size);
         ChatMessage chatMessage = chatMessageRepository.save(message);
-        if (chatMessage.isRead()) {
-            chatMessageRepository.updateIsRead(chatRoom.getId());
-        }
         // 3. SSE 재요청 알림 보내기
         Long receiverId = chatRoom.partnerId(sender.getId());
         chatRoomRepository.updateExit(chatRoom.getId(), sender.getId(), receiverId);
@@ -85,8 +82,8 @@ public class ChatService {
 
     @Transactional
     public ChatInfoResponse getChatInfo(Long chatRoomId, Long memberId) {
-        chatMessageRepository.updateIsRead(chatRoomId);
         ChatInfoPartner chatInfoPartner = chatMessageRepository.getChatInfoPartner(chatRoomId, memberId);
+        chatMessageRepository.updateIsRead(chatRoomId, chatInfoPartner.getId());
         List<ChatInfoMessages> chatMessages = chatMessageRepository.getChatMessages(chatRoomId, memberId);
 
         boolean isLiked = likeRepository.existsLike(memberId, chatInfoPartner.getId());

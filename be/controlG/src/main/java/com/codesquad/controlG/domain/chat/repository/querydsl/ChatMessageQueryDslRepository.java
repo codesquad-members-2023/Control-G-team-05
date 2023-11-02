@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ChatMessageQueryDslRepository {
 
-    public void updateIsRead(Long chatRoomId);
+    public void updateIsRead(Long chatRoomId, Long partnerId);
 
     public ChatInfoPartner getChatInfoPartner(Long chatRoomId, Long memberId);
 
