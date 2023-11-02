@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function GroupDetailPage() {
   const [groupDetail, setGroupDetail] = useState([]);
-  const groupId = useParams();
+  const { groupId } = useParams();
   // 회원이 join 버튼을 눌렀을때 리렌더링 하기위해 추가했다.
   const [isMemberAdded, setIsMemberAdded] = useState(false);
 

@@ -37,4 +37,5 @@ export const API_ENDPOINTS = {
   CHAT_LIST: (groupId) =>
     `${BASE_URL}/api/chats${groupId ? `?groupId=${groupId}` : ""}`,
   SSH_CONNECTION: (memberId) => `${BASE_URL}/connect/${memberId}`,
+  CHAT_ROOM_DELETE: (chatRoomId) => `${BASE_URL}/api/chats/${chatRoomId}`,
 };

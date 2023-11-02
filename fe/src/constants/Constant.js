@@ -1,3 +1,4 @@
+import { fetchChatRoomDelete } from "../api/chat/ChatRoomDelete";
 import { fetchMemberBlock } from "../api/member/MemberBlock";
 import { fetchMemberLike } from "../api/member/MemberLike";
 
@@ -31,11 +32,11 @@ export const CONSTANT = {
       apiRequest: () => fetchMemberLike(memberId),
     },
   ],
-  CHAT_MODAL_ICON_LIST: (memberId) => [
+  CHAT_MODAL_ICON_LIST: (memberId, chatRoomId) => [
     {
       src: "https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/6cfc43fe-f6a8-4a9d-a4fc-5000be8f8fcf_1698288243557872787?Expires=-62135596800&Signature=g-ZMEppOsXis0i7Gr~AilZa6q~ZLKIUEzL4MvyqhQEOeLoyEWJIVITtEatk7ZaGIzHWLK5hUzYAumjq1F--Znri7HeUPz4D9EcBWWuBDBzB3qo0SVJ8nBIBZhp7GKvdMsbGfDJcFqojHm-HFqwUK-OusOtM935h-K4uRBOOSWFmdIbnR6NALoaLus4eZhKICvnvzKQWvR3YFkxyq9nRBKS5JoVPcc4x8xLXyfeEu8FFV98esHcdAlSBAHqbKtZNVMMMqK2-okfeuq4GvjnxvkaNroT0Vgv36ssaJI7X-e7aTDfqx6iDAyFTzJ-H1MCmOfZ~79sTbqtpd6NahXPz9xQ__&Key-Pair-Id=K1P54FZWCHCL6J",
       label: "Exit",
-      apiRequest: "block",
+      apiRequest: () => fetchChatRoomDelete(chatRoomId),
     },
     {
       src: "https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/e60fd142-644e-4ba6-90d1-446d75989bb6_1697725729806953934?Expires=-62135596800&Signature=gmQHe7zUDxu6Fg9OF9wV46fMglzCMtrIZ7c2bU~cFqN1W2SLhgQFJEK8OOaT-obuGMhoFm-8NCePic0wYk8bWPwzcIlasng249yKHzCwDtlXM7rPuRsfEsAOfRZkbqNUv1IOotfdXFh96zULIJLNuxNRFfuMVj6ZuCRgqA0apY68qVpj4-RAMbByUKU4kQhPrR7jhzvA0RyznoBt7RIRXYMbJlu5YIAYVcoXAjwyG5N2cfvhmxt5kBT8dhu~bL7Jat7VZWayBtKGYIEizf8WNX0n4N2MmC2S5ZhX9Km9burY9J1MBkakqbqZsviY7dZ7OK~qObOdtpwPlv4OyZDUtg__&Key-Pair-Id=K1P54FZWCHCL6J",

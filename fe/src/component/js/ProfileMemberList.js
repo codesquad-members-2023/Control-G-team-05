@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../css/ProfileMemberList.module.css";
 import PopupMessage from "./Modal";
 import { useState } from "react";
+import { CONSTANT } from "../../constants/Constant";
 
 function ProfileMemberList({
   memberId,
@@ -18,7 +19,11 @@ function ProfileMemberList({
 
   return (
     <div className={styles.chatStack}>
-      <img className={styles.avatarIcon} alt="" src={avatarSrc} />
+      <img
+        className={styles.avatarIcon}
+        alt=""
+        src={avatarSrc === null ? CONSTANT.BASIC_CHAT_PROFILE_ICON : avatarSrc}
+      />
       <div className={styles.dataContainer}>
         <div className={styles.topContainer}>
           <div className={styles.nameContainer}>

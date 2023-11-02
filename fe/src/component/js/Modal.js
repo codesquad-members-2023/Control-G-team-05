@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import styles from "../css/Modal.module.css";
 import { CONSTANT } from "../../constants/Constant";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function PopupMessage({
   memberId,
@@ -10,19 +11,27 @@ function PopupMessage({
   setModalState,
   modalButtonClicked,
   setModalButtonClicked,
+  chatRoomId,
 }) {
+  const navigate = useNavigate();
+
   const modalIconList =
     selected === "like"
       ? CONSTANT.PROFILE_MODAL_LIKE_ICON_LIST(memberId)
       : selected === "chat"
-      ? CONSTANT.CHAT_MODAL_ICON_LIST(memberId) // "chat"을 선택했을 때의 리스트
+      ? CONSTANT.CHAT_MODAL_ICON_LIST(memberId, chatRoomId) // "chat"을 선택했을 때의 리스트
       : CONSTANT.PROFILE_MODAL_MATCHED_ICON_LIST(memberId); // 다른 경우의 리스트
 
   const handleModalIconButtonClick = async (icon) => {
     await icon.apiRequest();
     setModalState(false);
-    setModalButtonClicked(!modalButtonClicked);
+    if (setModalButtonClicked) {
+      setModalButtonClicked(!modalButtonClicked);
+    }
     toast(icon.label + " 성공");
+    if (icon.label === "Exit") {
+      navigate("/chats");
+    }
   };
 
   return (

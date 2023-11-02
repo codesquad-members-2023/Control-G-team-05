@@ -60,6 +60,7 @@ function ChatDetailPage() {
         partnerId={partnerInfo.id}
         isLiked={isLiked}
         setIsLiked={setIsLike}
+        chatRoomId={chatRoomId}
       />
       <div className={styles.chatArea}>
         {messages.map((message) => (
