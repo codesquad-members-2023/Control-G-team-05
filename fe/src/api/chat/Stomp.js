@@ -28,6 +28,7 @@ export const useStompClient = (accessToken, chatRoomId, onMessageReceived) => {
 
     stompClient.current.activate();
 
+    //clean up 함수
     return () => {
       stompClient.current.deactivate();
       console.log("Disconnected from the WebSocket");
@@ -35,7 +36,11 @@ export const useStompClient = (accessToken, chatRoomId, onMessageReceived) => {
   }, [accessToken, chatRoomId, onMessageReceived]);
 
   const sendMessage = (messageContent, memberId) => {
-    if (stompClient.current && stompClient.current.active) {
+    if (
+      stompClient.current &&
+      stompClient.current.active &&
+      messageContent.trim() !== ""
+    ) {
       const chatMessage = {
         chatRoomId: chatRoomId,
         message: messageContent,

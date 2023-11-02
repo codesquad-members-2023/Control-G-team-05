@@ -18,6 +18,8 @@ function ChatDetailPage() {
   const [inputMessage, setInputMessage] = useState("");
   // 맨마지막 메세지 참조를 위한 useRef
   const chatEndRef = useRef(null);
+  // 한글입력시 엔터키가 중복으로 2번 눌리는 현상을 방지하기 위한 useState
+  const [isComposing, setIsComposing] = useState(false);
 
   useEffect(() => {
     fetchChatDetail(chatRoomId).then((data) => {
@@ -88,13 +90,26 @@ function ChatDetailPage() {
           maxRows={3}
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
+          onCompositionStart={() => setIsComposing(true)}
+          onCompositionEnd={() => setIsComposing(false)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey && !isComposing) {
+              e.preventDefault();
+              sendMessage(inputMessage, memberId);
+            }
+          }}
         />
-        <img
-          className={styles.sendIcon}
-          alt=""
-          src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/5cda7c3a-76da-4bcb-bdfa-a7e8a0e632f8_1697594684559098000?Expires=-62135596800&Signature=BIsAb0t1Bbl2E~Ndb~dB~WTBxhn69WWHHe4pAvdpJ6JlM-g7q-cZ~heHBXvFm~7d6-KWJ-NMFg854jMLhsxcXxOkVtUWBeUX7PNyUVtzpPrTfinVVLm-3j2SulgPNDgzwKeoL4zIbC9ZBmiwPe~bv-aPbBcOklRaF-2SAJzd3vO493nG2UOB49Oo-wrWgbyKSJCdoQufa4dDvus6V-w-ra5rbFNZPKYGAObvCw5et9GagYNFPRImOxDqjgHTZbc7zt7BZiVx0LLGbIYeyUXQtHlM~TxFgfB639N3Ic41IJMuKLCsNTLFRDldLthgnFWx~79hsKQWz5EPdPT~yS7KDQ__&Key-Pair-Id=K1P54FZWCHCL6J"
+        <button
+          type="button" // 버튼이 폼을 제출하지 않도록 설정
+          className={styles.sendButton}
           onClick={() => sendMessage(inputMessage, memberId)}
-        />
+        >
+          <img
+            alt="Send"
+            src="https://d1xzdqg8s8ggsr.cloudfront.net/652ca67bbbe533c504a77c20/5cda7c3a-76da-4bcb-bdfa-a7e8a0e632f8_1697594684559098000?Expires=-62135596800&Signature=BIsAb0t1Bbl2E~Ndb~dB~WTBxhn69WWHHe4pAvdpJ6JlM-g7q-cZ~heHBXvFm~7d6-KWJ-NMFg854jMLhsxcXxOkVtUWBeUX7PNyUVtzpPrTfinVVLm-3j2SulgPNDgzwKeoL4zIbC9ZBmiwPe~bv-aPbBcOklRaF-2SAJzd3vO493nG2UOB49Oo-wrWgbyKSJCdoQufa4dDvus6V-w-ra5rbFNZPKYGAObvCw5et9GagYNFPRImOxDqjgHTZbc7zt7BZiVx0LLGbIYeyUXQtHlM~TxFgfB639N3Ic41IJMuKLCsNTLFRDldLthgnFWx~79hsKQWz5EPdPT~yS7KDQ__&Key-Pair-Id=K1P54FZWCHCL6J" // 이미지 URL을 src로 설정
+            className={styles.sendIcon}
+          />
+        </button>
       </div>
     </div>
   );
