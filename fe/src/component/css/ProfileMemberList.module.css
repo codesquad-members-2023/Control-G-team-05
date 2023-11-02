@@ -11,8 +11,9 @@
 }
 
 .avatarIcon {
-  width: 17.13%;
-  right: 82.87%;
+  width: 56px;
+  right: 56px;
+  border-radius: 10px;
 }
 .topContainer {
   display: flex;

@@ -11,6 +11,7 @@ function ChatDetailTopBar({
   isLiked,
   setIsLiked,
   partnerId,
+  chatRoomId,
 }) {
   const [modalState, setModalState] = useState(false);
   const handleClick = () => {
@@ -59,6 +60,7 @@ function ChatDetailTopBar({
         selected="chat"
         modalState={modalState}
         setModalState={setModalState}
+        chatRoomId={chatRoomId}
       />
     </div>
   );
