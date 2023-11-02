@@ -1,7 +1,7 @@
 export const BASE_URL =
   "http://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com";
 export const BASE_WEB_SOCKET_URL =
-  "ws://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com";
+  "ws://ec2-54-180-81-108.ap-northeast-2.compute.amazonaws.com:8080";
 export const API_ENDPOINTS = {
   LOGIN: (queryString) =>
     `${BASE_URL}/api/login/oauth/naver?code=${queryString}`,
