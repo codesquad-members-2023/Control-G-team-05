@@ -1,5 +1,6 @@
 package com.codesquad.controlG.domain.chat.repository.querydsl;
 
+import static com.codesquad.controlG.domain.block.entity.QBlock.block;
 import static com.codesquad.controlG.domain.chat.entity.QChatMember.chatMember;
 import static com.codesquad.controlG.domain.chat.entity.QChatMessage.chatMessage;
 import static com.codesquad.controlG.domain.chat.entity.QChatRoom.chatRoom;
@@ -87,6 +88,28 @@ public class ChatRoomQueryDslRepositoryImpl implements ChatRoomQueryDslRepositor
                         tuple -> tuple.get(0, Long.class),  // ChatRoomId
                         tuple -> tuple.get(1, Long.class)   // newMessageCount
                 ));
+    }
+
+    @Override
+    public void updateExit(Long chatRoomId, Long memberId, Long receiverId) {
+        if (!checkBlocked(memberId, receiverId)) {
+            queryFactory.update(chatMember)
+                    .set(chatMember.isExit, false)
+                    .where(
+                            chatMember.chatRoom.id.eq(chatRoomId),
+                            chatMember.member.id.eq(receiverId)
+                    )
+                    .execute();
+        }
+    }
+
+    private boolean checkBlocked(Long memberId, Long receiverId) {
+        return queryFactory.selectFrom(block)
+                .where(
+                        block.blocker.id.eq(receiverId),
+                        block.blocked.id.eq(memberId)
+                )
+                .fetchFirst() != null;
     }
 
     private NumberExpression<Long> getPartner(Long memberId) {

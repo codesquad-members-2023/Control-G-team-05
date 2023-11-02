@@ -11,4 +11,6 @@ public interface ChatRoomQueryDslRepository {
     List<ChatListResponse> getChatList(Long groupId, Long memberId);
 
     Map<Long, Long> countNewMessage(Long groupId, Long memberId);
+
+    void updateExit(Long chatRoomId, Long memberId, Long receiverId);
 }
