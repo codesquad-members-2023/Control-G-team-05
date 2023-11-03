@@ -37,7 +37,6 @@ function ChatDetailPage() {
   // api 를 부르는게 아니며, 랜더링될때 실행될 이유가 없어 useCallback을 사용한다.
   const onMessageReceived = useCallback((data) => {
     setMessages((prevMessages) => [...prevMessages, data.messages]);
-    setInputMessage("");
   }, []);
 
   // STOMP 클라이언트 사용
@@ -96,13 +95,17 @@ function ChatDetailPage() {
             if (e.key === "Enter" && !e.shiftKey && !isComposing) {
               e.preventDefault();
               sendMessage(inputMessage, memberId);
+              setInputMessage("");
             }
           }}
         />
         <button
           type="button" // 버튼이 폼을 제출하지 않도록 설정
           className={styles.sendButton}
-          onClick={() => sendMessage(inputMessage, memberId)}
+          onClick={() => {
+            sendMessage(inputMessage, memberId);
+            setInputMessage("");
+          }}
         >
           <img
             alt="Send"
