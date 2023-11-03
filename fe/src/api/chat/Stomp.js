@@ -18,7 +18,6 @@ export const useStompClient = (accessToken, chatRoomId, onMessageReceived) => {
         stompClient.current.subscribe(
           API_ENDPOINTS.STOMP_SUBSCRIBE(chatRoomId),
           (message) => {
-            console.log("메세지 받음");
             //구독한 채널에서 받은 메세지를 어떻게 처리할 것인가
             onMessageReceived(JSON.parse(message.body));
           }
