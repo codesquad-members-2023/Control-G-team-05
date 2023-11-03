@@ -38,6 +38,10 @@
   width: auto;
   max-width: 200px;
   margin-bottom: 2px;
+  white-space: pre-wrap;
+  word-wrap: break-word; /* 오래된 브라우저 호환성을 위해 */
+  word-break: break-word; /* 비표준, 하지만 웹킷(크롬, 사파리)과 레거시 브라우저에서 유용 */
+  overflow-wrap: break-word; /* 표준 속성으로, word-wrap의 새 이름 */
 }
 
 .chatInformationForMine {
