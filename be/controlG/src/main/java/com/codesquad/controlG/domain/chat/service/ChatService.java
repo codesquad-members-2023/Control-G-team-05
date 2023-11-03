@@ -1,11 +1,7 @@
 package com.codesquad.controlG.domain.chat.service;
 
 import com.codesquad.controlG.domain.chat.dto.MessageRequest;
-import com.codesquad.controlG.domain.chat.dto.response.ChatInfoMessages;
-import com.codesquad.controlG.domain.chat.dto.response.ChatInfoPartner;
-import com.codesquad.controlG.domain.chat.dto.response.ChatInfoResponse;
-import com.codesquad.controlG.domain.chat.dto.response.ChatListResponse;
-import com.codesquad.controlG.domain.chat.dto.response.ChatSendMessageResponse;
+import com.codesquad.controlG.domain.chat.dto.response.*;
 import com.codesquad.controlG.domain.chat.entity.ChatMessage;
 import com.codesquad.controlG.domain.chat.entity.ChatRoom;
 import com.codesquad.controlG.domain.chat.repository.ChatMessageRepository;
@@ -15,11 +11,12 @@ import com.codesquad.controlG.domain.member.entity.Member;
 import com.codesquad.controlG.domain.member.service.MemberService;
 import com.codesquad.controlG.exception.CustomRuntimeException;
 import com.codesquad.controlG.exception.errorcode.ChatException;
-import java.util.List;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -54,10 +51,12 @@ public class ChatService {
         ChatMessage message = ChatMessage.of(messageRequest.getMessage(), chatRoom, sender, size);
         ChatMessage chatMessage = chatMessageRepository.save(message);
         // 3. SSE 재요청 알림 보내기
-        Long receiverId = chatRoom.partnerId(sender.getId());
-        chatRoomRepository.updateExit(chatRoom.getId(), sender.getId(), receiverId);
+        if (size < 2) {
+            Long receiverId = chatRoom.partnerId(sender.getId());
+            chatRoomRepository.updateExit(chatRoom.getId(), sender.getId(), receiverId);
+            notificationService.refreshChatRoomList(receiverId);
+        }
 
-        notificationService.refreshChatRoomList(receiverId);
 
         return ChatSendMessageResponse.of(chatMessage, chatRoom);
     }
