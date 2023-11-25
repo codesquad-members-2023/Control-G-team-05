@@ -38,89 +38,15 @@
   </tr>
 </table>
 
-## 프로젝트 관리
-
-### 그라운드 룰
-
-- 온라인으로 소통 잘하기
-  - 프론트, 백도 매일 매일 소통 필요
-  - 슬랙에 다른 팀원이 무언가를 올렸으면 확인하고 이모지라도 체크해주기
-  - 구두로 논의한 것들이라도 슬랙에도 공유하기! (한 번 더 올려서 리마인드 하기)
-- API 명세가 변경되면 슬랙으로 알려주기 + 회의 안건에 추가하기
-- ✨`한 번` 지각하면 2000원 내기✨** (지각 체크한다음에 제일 지각 안한사람이 다가져가기)
-- 지각 기준: [네이버 시계](https://time.navyism.com/?host=naver.com) 10:05:59 까지 봐줍니다.
-
-</br>
-
-### 데일리 스크럼 룰
-
-- 시간 : 10:06 ~ 10:30
-- **스크럼** **내용:** 컨디션(10점 만점) / 어제 한 일 / 오늘 할 일
-
-***Scrum Master***
-
-- 스크럼 마스터 지각 시 다음날 마스터와 순서 바꾸기
-
-| 1주차 | 2주차 | 3주차  | 4주차 |
-| ----- | ----- | ------ | ----- |
-| 위즈  | 찰리  | 라이트 | 조이  |
-
-</br>
-
-### 🌳 브랜치 전략
-
-#### 1. 작업 브랜치 (Feature Branch)
-- **출발 브랜치**: `dev-be`
-- **브랜치명**: `be/feature/#이슈번호-이슈명`
-- **PR 전략**: Squash Merge
-- **병합 대상 브랜치**: `dev-be`
-
-#### 2. 수정 브랜치 (Hotfix Branch)
-- **출발 브랜치**: `dev-be`
-- **브랜치명**: `be/hotfix/#이슈번호-이슈명`
-- **PR 전략**: Squash Merge
-- **병합 대상 브랜치**: `dev-be`
-
-#### 3. 배포 브랜치 (Release Branch)
-- **출발 브랜치**: `dev-be`
-- **PR 전략**: Merge
-- **병합 대상 브랜치**: `release`
-
-
-
-### 📝 커밋 컨벤션
-
-**형식**: `#이슈번호 [BE/FE] 타입: 내용`
-
-**예시**: 
-
-```plaintext
-#12 [BE] feat: 로그인 구현
-```
-
-### PR 제목
-
-- **형식**: `#이슈번호 [BE/FE] 타입: 이슈제목`
-- **예시**: 
-
-```
-#12 [BE] feat: 로그인 구현
-```
-
-
-
-### 스쿼시 머지 커밋명
-- **형식**: `#이슈번호 [BE/FE] 타입: 이슈제목 #PR번호`
-- **예시**: 
-
-```
-#12 [BE] feat: 로그인 구현 #16
-```
-
-
-
-### 링크
-[![Notion](https://img.shields.io/badge/Notion-000000.svg?style=for-the-badge&logo=Notion&logoColor=white)](https://road-marscapone-17b.notion.site/Control-G-77c107d2ff9c49d3bc7dda98a81bc80c?pvs=4)
-[![Figma](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/file/Ax5lh6dI1pgCVjzRNG0dlD/%EC%BB%A8%ED%8A%B8%EB%A1%A4G?type=design&node-id=0-1&mode=design&t=dxepdvyxTwQM6KLe-0)
-
-
+![랜덤채팅 시작](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/50a4c1a7-10ae-4723-9d6e-64542fb7c4cf)
+![매칭 성공](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/cf8ae4c5-b1e4-4168-9523-367fb76c0ce0)
+![매칭 실패](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/f1217e7a-a866-4850-81f5-5a3a965f9c70)
+![Nov-26-2023 02-29-49](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/d9818b16-d0fc-47d8-94ae-1bdaa0014141)
+![Nov-26-2023 02-30-13](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/ff0d909a-bc43-4fb0-a953-83807a6befd6)
+![Nov-26-2023 02-31-04](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/9fd90ee1-3739-46ed-a95b-b67a94d14649)
+![Nov-26-2023 02-32-43](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/eb809067-3edb-45dd-860a-bcdb671b71c1)
+![Nov-26-2023 02-33-41](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/085d8afa-b7c5-439c-aa3f-0ea58047e6c0)
+![Nov-26-2023 02-33-57](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/e1cebb6c-fe35-4a6d-acdc-b1a339f5af50)
+![Nov-26-2023 02-34-53](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/df715756-e395-47a5-91e7-49b6209944a6)
+![새로운 그룹 추가](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/5be61fcd-8710-43fd-98f3-fe2162108f2a)
+![내 그룹 추가](https://github.com/codesquad-members-2023/Control-G-team-05/assets/121915790/ef1c22ae-83a4-4f01-94e1-85c999ca65ea)
